@@ -49,8 +49,10 @@ startup {
 
 split {
   if ( (settings["split_end"]) && (current.Map == "5_1_2_LAX") &&
-    (current.Movie1) && (current.Movie2) &&
-    (!vars.D.EndSplit) ) return true;
+    (current.Movie1) && (current.Movie2) && (!vars.D.EndSplit) ) {
+    vars.D.Endsplit = true;
+    return true;
+  }
   if (current.Map == old.Map) return false;
   string Map = "";
   vars.D.Maps.TryGetValue(current.Map, out Map);
