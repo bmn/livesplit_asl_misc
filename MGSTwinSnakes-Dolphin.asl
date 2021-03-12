@@ -58,13 +58,13 @@ startup {
   D.i = 0;
   
   D.Endian = new ExpandoObject();
-  D.Endian.uint = (Func<uint, uint>)((val) => {
+  D.Endian.Uint = (Func<uint, uint>)((val) => {
     return (val & 0x000000FF) << 24 |
             (val & 0x0000FF00) << 8 |
             (val & 0x00FF0000) >> 8 |
             ((uint)(val & 0xFF000000)) >> 24;
   });
-  D.Endian.short = (Func<ushort, short>)((val) => {
+  D.Endian.Short = (Func<ushort, short>)((val) => {
     return (short)((val & 0x00FF) << 8 |
             ((ushort)(val & 0xFF00)) >> 8);
   });
@@ -107,9 +107,9 @@ update {
   else if (!D.GameActive) return false;
   
   ushort progress = memory.ReadValue<ushort>((IntPtr)D.AddrFor(0x5a2ed2));
-  current.Progress = D.Endian.short(progress);
+  current.Progress = D.Endian.Short(progress);
   uint gameTime = memory.ReadValue<uint>((IntPtr)D.AddrFor(0x5a1a58));
-  current.GameTime = D.Endian.uint(gameTime);
+  current.GameTime = D.Endian.Uint(gameTime);
 }
 
 gameTime {
