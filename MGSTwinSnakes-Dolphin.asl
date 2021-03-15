@@ -137,5 +137,5 @@ start {
 }
 
 reset {
-  return ( (current.Progress == -1) && (old.Progress != -1) );
+  return ( ((current.Progress == -1) || (current.Progress == 0)) && (old.Progress != -1) );
 }
