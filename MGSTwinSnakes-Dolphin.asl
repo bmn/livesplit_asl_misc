@@ -27,6 +27,7 @@ startup {
   settings.Add("p125", false, "[Nuke Building B1] Cornered Meryl", "minor");
   settings.Add("p139", false, "[Commander's Room] Reached Mantis", "minor");
   settings.Add("p159", false, "[Underground Passage] Reached Sniper Wolf ambush", "minor");
+  settings.Add("c_reachwolf1", false, "[Underground Passage] Reached Sniper Wolf 1", "minor");
   settings.Add("p166", false, "[Underground Passage] Got caught", "minor");
   settings.Add("p199", false, "[Medi Room] Defeated Johnny", "minor");
   settings.Add("p210", false, "[Comms Tower A] Reached stairs chase", "minor");
@@ -109,8 +110,11 @@ update {
   
   ushort progress = memory.ReadValue<ushort>((IntPtr)D.AddrFor(0x5a2ed2));
   current.Progress = D.Endian.Short(progress);
+  
   uint gameTime = memory.ReadValue<uint>((IntPtr)D.AddrFor(0x5a1a58));
   current.GameTime = D.Endian.Uint(gameTime);
+  
+  current.Location = memory.ReadString((IntPtr)D.AddrFor(0x5a348c), 10);
 }
 
 gameTime {
@@ -124,6 +128,10 @@ isLoading {
 split {
   var D = vars.D;
   if (!D.GameActive) return false;
+  
+  if ((settings["c_reachwolf1"]) && (current.Progress == 164) && (old.Location == "area14a") && (current.Location == "area15a"))
+    return true;
+  
   if (current.Progress == old.Progress) return false;
   
   string ProgressCode = "p" + current.Progress;
