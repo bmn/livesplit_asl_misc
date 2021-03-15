@@ -15,6 +15,7 @@ startup {
   settings.Add("p335", true, "Liquid Snake", "splits");
   settings.Add("p347", true, "Escape", "splits");
   settings.Add("score", true, "Score (not done yet)", "splits");
+  settings.SetToolTip("score", "Make sure to split manually once the timer has stopped");
   
   settings.Add("minor", true, "Minor Splits");
   settings.Add("p7", false, "[Dock] Reached the elevator", "minor");
