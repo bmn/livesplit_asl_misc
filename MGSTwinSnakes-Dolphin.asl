@@ -51,8 +51,6 @@ startup {
   vars.D = new ExpandoObject();
   var D = vars.D;
   
-	D.Watchers = new MemoryWatcherList();
-  
   D.BaseAddr = IntPtr.Zero;
   D.GameActive = false;
   D.i = 0;
@@ -72,19 +70,21 @@ startup {
   D.LookForGameMemory = (Func<Process, Process, bool>)((g, m) => {
     string gameCode = "GGSEA4";
     
-    if ( (D.BaseAddr != IntPtr.Zero) && (m.ReadString((IntPtr)D.BaseAddr, 6) == gameCode) ) return true;
+    if ( (D.BaseAddr != IntPtr.Zero) && (m.ReadString((IntPtr)D.BaseAddr, gameCode.Length) == gameCode) ) return true;
     
     foreach (var page in g.MemoryPages(true))
     {
       if ((page.RegionSize != (UIntPtr)0x2000000) || (page.Type != MemPageType.MEM_MAPPED)) continue;
       
-      if (m.ReadString(page.BaseAddress, 6) != gameCode) continue;
+      if (m.ReadString(page.BaseAddress, gameCode.Length) != gameCode) continue;
       
       D.BaseAddr = page.BaseAddress;
       D.GameActive = true;
       print("Found MGS Twin Snakes memory at " + D.BaseAddr + " (dec)");
       return true;
     }
+    
+    D.GameActive = false;
     return false;
   });
   
