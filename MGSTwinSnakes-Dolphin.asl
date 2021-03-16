@@ -14,8 +14,8 @@ startup {
   settings.Add("p311", true, "Metal Gear REX", "splits");
   settings.Add("p335", true, "Liquid Snake", "splits");
   settings.Add("p347", true, "Escape", "splits");
-  settings.Add("score", true, "Score (not done yet)", "splits");
-  settings.SetToolTip("score", "Make sure to split manually once the timer has stopped");
+  settings.Add("c_score", true, "Final Time", "splits");
+  settings.SetToolTip("c_score", "This split occurs shortly after the final pre-credits cutscene");
   
   settings.Add("minor", true, "Minor Splits");
   settings.Add("p7", false, "[Dock] Reached the elevator", "minor");
@@ -55,6 +55,7 @@ startup {
   
   D.BaseAddr = IntPtr.Zero;
   D.GameActive = false;
+  D.FinalTimeIter = 0;
   D.i = 0;
   
   D.Endian = new ExpandoObject();
@@ -91,6 +92,11 @@ startup {
   });
   
   D.AddrFor = (Func<int, IntPtr>)((val) => (IntPtr)((long)D.BaseAddr + val));
+  
+  D.ResetVars = (Func<bool>)(() => {
+    D.FinalTimeIter = 0;
+    return true;
+  });
   
 }
 
@@ -132,6 +138,13 @@ split {
   if ((settings["c_reachwolf1"]) && (current.Progress == 164) && (old.Location == "area14a") && (current.Location == "area15a"))
     return true;
   
+  if ((settings["c_score"]) && (current.Progress == 359) && (current.Location == "ending")) {
+    if (current.GameTime == old.GameTime) {
+      if (D.FinalTimeIter++ == 6) return true;
+    }
+    else D.FinalTimeIter = 0;
+  }
+  
   if (current.Progress == old.Progress) return false;
   
   string ProgressCode = "p" + current.Progress;
@@ -141,9 +154,17 @@ split {
 }
 
 start {
-  return ( (current.Progress == 3) && (old.Progress == -1) );
+  var D = vars.D;
+  if (!D.GameActive) return false;
+  if ( (current.Progress == 3) && (old.Progress == -1) )
+    return D.ResetVars();
+  return false;
 }
 
 reset {
-  return ( ((current.Progress == -1) || (current.Progress == 0)) && (old.Progress != -1) );
+  var D = vars.D;
+  if (!D.GameActive) return false;
+  if ( ((current.Progress == -1) || (current.Progress == 0)) && (old.Progress != -1) )
+    return D.ResetVars();
+  return false;
 }
