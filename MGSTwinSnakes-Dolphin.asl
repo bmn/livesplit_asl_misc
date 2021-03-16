@@ -1,6 +1,10 @@
 state("Dolphin") {}
 
 startup {
+  settings.Add("settings", true, "Settings");
+  settings.Add("o_startonselect", true, "Start as soon as Game Start is selected", "settings");
+  settings.SetToolTip("o_startonselect", "Experimental, for Real Time timing purposes. If you have problems with this, disable it.");
+  
   settings.Add("splits", true, "Major Splits");
   settings.Add("p38", true, "Guard Encounter", "splits");
   settings.Add("p48", true, "Revolver Ocelot", "splits");
@@ -124,7 +128,9 @@ update {
 }
 
 gameTime {
-  return TimeSpan.FromMilliseconds((float)current.GameTime / 60 * 1000);
+  float msecs = ( (vars.D.GameActive) && (current.Progress >= 3) ) ?
+    ((float)current.GameTime / 60 * 1000) : 0;
+  return TimeSpan.FromMilliseconds(msecs);
 }
 
 isLoading {
@@ -156,8 +162,19 @@ split {
 start {
   var D = vars.D;
   if (!D.GameActive) return false;
+  
+  if ( (settings["o_startonselect"]) && (current.Progress == -1) && (current.Location == "n_title") ) {
+    var ptr = memory.ReadValue<uint>((IntPtr)D.AddrFor(0x11b1334));
+    if (ptr != 0) {
+      ptr = D.Endian.Uint(ptr) & 0x0fffffff;
+      if (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0x4f)) == 7)
+        return D.ResetVars();
+    }
+  }
+  
   if ( (current.Progress == 3) && (old.Progress == -1) )
     return D.ResetVars();
+    
   return false;
 }
 
