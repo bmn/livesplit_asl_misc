@@ -62,6 +62,12 @@ startup {
   D.FinalTimeIter = 0;
   D.i = 0;
   
+  D.GameIds = new Dictionary<string, bool>() {
+    { "GGSPA4", true }, // Europe
+    { "GGSJA4", true }, // Japan
+    { "GGSEA4", true }  // USA
+  };
+  
   D.Endian = new ExpandoObject();
   D.Endian.Uint = (Func<uint, uint>)((val) => {
     return (val & 0x000000FF) << 24 |
@@ -75,15 +81,19 @@ startup {
   });
   
   D.LookForGameMemory = (Func<Process, Process, bool>)((g, m) => {
-    string gameCode = "GGSEA4";
+    string gameId = null;
     
-    if ( (D.BaseAddr != IntPtr.Zero) && (m.ReadString((IntPtr)D.BaseAddr, gameCode.Length) == gameCode) ) return true;
+    if (D.BaseAddr != IntPtr.Zero) {
+      gameId = m.ReadString((IntPtr)D.BaseAddr, 6);
+      if ( (gameId != null) && (D.GameIds.ContainsKey(gameId)) ) return true;
+    }
     
     foreach (var page in g.MemoryPages(true))
     {
       if ((page.RegionSize != (UIntPtr)0x2000000) || (page.Type != MemPageType.MEM_MAPPED)) continue;
       
-      if (m.ReadString(page.BaseAddress, gameCode.Length) != gameCode) continue;
+      gameId = m.ReadString((IntPtr)page.BaseAddress, 6);
+      if ( (gameId == null) || (!D.GameIds.ContainsKey(gameId)) ) continue;
       
       D.BaseAddr = page.BaseAddress;
       D.GameActive = true;
