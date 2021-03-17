@@ -29,7 +29,7 @@ startup {
   settings.Add("p74", false, "[Canyon] Reached M1 Tank", "minor");
   settings.Add("p89", false, "[Nuke Building B2] Reached Ninja", "minor");
   settings.Add("p125", false, "[Nuke Building B1] Cornered Meryl", "minor");
-  settings.Add("p139", false, "[Commander's Room] Reached Mantis", "minor");
+  settings.Add("p139", false, "[Commander's Room] Reached Psycho Mantis", "minor");
   settings.Add("p159", false, "[Underground Passage] Reached Sniper Wolf ambush", "minor");
   settings.Add("c_reachwolf1", false, "[Underground Passage] Reached Sniper Wolf 1", "minor");
   settings.Add("p166", false, "[Underground Passage] Got caught", "minor");
