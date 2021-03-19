@@ -44,7 +44,7 @@ startup {
     settings.Add("area07a_area08a_p73", true, " Tank Hangar ⮞ Canyon", "route");
     settings.Add("p74", true, " Reached M1 Tank", "route");
     settings.Add("nukebuilding_area10a_p78", true, " Nuke Building 1F ⮞ Nuke Building B1", "route");
-    settings.Add("nukebuilding_area11a_p78", true, " Nuke Building B1 ⮞ Nuke Building B2", "route"); // with nikita
+    settings.Add("nukebuilding_area11a_p78", true, " Nuke Building B1 ⮞ Nuke Building B2", "route");
     settings.Add("area11a_area12a_p82", true, " Nuke Building B2 ⮞ Lab Hallway", "route");
     settings.Add("p89", true, " Reached Ninja", "route");
     settings.Add("area12b_area12a_p124", true, " Lab ⮞ Lab Hallway", "route");
@@ -63,6 +63,7 @@ startup {
     settings.Add("area13a_area14a_p164", true, " Commander's Room ⮞ Caves", "route");
     settings.Add("area14a_area15a_p164", true, " Caves ⮞ Sniper Wolf 1", "route");
     settings.Add("p166", true, " Captured by Sniper Wolf in Underground Passage", "route");
+    settings.Add("p199", true, "Defeated Johnny while escaping the Medi Room", "route");
     settings.Add("area16a_area05a_capture", true, " Medi Room ⮞ Holding Cells", "route");
     settings.Add("tankhangar_area07a_capture", true, " Holding Cells ⮞ Tank Hangar", "route");
     settings.Add("area07a_area08b_capture", true, " Tank Hangar ⮞ Canyon", "route");
@@ -71,16 +72,16 @@ startup {
     settings.Add("area10a_area13a_capture", true, " Nuke Building B1 ⮞ Commander's Room", "route");
     settings.Add("area13a_area14a_capture", true, " Commander's Room ⮞ Cave", "route");
     settings.Add("area14a_area15a_capture", true, " Cave ⮞ Underground Passage", "route");
-    settings.Add("area15a_area17a", true, " Underground Passage ⮞ Comm Tower A", "route");
+    settings.Add("area15a_area17a_capture", true, " Underground Passage ⮞ Comm Tower A", "route");
     settings.Add("p210", true, " Reached Comm Tower A chase", "route");
-    settings.Add("p212", true, " Comm Tower A ⮞ Comm Tower A Roof", "route");
+    settings.Add("area17a_area17b_p210", true, " Comm Tower A ⮞ Comm Tower A Roof", "route");
     settings.Add("p216", true, " Comm Tower A Roof ⮞ Comm Tower A Wall", "route");
     settings.Add("p219", true, " Comm Tower A Wall ⮞ Comm Tower Corridor", "route");
     settings.Add("area17e_area18a_p222", true, " Comm Tower Corridor ⮞ Comm Tower B", "route");
     settings.Add("p225", true, " Reached Otacon in Comm Tower B", "route");
     settings.Add("area18a_area19a_p226", true, " Comm Tower B ⮞ Comm Tower B Roof", "route");
     settings.Add("p228", true, " Reached Hind D", "route");
-    settings.Add("area19a_area18a_p233", true, " Comm Tower B Roof ⮞ Comm Tower B", "route"); // 233 -> 237
+    settings.Add("area19a_area18a_p233", true, " Comm Tower B Roof ⮞ Comm Tower B", "route");
     settings.Add("p237", true, " Reached elevator ambush in Comm Tower B", "route");
     settings.Add("p238", true, " Defeated elevator ambush in Comm Tower B", "route");
     settings.Add("p241", true, " Comm Tower B ⮞ Snowfield", "route");
@@ -329,7 +330,6 @@ start {
   if (!D.GameActive) return false;
   
   if ( (settings["o_startonselect"]) && (current.Progress == -1) && (current.Location == "n_title") ) {
-    //var ptr = memory.ReadValue<uint>((IntPtr)D.AddrFor(0x11b1334));
     var ptr = D.Read.Uint(0x11b1334);
     if (ptr != 0) {
       ptr &= 0x0fffffff;
