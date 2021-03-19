@@ -117,13 +117,53 @@ startup {
   D.DebugFileList = new List<string>();
   D.FinalTimeIter = 0;
   D.GameActive = false;
+  D.GameId = null;
   D.SplitCheck = new Dictionary<string, Func<bool>>();
   D.i = 0;
   
-  D.GameIds = new Dictionary<string, bool>() {
-    { "GGSPA4", true }, // Europe
-    { "GGSJA4", true }, // Japan
-    { "GGSEA4", true }  // USA
+  D.GameIds = new Dictionary<string, string>() {
+    { "GGSPA4", "Europe" }, // Europe
+    { "GGSJA4", "Japan" }, // Japan
+    { "GGSEA4", "America" }  // USA
+  };
+  
+  D.Addr = new Dictionary<string, Dictionary<string, int>>() {
+    { "GGSPA4", new Dictionary<string, int>() { // Europe TODO
+      { "GameTime", 0x5a1a58 },
+      { "Location", 0x5a348c },
+      { "Progress", 0x5a2ed2 },
+      { "Alerts", 0x5a1a62 },
+      { "Continues", 0x5a1a50 },
+      { "Kills", 0x5a1a64 },
+      { "Rations", 0x5a2eb0 },
+      { "Saves", 0x5a1a56 },
+      { "ShotsFired", 0x5a1a60 },
+      { "NikitaAmmo", 0x5a1bd8 }
+    } },
+    { "GGSJA4", new Dictionary<string, int>() { // Japan
+      { "GameTime", 0x5a1a5c },
+      { "Location", 0x5a3490 },
+      { "Progress", 0x5a2ed6 },
+      { "Alerts", 0x5a1a66 },
+      { "Continues", 0x5a1a54 },
+      { "Kills", 0x5a1a68 },
+      { "Rations", 0x5a2eb4 },
+      { "Saves", 0x5a1a5a },
+      { "ShotsFired", 0x5a1a64 },
+      { "NikitaAmmo", 0x5a1bdc }
+    } },
+    { "GGSEA4", new Dictionary<string, int>() { // USA
+      { "GameTime", 0x5a1a58 },
+      { "Location", 0x5a348c },
+      { "Progress", 0x5a2ed2 },
+      { "Alerts", 0x5a1a62 },
+      { "Continues", 0x5a1a50 },
+      { "Kills", 0x5a1a64 },
+      { "Rations", 0x5a2eb0 },
+      { "Saves", 0x5a1a56 },
+      { "ShotsFired", 0x5a1a60 },
+      { "NikitaAmmo", 0x5a1bd8 }
+    } }
   };
   
   var progressSets = new Dictionary<string, short[]>() {
@@ -168,10 +208,13 @@ startup {
     }
     
     D.GameActive = false;
+    D.GameId = null;
     return false;
   });
   
   D.AddrFor = (Func<int, IntPtr>)((val) => (IntPtr)((long)D.BaseAddr + val));
+  
+  D.VarAddr = (Func<string, int>)((key) => D.Addr[D.GameId][key]);
   
   D.ResetVars = (Func<bool>)(() => {
     D.CompletedSplits.Clear();
@@ -218,7 +261,7 @@ init {
   D.Read.String = (Func<int, int, string>)((addr, len) => memory.ReadString((IntPtr)D.AddrFor(addr), len));
   
   var HasNikita = (Func<bool>)(() => {
-    short nikita = D.Read.Short(0x5a1bd8);
+    short nikita = D.Read.Short( D.VarAddr("NikitaAmmo") );
     D.Debug("Nikita ammo count: " + nikita);
     return (nikita != -1);
   });
@@ -231,9 +274,6 @@ update {
   D.old = old; 
   D.i++;
   
-  current.Progress = 0;
-  current.GameTime = 0;
-  
   if ((D.i % 64) == 0) {
     if ( (settings["debug_file"]) && (D.DebugFileList.Count > 0) ) {
       string DebugPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\mgstts.log";
@@ -243,20 +283,36 @@ update {
         vars.D.DebugFileList.Clear();
       }
     }
-    if (!D.LookForGameMemory(game, memory)) return false;
+    D.LookForGameMemory(game, memory);
   }
-  else if (!D.GameActive) return false;
   
-  current.GameTime = D.Read.Uint(0x5a1a58);
-  current.Location = D.Read.String(0x5a348c, 7);
-  current.Progress = D.Read.Short(0x5a2ed2);
+  if (!D.GameActive) {
+    current.GameTime = 0;
+    current.Location = "";
+    current.Progress = 0;
+    
+    current.Alerts = 0;
+    current.Continues = 0;
+    current.Kills = 0;
+    current.Rations = 0;
+    current.Saves = 0;
+    current.ShotsFired = 0;
+    
+    return false;
+  }
+  
+  current.GameTime = D.Read.Uint( D.VarAddr("GameTime") );
+  current.Location = D.Read.String( D.VarAddr("Location"), 7 );
+  current.Progress = D.Read.Short( D.VarAddr("Progress") );
 
-  current.Alerts = D.Read.Short(0x5a1a62);
-  current.Continues = D.Read.Short(0x5a1a50);
-  current.Kills = D.Read.Short(0x5a1a64);
-  current.Rations = D.Read.Short(0x5a2eb0);
-  current.Saves = D.Read.Short(0x5a1a56);;
-  current.ShotsFired = D.Read.Short(0x5a1a60);;
+  current.Alerts = D.Read.Short( D.VarAddr("Alerts") );
+  current.Continues = D.Read.Short( D.VarAddr("Continues") );
+  current.Kills = D.Read.Short( D.VarAddr("Kills") );
+  current.Rations = D.Read.Short( D.VarAddr("Rations") );
+  current.Saves = D.Read.Short( D.VarAddr("Saves") );
+  current.ShotsFired = D.Read.Short( D.VarAddr("ShotsFired") );
+  
+  return true;
 }
 
 gameTime {
