@@ -162,7 +162,8 @@ startup {
       
       D.BaseAddr = page.BaseAddress;
       D.GameActive = true;
-      D.Debug("Found MGS Twin Snakes memory at " + D.BaseAddr.ToString("X"));
+      D.GameId = gameId;
+      D.Debug("Found MGS Twin Snakes (" + D.GameIds[gameId] + ") memory at " + D.BaseAddr.ToString("X"));
       return true;
     }
     
