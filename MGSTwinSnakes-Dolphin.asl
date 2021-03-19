@@ -128,17 +128,18 @@ startup {
   };
   
   D.Addr = new Dictionary<string, Dictionary<string, int>>() {
-    { "GGSPA4", new Dictionary<string, int>() { // Europe TODO
-      { "GameTime", 0x5a1a58 },
-      { "Location", 0x5a348c },
-      { "Progress", 0x5a2ed2 },
-      { "Alerts", 0x5a1a62 },
-      { "Continues", 0x5a1a50 },
-      { "Kills", 0x5a1a64 },
-      { "Rations", 0x5a2eb0 },
-      { "Saves", 0x5a1a56 },
-      { "ShotsFired", 0x5a1a60 },
-      { "NikitaAmmo", 0x5a1bd8 }
+    { "GGSPA4", new Dictionary<string, int>() { // Europe
+      { "GameTime", 0x5666f4 },
+      { "Location", 0x568128 },
+      { "Progress", 0x567b6e },
+      { "Alerts", 0x5666fe },
+      { "Continues", 0x5666ec },
+      { "Kills", 0x566700 },
+      { "Rations", 0x567b4c },
+      { "Saves", 0x5666f2 },
+      { "ShotsFired", 0x5666fc },
+      { "NikitaAmmo", 0x566874 },
+      { "GameStartPtr", 0x11b1454 }
     } },
     { "GGSJA4", new Dictionary<string, int>() { // Japan
       { "GameTime", 0x5a1a5c },
@@ -150,7 +151,8 @@ startup {
       { "Rations", 0x5a2eb4 },
       { "Saves", 0x5a1a5a },
       { "ShotsFired", 0x5a1a64 },
-      { "NikitaAmmo", 0x5a1bdc }
+      { "NikitaAmmo", 0x5a1bdc },
+      { "GameStartPtr", 0x11b1454 }
     } },
     { "GGSEA4", new Dictionary<string, int>() { // USA
       { "GameTime", 0x5a1a58 },
@@ -162,7 +164,8 @@ startup {
       { "Rations", 0x5a2eb0 },
       { "Saves", 0x5a1a56 },
       { "ShotsFired", 0x5a1a60 },
-      { "NikitaAmmo", 0x5a1bd8 }
+      { "NikitaAmmo", 0x5a1bd8 },
+      { "GameStartPtr", 0x11b1334 }
     } }
   };
   
@@ -387,10 +390,11 @@ start {
   if (!D.GameActive) return false;
   
   if ( (settings["o_startonselect"]) && (current.Progress == -1) && (current.Location == "n_title") ) {
-    var ptr = D.Read.Uint(0x11b1334);
+    //if (D.GameId != "GGSEA4") return false;
+    var ptr = D.Read.Uint( D.VarAddr("GameStartPtr") );
     if (ptr != 0) {
       ptr &= 0x0fffffff;
-      if (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0x4f)) == 7)
+      if (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0xe3)) == 1)
         return D.ResetVars();
     }
   }
