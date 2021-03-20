@@ -139,6 +139,8 @@ startup {
       { "Saves", 0x5666f2 },
       { "ShotsFired", 0x5666fc },
       { "NikitaAmmo", 0x566874 },
+      { "PSG1Ammo", 0x566870 },
+      { "PSG1TAmmo", 0x56688e },
       { "GameStartPtr", 0x11b1454 }
     } },
     { "GGSJA4", new Dictionary<string, int>() { // Japan
@@ -152,6 +154,8 @@ startup {
       { "Saves", 0x5a1a5a },
       { "ShotsFired", 0x5a1a64 },
       { "NikitaAmmo", 0x5a1bdc },
+      { "PSG1Ammo", 0x5a1bd8 },
+      { "PSG1TAmmo", 0x5a1bf6 },
       { "GameStartPtr", 0x11b1454 }
     } },
     { "GGSEA4", new Dictionary<string, int>() { // USA
@@ -165,6 +169,8 @@ startup {
       { "Saves", 0x5a1a56 },
       { "ShotsFired", 0x5a1a60 },
       { "NikitaAmmo", 0x5a1bd8 },
+      { "PSG1Ammo", 0x5a1bd4 },
+      { "PSG1TAmmo", 0x5a1bf2 },
       { "GameStartPtr", 0x11b1334 }
     } }
   };
@@ -284,6 +290,16 @@ init {
     }
     return (HasNikita());
   }) );
+  
+  var HasPSG1 = (Func<bool>)(() => {
+    short psg1 = D.Read.Short( D.VarAddr("PSG1Ammo") );
+    short psg1t = D.Read.Short( D.VarAddr("PSG1TAmmo") );
+    D.Debug("PSG1 ammo count: " + psg1 + " & T: " + psg1t);
+    return ( (psg1 != -1) || (psg1t != -1) );
+  });
+  D.SplitCheck.Add("area10a_area13a_p164", HasPSG1);
+  D.SplitCheck.Add("area13a_area14a_p164", HasPSG1);
+  D.SplitCheck.Add("area14a_area15a_p164", HasPSG1);
 }
 
 update {
