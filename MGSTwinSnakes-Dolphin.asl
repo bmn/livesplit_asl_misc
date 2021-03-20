@@ -63,7 +63,7 @@ startup {
     settings.Add("area13a_area14a_p164", true, " Commander's Room ⮞ Caves", "route");
     settings.Add("area14a_area15a_p164", true, " Caves ⮞ Sniper Wolf 1", "route");
     settings.Add("p166", true, " Captured by Sniper Wolf in Underground Passage", "route");
-    settings.Add("p199", true, "Defeated Johnny while escaping the Medi Room", "route");
+    settings.Add("p199", true, " Defeated Johnny while escaping the Medi Room", "route");
     settings.Add("area16a_area05a_capture", true, " Medi Room ⮞ Holding Cells", "route");
     settings.Add("tankhangar_area07a_capture", true, " Holding Cells ⮞ Tank Hangar", "route");
     settings.Add("area07a_area08b_capture", true, " Tank Hangar ⮞ Canyon", "route");
