@@ -248,6 +248,11 @@ init {
     }
   });
   
+  D.ManualSplit = (Action)(() => {
+    vars.timerModel = new TimerModel { CurrentState = timer };
+    vars.timerModel.Split();
+  });
+  
   D.Read = new ExpandoObject();
   D.Read.Uint = (Func<int, uint>)((addr) => {
     uint val = memory.ReadValue<uint>((IntPtr)D.AddrFor(addr));
@@ -263,12 +268,21 @@ init {
   });
   D.Read.String = (Func<int, int, string>)((addr, len) => memory.ReadString((IntPtr)D.AddrFor(addr), len));
   
-  var HasNikita = (Func<bool>)(() => {
+  D.SplitCheck.Add("nukebuilding_area11a_p78", (Func<bool>)(() => {
     short nikita = D.Read.Short( D.VarAddr("NikitaAmmo") );
     D.Debug("Nikita ammo count: " + nikita);
     return (nikita != -1);
-  });
-  D.SplitCheck.Add("nukebuilding_area11a_p78", HasNikita);
+  }) );
+  
+  D.SplitCheck.Add("area16a_area05a_capture", (Func<bool>)(() => {
+    if ( (settings["p199"]) && (current.Progress < 199) ) {
+      if (D.Split("p199")) {
+        D.ManualSplit();
+        return false;
+      }
+    }
+    return true;
+  }) );
 }
 
 update {
@@ -390,7 +404,6 @@ start {
   if (!D.GameActive) return false;
   
   if ( (settings["o_startonselect"]) && (current.Progress == -1) && (current.Location == "n_title") ) {
-    //if (D.GameId != "GGSEA4") return false;
     var ptr = D.Read.Uint( D.VarAddr("GameStartPtr") );
     if (ptr != 0) {
       ptr &= 0x0fffffff;
