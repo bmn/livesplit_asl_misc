@@ -249,8 +249,8 @@ init {
   });
   
   D.ManualSplit = (Action)(() => {
-    vars.timerModel = new TimerModel { CurrentState = timer };
-    vars.timerModel.Split();
+    var timerModel = new TimerModel { CurrentState = timer };
+    timerModel.Split();
   });
   
   D.Read = new ExpandoObject();
@@ -268,11 +268,12 @@ init {
   });
   D.Read.String = (Func<int, int, string>)((addr, len) => memory.ReadString((IntPtr)D.AddrFor(addr), len));
   
-  D.SplitCheck.Add("nukebuilding_area11a_p78", (Func<bool>)(() => {
+  var HasNikita = (Func<bool>)(() => {
     short nikita = D.Read.Short( D.VarAddr("NikitaAmmo") );
     D.Debug("Nikita ammo count: " + nikita);
     return (nikita != -1);
-  }) );
+  });
+  D.SplitCheck.Add("nukebuilding_area11a_p78", HasNikita);
   
   D.SplitCheck.Add("area16a_area05a_capture", (Func<bool>)(() => {
     if ( (settings["p199"]) && (current.Progress < 199) ) {
@@ -281,7 +282,7 @@ init {
         return false;
       }
     }
-    return true;
+    return (HasNikita());
   }) );
 }
 
