@@ -408,7 +408,8 @@ start {
     var ptr = D.Read.Uint( D.VarAddr("GameStartPtr") );
     if (ptr != 0) {
       ptr &= 0x0fffffff;
-      if (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0xe3)) == 1)
+      if ( (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0xe3)) == 1)
+        && (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0x4f)) == 7) )
         return D.ResetVars();
     }
   }
