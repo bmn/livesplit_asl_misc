@@ -27,13 +27,14 @@ startup {
     settings.Add("p311", true, " Metal Gear REX", "major");
     settings.Add("p335", true, " Liquid Snake", "major");
     settings.Add("p347", true, " Escape", "major");
-    settings.Add("c_score", true, " Final Time", "major");
-    settings.SetToolTip("c_score", "This split occurs shortly after the final pre-credits cutscene.");
+    settings.Add("w_ending_p359", true, " Final Time", "major");
+    settings.SetToolTip("w_ending_p359", "This split occurs shortly after the final pre-credits cutscene.");
   
   settings.Add("route", true, " Full Route", "splits");
     settings.Add("p7", true, " Dock ⮞ Heliport", "route");
     settings.Add("area02a_area04a_heliport", true, " Heliport ⮞ Tank Hangar", "route");
     settings.Add("tankhangar_area05a_heliport", true, " Tank Hangar ⮞ Holding Cells", "route");
+    settings.Add("w_area05a_heliport", true, " Holding Cells ⮞ Holding Cells (vent)");
     settings.Add("p28", true, " Reached DARPA Chief in Holding Cells", "route");
     settings.Add("p36", true, " Reached Guard Encounter", "route");
     settings.Add("tankhangar_area06a_p45", true, " Holding Cells ⮞ Armory", "route");
@@ -63,6 +64,9 @@ startup {
     settings.Add("area13a_area14a_p164", true, " Commander's Room ⮞ Caves", "route");
     settings.Add("area14a_area15a_p164", true, " Caves ⮞ Sniper Wolf 1", "route");
     settings.Add("p166", true, " Captured by Sniper Wolf in Underground Passage", "route");
+    settings.Add("p180", true, " Torture 1 ⮞ Medical Room");
+    settings.Add("p182", true, " Medical Room ⮞ Torture 2");
+    settings.Add("p185", true, " Torture 2 ⮞ Medical Room");
     settings.Add("p199", true, " Defeated Johnny while escaping the Medi Room", "route");
     settings.Add("area16a_area05a_capture", true, " Medi Room ⮞ Holding Cells", "route");
     settings.Add("tankhangar_area07a_capture", true, " Holding Cells ⮞ Tank Hangar", "route");
@@ -85,6 +89,7 @@ startup {
     settings.Add("p237", true, " Reached elevator ambush in Comm Tower B", "route");
     settings.Add("p238", true, " Defeated elevator ambush in Comm Tower B", "route");
     settings.Add("p241", true, " Comm Tower B ⮞ Snowfield", "route");
+    settings.Add("area20a_demo20a_p244", true, " Reached Sniper Wolf 2 after defeating her", "route");
     settings.Add("area20a_area21a_p245", true, " Snowfield ⮞ Blast Furnace", "route");
     settings.Add("area21a_area22a_p245", true, " Blast Furnace ⮞ Cargo Elevator Top", "route");
     settings.Add("p251", true, " Reached elevator ambush in Cargo Elevator", "route");
@@ -106,7 +111,8 @@ startup {
     settings.Add("p298", true, " Entered the Hot PAL Key", "route");
     settings.Add("p303", true, " Reached Metal Gear REX", "route");
     settings.Add("p307", true, " Defeated Metal Gear REX (Phase 1)", "route");
-    settings.Add("p344", true, " Reached Liquid during Escape", "route");
+    settings.Add("w_area27a_p338", true, " Escape Route 1", "route");
+    settings.Add("p344", true, " Escape Route 2", "route");
  
   
   vars.D = new ExpandoObject();
@@ -115,10 +121,12 @@ startup {
   D.BaseAddr = IntPtr.Zero;
   D.CompletedSplits = new Dictionary<string, bool>();
   D.DebugFileList = new List<string>();
-  D.FinalTimeIter = 0;
+  D.TestIter = 0;
   D.GameActive = false;
   D.GameId = null;
   D.SplitCheck = new Dictionary<string, Func<bool>>();
+  D.SplitWatch = new Dictionary<string, Func<int>>();
+  D.ActiveWatchCodes = null;
   D.i = 0;
   
   D.GameIds = new Dictionary<string, string>() {
@@ -141,7 +149,11 @@ startup {
       { "NikitaAmmo", 0x566874 },
       { "PSG1Ammo", 0x566870 },
       { "PSG1TAmmo", 0x56688e },
-      { "GameStartPtr", 0x11b1454 }
+      { "PALState", 0x5a1cb0 }, // TODO
+      { "GameStartPtr", 0x11b1454 },
+      { "CharacterState", 0x000000 }, // TODO
+      { "AreaTime", 0x000000 }, // TODO
+      { "EscapeTimer", 0x000000 }, // TODO
     } },
     { "GGSJA4", new Dictionary<string, int>() { // Japan
       { "GameTime", 0x5a1a5c },
@@ -156,7 +168,11 @@ startup {
       { "NikitaAmmo", 0x5a1bdc },
       { "PSG1Ammo", 0x5a1bd8 },
       { "PSG1TAmmo", 0x5a1bf6 },
-      { "GameStartPtr", 0x11b1454 }
+      { "PALState", 0x5a1cb0 }, // TODO
+      { "GameStartPtr", 0x11b1454 },
+      { "CharacterState", 0x000000 }, // TODO
+      { "AreaTime", 0x000000 }, // TODO
+      { "EscapeTimer", 0x000000 }, // TODO
     } },
     { "GGSEA4", new Dictionary<string, int>() { // USA
       { "GameTime", 0x5a1a58 },
@@ -171,7 +187,11 @@ startup {
       { "NikitaAmmo", 0x5a1bd8 },
       { "PSG1Ammo", 0x5a1bd4 },
       { "PSG1TAmmo", 0x5a1bf2 },
-      { "GameStartPtr", 0x11b1334 }
+      { "PALState", 0x5a1cb0 },
+      { "GameStartPtr", 0x11b1334 },
+      { "CharacterState", 0x5a1a13 },
+      { "AreaTime", 0x5a1a00 },
+      { "EscapeTimer", 0x581718 },
     } }
   };
   
@@ -227,7 +247,7 @@ startup {
   
   D.ResetVars = (Func<bool>)(() => {
     D.CompletedSplits.Clear();
-    D.FinalTimeIter = 0;
+    D.TestIter = 0;
     return true;
   });
 }
@@ -235,6 +255,7 @@ startup {
 init {
   var D = vars.D;
   D.SplitCheck.Clear();
+  D.SplitWatch.Clear();
   
   D.Debug = (Action<string>)((message) => {
     message = "[" + D.current.GameTime + "] " + message;
@@ -259,7 +280,41 @@ init {
     timerModel.Split();
   });
   
+  D.SetWatchCodes = (Action)(() => {
+    var locationCodes = new List<string>() { current.Location };
+    if (D.LocationSets.ContainsKey(current.Location)) locationCodes.Add( D.LocationSets[current.Location] );
+    
+    var progressCodes = new List<string>() { "p" + current.Progress };
+    if (D.ProgressSets.ContainsKey(current.Progress)) progressCodes.Add( D.ProgressSets[current.Progress] );
+    
+    var validCodes = new List<string>() {
+      "p" + current.Progress,
+      current.Location,
+    };
+    validCodes.AddRange(locationCodes);
+    validCodes.AddRange(progressCodes);
+        
+    foreach (var loc in locationCodes) {
+      foreach (var prog in progressCodes)
+        validCodes.Add(loc + "_" + prog);
+    }
+    
+    var activeCodes = new List<string>();
+    foreach (var c in validCodes) {
+      string code = "w_" + c;
+      if (D.SplitWatch.ContainsKey(code))
+        activeCodes.Add(code);
+    }
+    
+    if (activeCodes.Count == 0) D.ActiveWatchCodes = null;
+    else {
+      D.Debug("Active watcher (" + string.Join(" ", activeCodes) + ")");
+      D.ActiveWatchCodes = activeCodes;
+    }
+  });
+  
   D.Read = new ExpandoObject();
+  D.Read.Byte = (Func<int, byte>)((addr) => memory.ReadValue<byte>((IntPtr)D.AddrFor(addr)));
   D.Read.Uint = (Func<int, uint>)((addr) => {
     uint val = memory.ReadValue<uint>((IntPtr)D.AddrFor(addr));
     return (val & 0x000000FF) << 24 |
@@ -274,6 +329,11 @@ init {
   });
   D.Read.String = (Func<int, int, string>)((addr, len) => memory.ReadString((IntPtr)D.AddrFor(addr), len));
   
+  D.SplitWatch.Add("w_area05a_heliport", (Func<int>)(() => {
+    byte state = D.Read.Byte( D.VarAddr("CharacterState") );
+    return (state == 0x1e) ? 1 : 0;
+  }));
+  
   var HasNikita = (Func<bool>)(() => {
     short nikita = D.Read.Short( D.VarAddr("NikitaAmmo") );
     D.Debug("Nikita ammo count: " + nikita);
@@ -283,10 +343,7 @@ init {
   
   D.SplitCheck.Add("area16a_area05a_capture", (Func<bool>)(() => {
     if ( (settings["p199"]) && (current.Progress < 199) ) {
-      if (D.Split("p199")) {
-        D.ManualSplit();
-        return false;
-      }
+      if (D.Split("p199")) D.ManualSplit();
     }
     return (HasNikita());
   }) );
@@ -300,6 +357,29 @@ init {
   D.SplitCheck.Add("area10a_area13a_p164", HasPSG1);
   D.SplitCheck.Add("area13a_area14a_p164", HasPSG1);
   D.SplitCheck.Add("area14a_area15a_p164", HasPSG1);
+  
+  D.SplitCheck.Add("area24a_area24b_p291", (Func<bool>)(() => {
+    var states = new Dictionary<short, string>() {
+      { -1, "None" }, { 0, "None" }, { 1, "Normal" }, { 2, "Cold" }, { 3, "Hot" }
+    };
+    var state = D.Read.Short( D.VarAddr("PALState") );
+    D.Debug("PAL Key state: " + states[state]);
+    return (state == 2);
+  }));
+  
+  D.SplitWatch.Add("w_area27a_p338", (Func<int>)(() => {
+    D.current.EscapeTimer = D.Read.Uint( D.VarAddr("EscapeTimer") );
+    if ( D.Read.Uint( D.VarAddr("AreaTime") ) > 30 ) return 0;
+    return ( (D.old.EscapeTimer != null) && (D.current.EscapeTimer < D.old.EscapeTimer) ) ? 1 : 0;
+  }));
+  
+  D.SplitWatch.Add("w_ending_p359", (Func<int>)(() => {
+    if (current.GameTime == old.GameTime) {
+      if (D.TestIter++ == 6) return 1;
+    }
+    else D.TestIter = 0;
+    return 0;
+  }));
 }
 
 update {
@@ -363,14 +443,9 @@ split {
   var D = vars.D;
   if (!D.GameActive) return false;
   
-  if ((settings["c_score"]) && (current.Progress == 359) && (current.Location == "ending")) {
-    if (current.GameTime == old.GameTime) {
-      if (D.FinalTimeIter++ == 6) return true;
-    }
-    else D.FinalTimeIter = 0;
-  }
-  
   if (current.Progress != old.Progress) {
+    
+    D.SetWatchCodes();
     
     string progressCode = "p" + current.Progress;
     char setting = !settings.ContainsKey(progressCode) ? '?' : (settings[progressCode] ? 'T' : 'F');
@@ -381,6 +456,8 @@ split {
   }
   
   if (current.Location != old.Location) {
+    
+    D.SetWatchCodes();
     
     var departureAreas = new List<string>() { old.Location };
     if (D.LocationSets.ContainsKey(old.Location)) departureAreas.Add( D.LocationSets[old.Location] );
@@ -410,6 +487,18 @@ split {
       }
     }
     D.Debug("No match, not splitting");
+    
+  }
+  
+  if (D.ActiveWatchCodes != null) {
+    
+    foreach (var code in D.ActiveWatchCodes) {
+      int result = D.SplitWatch[code]();
+      if (result == 0) continue;
+      D.ActiveWatchCodes.Remove(code);
+      if (result == 1) return D.Split(code);
+      if (result == -1) return false;
+    }
     
   }
   
