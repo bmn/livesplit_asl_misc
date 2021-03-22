@@ -509,12 +509,14 @@ start {
   var D = vars.D;
   if (!D.GameActive) return false;
   
-  if ( (settings["o_startonselect"]) && (current.Progress == -1) && (current.Location == "n_title") ) {
+  if ( (settings["o_startonselect"]) && (current.Progress == -1) ) {
     var ptr = D.Read.Uint( D.VarAddr("GameStartPtr") );
     if (ptr != 0) {
       ptr &= 0x0fffffff;
-      if ( (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0xe3)) == 1)
-        && (memory.ReadValue<byte>((IntPtr)D.AddrFor((int)ptr + 0x4f)) == 7) )
+      if (
+        ( (D.Read.Byte((int)ptr + 0xe3) == 1) && (D.Read.Byte((int)ptr + 0x4f) == 7) ) // NG
+        || ( (D.Read.Byte((int)ptr + 0xe1) == 1) && (D.Read.Byte((int)ptr + 0x4d) == 7) ) // Load
+      )
         return D.ResetVars();
     }
   }
