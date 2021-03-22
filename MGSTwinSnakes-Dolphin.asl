@@ -67,7 +67,7 @@ startup {
     settings.Add("p180", true, " Torture 1 ⮞ Medical Room");
     settings.Add("p182", true, " Medical Room ⮞ Torture 2");
     settings.Add("p185", true, " Torture 2 ⮞ Medical Room");
-    settings.Add("p199", true, " Defeated Johnny while escaping the Medi Room", "route");
+    settings.Add("p199", true, " Defeated Johnny while escaping the Medical Room", "route");
     settings.Add("area16a_area05a_capture", true, " Medi Room ⮞ Holding Cells", "route");
     settings.Add("tankhangar_area07a_capture", true, " Holding Cells ⮞ Tank Hangar", "route");
     settings.Add("area07a_area08b_capture", true, " Tank Hangar ⮞ Canyon", "route");
