@@ -44,6 +44,15 @@
       <SegmentHistory />
     </Segment>
     <Segment>
+      <Name>-Holding Cells (ladder)</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
       <Name>-Holding Cells (vent)</Name>
       <Icon />
       <SplitTimes>
@@ -359,6 +368,33 @@
       <SegmentHistory />
     </Segment>
     <Segment>
+      <Name>-Torture 1</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>-Medical Room</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>-Torture 2</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
       <Name>-Johnny</Name>
       <Icon />
       <SplitTimes>
@@ -368,7 +404,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Medi Room</Name>
+      <Name>-Medical Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -567,6 +603,15 @@
     </Segment>
     <Segment>
       <Name>Sniper Wolf 2</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>-Snowfield (Sniper Wolf)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -791,7 +836,16 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>{Escape Route}Escape Route 2</Name>
+      <Name>-Escape Route 2</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>{Escape Route}Escape Route (vs Liquid)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
