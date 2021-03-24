@@ -369,33 +369,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Torture 1</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Medical Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Torture 2</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Medical Room</Name>
       <Icon />
       <SplitTimes>

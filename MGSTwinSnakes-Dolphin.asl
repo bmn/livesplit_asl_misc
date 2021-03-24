@@ -73,9 +73,6 @@ startup {
     settings.Add("area13a_area14a_p164", true, " Commander Room ⮞ Caves");
     settings.Add("area14a_area15a_p164", true, " Caves ⮞ Sniper Wolf 1");
     settings.Add("p166", true, " Captured by Sniper Wolf in Underground Passage");
-    settings.Add("p178", false, " Torture 1 ⮞ Medical Room");
-    settings.Add("p182", false, " Medical Room ⮞ Torture 2");
-    settings.Add("p185", false, " Torture 2 ⮞ Medical Room");
     settings.Add("mediroom_nogear", false, " Medical Room ⮞ Holding Cells (first time)");
       settings.SetToolTip("mediroom_nogear", "If enabled, this will intentionally split twice if you collect your gear before leaving the first time");
     settings.Add("area16a_area05a_capture", true, " Medical Room ⮞ Holding Cells (gear collected)");
