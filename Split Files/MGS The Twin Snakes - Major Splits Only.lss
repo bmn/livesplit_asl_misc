@@ -2,7 +2,8 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>Metal Gear Solid: The Twin Snakes</GameName>
-  <CategoryName>Very Easy</CategoryName>
+  <CategoryName>
+  </CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="True">GameCube</Platform>
