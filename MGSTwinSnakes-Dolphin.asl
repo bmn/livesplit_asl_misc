@@ -1,3 +1,10 @@
+/****************************************************************/
+/* Autosplitter for Metal Gear Solid: The Twin Snakes (Dolphin) */
+/*                                                              */
+/* Created by bmn for Metal Gear Solid Speedrunners             */
+/* Extra support by dlimes13, JosephJoestar316 & jazz_bears     */
+/****************************************************************/
+
 state("Dolphin") {}
 
 startup {
