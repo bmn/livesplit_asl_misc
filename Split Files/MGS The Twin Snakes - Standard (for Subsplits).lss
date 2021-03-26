@@ -18,7 +18,7 @@
   <AttemptHistory />
   <Segments>
     <Segment>
-      <Name>Dock</Name>
+      <Name>-Dock</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -27,7 +27,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Heliport</Name>
+      <Name>-Heliport</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -36,7 +36,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Tank Hangar</Name>
+      <Name>-Tank Hangar</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -45,25 +45,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Holding Cells (ladder)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Holding Cells (vent)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Holding Cells</Name>
+      <Name>-Holding Cells (vent)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -81,7 +63,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Holding Cells</Name>
+      <Name>-Holding Cells</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -90,7 +72,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Armory</Name>
+      <Name>-Armory</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -99,7 +81,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Armory South</Name>
+      <Name>-Armory South</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -117,7 +99,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Armory South</Name>
+      <Name>-Armory South</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -126,7 +108,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Armory</Name>
+      <Name>-Armory</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -135,7 +117,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Tank Hangar</Name>
+      <Name>-Tank Hangar</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -144,7 +126,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Canyon</Name>
+      <Name>-Canyon</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -162,7 +144,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building 1F</Name>
+      <Name>-Nuke Building 1F</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -171,7 +153,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B1</Name>
+      <Name>-Nuke Building B1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -180,7 +162,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B2</Name>
+      <Name>-Nuke Building B2</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -189,7 +171,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B2 (hallway)</Name>
+      <Name>-Nuke Building B2 (hallway)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -207,7 +189,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Lab</Name>
+      <Name>-Lab</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -216,7 +198,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B2 (hallway)</Name>
+      <Name>-Nuke Building B2 (hallway)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -225,7 +207,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B2</Name>
+      <Name>-Nuke Building B2</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -234,7 +216,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B1 (Meryl)</Name>
+      <Name>-Nuke Building B1 (Meryl)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -243,16 +225,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B1</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Commander Room</Name>
+      <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -270,7 +243,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Commander Room</Name>
+      <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -279,7 +252,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Caves</Name>
+      <Name>-Caves</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -288,7 +261,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Passage (ambush)</Name>
+      <Name>-Underground Passage</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -297,7 +270,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Passage</Name>
+      <Name>-Caves</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -306,7 +279,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Caves</Name>
+      <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -315,7 +288,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Commander Room</Name>
+      <Name>-Nuke Building B1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -324,7 +297,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B1</Name>
+      <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -333,16 +306,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Commander Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Caves</Name>
+      <Name>-Caves</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -360,7 +324,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Passage</Name>
+      <Name>-Underground Passage</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -369,7 +333,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Medical Room</Name>
+      <Name>-Medical Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -378,7 +342,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Medical Room (with gear)</Name>
+      <Name>-Holding Cells</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -387,7 +351,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Holding Cells</Name>
+      <Name>-Tank Hangar</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -396,7 +360,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Tank Hangar</Name>
+      <Name>-Canyon</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -405,7 +369,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Canyon</Name>
+      <Name>-Nuke Building 1F</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -414,7 +378,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building 1F</Name>
+      <Name>-Nuke Building B1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -423,7 +387,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Nuke Building B1</Name>
+      <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -432,7 +396,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Commander Room</Name>
+      <Name>-Caves</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -441,7 +405,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Caves</Name>
+      <Name>-Underground Passage</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -450,7 +414,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Passage</Name>
+      <Name>-Comm Tower A</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -459,7 +423,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower A</Name>
+      <Name>-Comm Tower A Roof</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -468,7 +432,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower A Roof</Name>
+      <Name>-Comm Tower A Wall</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -477,7 +441,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower A Wall</Name>
+      <Name>-Comm Tower Corridor</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -486,34 +450,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower Corridor</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Comm Tower B (Otacon)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Comm Tower B</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Comm Tower B Roof</Name>
+      <Name>-Comm Tower B</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -531,7 +468,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower B Roof</Name>
+      <Name>-Comm Tower B Roof</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -540,7 +477,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower B (elevator)</Name>
+      <Name>-Comm Tower B (elevator)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -549,7 +486,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower B Ambush</Name>
+      <Name>-Comm Tower B Ambush</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -558,7 +495,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Comm Tower B</Name>
+      <Name>-Comm Tower B</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -576,7 +513,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Snowfield (Sniper Wolf)</Name>
+      <Name>-Snowfield</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -585,7 +522,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Snowfield</Name>
+      <Name>-Blast Furnace</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -594,7 +531,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Blast Furnace</Name>
+      <Name>-Cargo Elevator Ambush</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -603,34 +540,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Cargo Elevator (top)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Cargo Elevator Ambush</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Cargo Elevator (transfer)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Cargo Elevator (bottom)</Name>
+      <Name>-Cargo Elevator</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -648,7 +558,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Warehouse</Name>
+      <Name>-Warehouse</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -657,7 +567,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Warehouse North</Name>
+      <Name>-Warehouse North</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -666,7 +576,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Base</Name>
+      <Name>-Underground Base</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -675,7 +585,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>PAL Key retrieval</Name>
+      <Name>-Normal PAL Key</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -684,7 +594,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Base</Name>
+      <Name>-Cold PAL Key</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -693,7 +603,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Normal PAL Key</Name>
+      <Name>-Hot PAL Key</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -702,7 +612,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Command Room</Name>
+      <Name>-Command Room</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -711,7 +621,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Underground Base</Name>
+      <Name>-Metal Gear REX 1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -720,61 +630,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Cold PAL Key</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Command Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Underground Base</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Hot PAL Key</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Command Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Metal Gear REX 1</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Metal Gear REX 2</Name>
+      <Name>{Metal Gear REX}Metal Gear REX 2</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -792,7 +648,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Escape Route 1</Name>
+      <Name>-Escape Route 1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -801,7 +657,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Escape Route 2</Name>
+      <Name>-Escape Route 2</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -810,7 +666,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Escape Route (vs Liquid)</Name>
+      <Name>{Escape Route}Escape Route (vs Liquid)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
