@@ -45,25 +45,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Holding Cells (ladder)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Holding Cells (vent)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Holding Cells</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -243,15 +225,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Nuke Building B1</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Commander Room</Name>
       <Icon />
       <SplitTimes>
@@ -280,15 +253,6 @@
     </Segment>
     <Segment>
       <Name>-Caves</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Underground Passage (ambush)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -370,15 +334,6 @@
     </Segment>
     <Segment>
       <Name>-Medical Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Medical Room (with gear)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -495,25 +450,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Comm Tower B (Otacon)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Comm Tower B</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Comm Tower B Roof</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -576,15 +513,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Snowfield (Sniper Wolf)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Snowfield</Name>
       <Icon />
       <SplitTimes>
@@ -603,15 +531,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Cargo Elevator (top)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Cargo Elevator Ambush</Name>
       <Icon />
       <SplitTimes>
@@ -621,16 +540,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Cargo Elevator (transfer)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Cargo Elevator (bottom)</Name>
+      <Name>-Cargo Elevator</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -675,24 +585,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-PAL Key retrieval</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Underground Base</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Normal PAL Key</Name>
       <Icon />
       <SplitTimes>
@@ -702,43 +594,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Command Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Underground Base</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Cold PAL Key</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Command Room</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Underground Base</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
