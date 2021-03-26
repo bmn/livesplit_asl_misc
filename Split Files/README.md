@@ -1,110 +1,114 @@
 # About these split files
 
-## Major Splits only
+## Major Splits
+* *For new runners, or if you prefer a compact split list*
 * Contains only the most important splits (primarily bosses)
 * You must uncheck the *Full Route* split category in the autosplitter settings
 
-## Full Route
-* Contains a long, but sensible, selection of frequent splits
+## Standard
+* *For experienced runners*
+* Contains a large, but sensible, selection of frequent splits
 * Matches the default autosplitter settings - you shouldn't need to change anything
 
-## All Splits
+## Full Route
+* *For power users and information addicts*
 * Contains every split provided by the autosplitter
-* Some splits occur very close to each other, so this may not be recommended without modification.
-* However, this file is ideal if you want to customise your splits selection.
-* Ensure you also change the autosplitter settings to match.
+* You should enable every split in the *Full Route* category (e.g. by right-clicking and choosing `Check Branch`)
+* Ideal starting point if you want to customise your splits selection (make sure you also change the autosplitter settings to match!)
+* However, some splits occur very close to each other, so this may not be recommended without modification.
+
 
 # Full list of splits
 
-| Major | Full | Split Name                   |
-|:-----:|:----:|------------------------------|
-|       | Full | Dock                         |
-|       | Full | Heliport                     |
-|       | Full | Tank Hangar                  |
-|       |      | Holding Cells (ladder)       |
-|       |      | Holding Cells (vent)         |
-|       | Full | Holding Cells                |
-| Major | Full | Guard Encounter              |
-|       | Full | Holding Cells                |
-|       | Full | Armory                       |
-|       | Full | Armory South                 |
-| Major | Full | Revolver Ocelot              |
-|       | Full | Armory South                 |
-|       | Full | Armory                       |
-|       | Full | Tank Hangar                  |
-|       | Full | Canyon                       |
-| Major | Full | M1 Tank                      |
-|       | Full | Nuke Building 1F             |
-|       | Full | Nuke Building B1             |
-|       | Full | Nuke Building B2             |
-|       | Full | Nuke Building B2 (hallway)   |
-| Major | Full | Ninja                        |
-|       | Full | Lab                          |
-|       | Full | Nuke Building B2 (hallway)   |
-|       | Full | Nuke Building B2             |
-|       |      | Nuke Building B1 (Meryl)     |
-|       | Full | Nuke Building B1             |
-|       | Full | Commander Room               |
-| Major | Full | Psycho Mantis                |
-|       | Full | Commander Room               |
-|       | Full | Caves                        |
-|       |      | Underground Passage (ambush) |
-|       | Full | Underground Passage          |
-|       | Full | Caves                        |
-|       | Full | Commander Room               |
-|       | Full | Nuke Building B1             |
-|       | Full | Commander Room               |
-|       | Full | Caves                        |
-| Major | Full | Sniper Wolf 1                |
-|       | Full | Underground Passage          |
-|       |      | Medical Room (without gear)<br>*Also covers the cutscene skip escape method (by double-splitting)* |
-|       | Full | Medical Room                 |
-|       | Full | Holding Cells                |
-|       | Full | Tank Hangar                  |
-|       | Full | Canyon                       |
-|       | Full | Nuke Building 1F             |
-|       | Full | Nuke Building B1             |
-|       | Full | Commander's Room             |
-|       | Full | Caves                        |
-|       | Full | Underground Passage          |
-|       | Full | Comm Tower A                 |
-|       | Full | Comm Tower A Roof            |
-|       | Full | Comm Tower A Wall            |
-|       | Full | Comm Tower Corridor          |
-|       |      | Comm Tower B (Otacon)        |
-|       | Full | Comm Tower B                 |
-|       | Full | Comm Tower B Roof            |
-| Major | Full | Hind D                       |
-|       | Full | Comm Tower B Roof            |
-|       | Full | Comm Tower B (elevator)      |
-|       | Full | Comm Tower B Ambush          |
-|       | Full | Comm Tower B                 |
-| Major | Full | Sniper Wolf 2                |
-|       |      | Snowfield (Sniper Wolf)      |
-|       | Full | Snowfield                    |
-|       | Full | Blast Furnace                |
-|       |      | Cargo Elevator (top)         |
-|       | Full | Cargo Elevator Ambush        |
-|       | Full | Cargo Elevator (transfer)    |
-|       | Full | Cargo Elevator (bottom)      |
-| Major | Full | Vulcan Raven                 |
-|       | Full | Warehouse                    |
-|       | Full | Warehouse North              |
-|       | Full | Underground Base             |
-|       |      | PAL Key retrieval            |
-|       |      | Underground Base             |
-|       | Full | Normal PAL Key               |
-|       |      | Command Room                 |
-|       |      | Underground Base             |
-|       | Full | Cold PAL Key                 |
-|       |      | Command Room                 |
-|       |      | Underground Base             |
-|       | Full | Hot PAL Key                  |
-|       | Full | Command Room                 |
-|       | Full | Metal Gear REX 1             |
-| Major | Full | Metal Gear REX 2             |
-| Major | Full | Liquid Snake                 |
-|       | Full | Escape Route 1               |
-|       | Full | Escape Route 2               |
-| Major | Full | Escape Route (vs Liquid)     |
-| Major | Full | Final Time                   |
+| Major | Standard | Split Name                   |
+|:-----:|:--------:|------------------------------|
+|       | Standard | Dock                         |
+|       | Standard | Heliport                     |
+|       | Standard | Tank Hangar                  |
+|       |          | Holding Cells (ladder)       |
+|       | Standard | Holding Cells (vent)         |
+|       |          | Holding Cells                |
+| Major | Standard | Guard Encounter              |
+|       | Standard | Holding Cells                |
+|       | Standard | Armory                       |
+|       | Standard | Armory South                 |
+| Major | Standard | Revolver Ocelot              |
+|       | Standard | Armory South                 |
+|       | Standard | Armory                       |
+|       | Standard | Tank Hangar                  |
+|       | Standard | Canyon                       |
+| Major | Standard | M1 Tank                      |
+|       | Standard | Nuke Building 1F             |
+|       | Standard | Nuke Building B1             |
+|       | Standard | Nuke Building B2             |
+|       | Standard | Nuke Building B2 (hallway)   |
+| Major | Standard | Ninja                        |
+|       | Standard | Lab                          |
+|       | Standard | Nuke Building B2 (hallway)   |
+|       | Standard | Nuke Building B2             |
+|       | Standard | Nuke Building B1 (Meryl)     |
+|       |          | Nuke Building B1             |
+|       | Standard | Commander Room               |
+| Major | Standard | Psycho Mantis                |
+|       | Standard | Commander Room               |
+|       | Standard | Caves                        |
+|       |          | Underground Passage (ambush) |
+|       | Standard | Underground Passage          |
+|       | Standard | Caves                        |
+|       | Standard | Commander Room               |
+|       | Standard | Nuke Building B1             |
+|       | Standard | Commander Room               |
+|       | Standard | Caves                        |
+| Major | Standard | Sniper Wolf 1                |
+|       | Standard | Underground Passage          |
+|       |          | Medical Room (without gear)<br>*Also covers the cutscene skip escape method (by double-splitting)* |
+|       | Standard | Medical Room                 |
+|       | Standard | Holding Cells                |
+|       | Standard | Tank Hangar                  |
+|       | Standard | Canyon                       |
+|       | Standard | Nuke Building 1F             |
+|       | Standard | Nuke Building B1             |
+|       | Standard | Commander's Room             |
+|       | Standard | Caves                        |
+|       | Standard | Underground Passage          |
+|       | Standard | Comm Tower A                 |
+|       | Standard | Comm Tower A Roof            |
+|       | Standard | Comm Tower A Wall            |
+|       | Standard | Comm Tower Corridor          |
+|       |          | Comm Tower B (Otacon)        |
+|       | Standard | Comm Tower B                 |
+|       |          | Comm Tower B Roof            |
+| Major | Standard | Hind D                       |
+|       | Standard | Comm Tower B Roof            |
+|       | Standard | Comm Tower B (elevator)      |
+|       | Standard | Comm Tower B Ambush          |
+|       | Standard | Comm Tower B                 |
+| Major | Standard | Sniper Wolf 2                |
+|       |          | Snowfield (Sniper Wolf)      |
+|       | Standard | Snowfield                    |
+|       | Standard | Blast Furnace                |
+|       |          | Cargo Elevator (top)         |
+|       | Standard | Cargo Elevator Ambush        |
+|       |          | Cargo Elevator (transfer)    |
+|       | Standard | Cargo Elevator (bottom)      |
+| Major | Standard | Vulcan Raven                 |
+|       | Standard | Warehouse                    |
+|       | Standard | Warehouse North              |
+|       | Standard | Underground Base             |
+|       |          | PAL Key retrieval            |
+|       |          | Underground Base             |
+|       | Standard | Normal PAL Key               |
+|       |          | Command Room                 |
+|       |          | Underground Base             |
+|       | Standard | Cold PAL Key                 |
+|       |          | Command Room                 |
+|       |          | Underground Base             |
+|       | Standard | Hot PAL Key                  |
+|       | Standard | Command Room                 |
+|       | Standard | Metal Gear REX 1             |
+| Major | Standard | Metal Gear REX 2             |
+| Major | Standard | Liquid Snake                 |
+|       | Standard | Escape Route 1               |
+|       | Standard | Escape Route 2               |
+| Major | Standard | Escape Route (vs Liquid)     |
+| Major | Standard | Final Time                   |
