@@ -282,6 +282,8 @@ init {
     timerModel.Split();
   });
   
+  D.SettingEnabled = (Func<string, bool>)((key) => ( (settings.ContainsKey(key)) && (settings[key]) ));
+  
   D.SetWatchCodes = (Action)(() => {
     var locationCodes = new List<string>() { current.Location };
     if (D.LocationSets.ContainsKey(current.Location)) locationCodes.Add( D.LocationSets[current.Location] );
@@ -304,7 +306,7 @@ init {
     var activeCodes = new List<string>();
     foreach (var c in validCodes) {
       string code = "w_" + c;
-      if (D.SplitWatch.ContainsKey(code))
+      if ( (D.SettingEnabled(code)) && (D.SplitWatch.ContainsKey(code)) )
         activeCodes.Add(code);
     }
     
@@ -451,7 +453,7 @@ split {
     string progressCode = "p" + current.Progress;
     char setting = !settings.ContainsKey(progressCode) ? '?' : (settings[progressCode] ? 'T' : 'F');
     D.Debug("Progress " + progressCode + " [" + setting + "]");
-    if (settings.ContainsKey(progressCode) && (settings[progressCode]))
+    if (D.SettingEnabled(progressCode))
       return D.Split(progressCode);
     
   }
@@ -481,7 +483,7 @@ split {
     D.Debug("Location (" + string.Join(" ", validCodes) + ")");
     
     foreach (var code in validCodes) {
-      if (settings.ContainsKey(code) && (settings[code])) {
+      if (D.SettingEnabled(code)) {
         if ( (!D.SplitCheck.ContainsKey(code)) || (D.SplitCheck[code]()) ) {
           if (D.Split(code)) return true;
         }
