@@ -149,11 +149,10 @@ startup {
       { "NikitaAmmo", 0x566874 },
       { "PSG1Ammo", 0x566870 },
       { "PSG1TAmmo", 0x56688e },
-      { "PALState", 0x5a1cb0 }, // TODO
+      { "PALState", 0x56694c },
       { "GameStartPtr", 0x11b1454 },
-      { "CharacterState", 0x000000 }, // TODO
-      { "AreaTime", 0x000000 }, // TODO
-      { "EscapeTimer", 0x000000 }, // TODO
+      { "CharacterState", 0x5666af },
+      { "CharacterDirection", 0x5666ac }
     } },
     { "GGSJA4", new Dictionary<string, int>() { // Japan
       { "GameTime", 0x5a1a5c },
@@ -168,11 +167,10 @@ startup {
       { "NikitaAmmo", 0x5a1bdc },
       { "PSG1Ammo", 0x5a1bd8 },
       { "PSG1TAmmo", 0x5a1bf6 },
-      { "PALState", 0x5a1cb0 }, // TODO
+      { "PALState", 0x5a1cb4 },
       { "GameStartPtr", 0x11b1454 },
-      { "CharacterState", 0x000000 }, // TODO
-      { "AreaTime", 0x000000 }, // TODO
-      { "EscapeTimer", 0x000000 }, // TODO
+      { "CharacterState", 0x5a1a17 },
+      { "CharacterDirection", 0x5a1a14 }
     } },
     { "GGSEA4", new Dictionary<string, int>() { // USA
       { "GameTime", 0x5a1a58 },
@@ -190,8 +188,7 @@ startup {
       { "PALState", 0x5a1cb0 },
       { "GameStartPtr", 0x11b1334 },
       { "CharacterState", 0x5a1a13 },
-      { "AreaTime", 0x5a1a00 },
-      { "EscapeTimer", 0x581718 },
+      { "CharacterDirection", 0x5a1a10 }
     } }
   };
   
@@ -371,9 +368,9 @@ init {
   }));
   
   D.SplitWatch.Add("w_area27a_p338", (Func<int>)(() => {
-    D.current.EscapeTimer = D.Read.Uint( D.VarAddr("EscapeTimer") );
-    if ( D.Read.Uint( D.VarAddr("AreaTime") ) > 30 ) return 0;
-    return ( (D.old.EscapeTimer != null) && (D.current.EscapeTimer < D.old.EscapeTimer) ) ? 1 : 0;
+    if ( D.Read.Uint( D.VarAddr("AreaTime") ) > 10) return 0;
+    short facingDirection = D.Read.Short( D.VarAddr("CharacterDirection") );
+    return ( (facingDirection != 0) && (facingDirection != 3072) ) ? 1 : 0;
   }));
   
   D.SplitWatch.Add("w_ending_p359", (Func<int>)(() => {
