@@ -17,6 +17,12 @@
 * Ideal starting point if you want to customise your splits selection (make sure you also change the autosplitter settings to match!)
 * However, some splits occur very close to each other, so this may not be recommended without modification.
 
+# About Subsplits
+* The *Subsplits* component (`List > Subsplits` in the Layout Editor) is an alternative to the *Splits* component
+* When provided a suitably formatted list of splits, it organises them into separate categories (for each section of the run) containing subsplits
+* The display behaviour can be customised, but by default all your *Major Splits* will be displayed, along with the subsplits in the current category
+* The *for Subsplits* files here are designed for this component. If not using it, or if you prefer a simple list of splits, you should not use one of these split files.
+
 
 # Full list of splits
 
