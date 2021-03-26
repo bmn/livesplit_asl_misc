@@ -135,12 +135,6 @@ startup {
   D.ActiveWatchCodes = null;
   D.i = 0;
   
-  D.GameIds = new Dictionary<string, string>() {
-    { "GGSPA4", "Europe" }, // Europe
-    { "GGSJA4", "Japan" }, // Japan
-    { "GGSEA4", "America" }  // USA
-  };
-  
   D.Addr = new Dictionary<string, Dictionary<string, int>>() {
     { "GGSPA4", new Dictionary<string, int>() { // Europe
       { "GameTime", 0x5666f4 },
@@ -225,7 +219,9 @@ startup {
     
     if (D.BaseAddr != IntPtr.Zero) {
       gameId = m.ReadString((IntPtr)D.BaseAddr, 6);
-      if ( (gameId != null) && (D.GameIds.ContainsKey(gameId)) ) return true;
+      if ( (gameId != null) && (D.Addr.ContainsKey(gameId)) ) return true;
+      D.Debug("Game memory disappeared, restarting search");
+      D.BaseAddr = IntPtr.Zero;
     }
     
     foreach (var page in g.MemoryPages(true))
@@ -233,12 +229,12 @@ startup {
       if ((page.RegionSize != (UIntPtr)0x2000000) || (page.Type != MemPageType.MEM_MAPPED)) continue;
       
       gameId = m.ReadString((IntPtr)page.BaseAddress, 6);
-      if ( (gameId == null) || (!D.GameIds.ContainsKey(gameId)) ) continue;
+      if ( (gameId == null) || (!D.Addr.ContainsKey(gameId)) ) continue;
       
       D.BaseAddr = page.BaseAddress;
       D.GameActive = true;
       D.GameId = gameId;
-      D.Debug("Found MGS Twin Snakes (" + D.GameIds[gameId] + ") memory at " + D.BaseAddr.ToString("X"));
+      D.Debug("Found MGS Twin Snakes (" + gameId + ") memory at " + D.BaseAddr.ToString("X"));
       return true;
     }
     
