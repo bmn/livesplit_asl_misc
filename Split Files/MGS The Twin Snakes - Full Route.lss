@@ -45,7 +45,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Holding Cells</Name>
+      <Name>-Holding Cells (vent)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -216,7 +216,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Nuke Building B1</Name>
+      <Name>-Nuke Building B1 (Meryl)</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -459,15 +459,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Comm Tower B Roof</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>Hind D</Name>
       <Icon />
       <SplitTimes>
@@ -549,16 +540,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Cargo Elevator (transfer)</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>-Cargo Elevator (bottom)</Name>
+      <Name>-Cargo Elevator</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
