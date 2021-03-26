@@ -388,7 +388,6 @@ init {
 update {
   var D = vars.D;
   D.current = current;
-  D.old = old; 
   D.i++;
   
   if ((D.i % 64) == 0) {
