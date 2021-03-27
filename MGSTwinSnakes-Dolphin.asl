@@ -260,7 +260,7 @@ init {
   D.SplitWatch.Clear();
   
   D.Debug = (Action<string>)((message) => {
-    message = "[" + D.current.GameTime + "] " + message;
+    message = "[" + current.GameTime + " < " + D.old.GameTime + "] " + message;
     if (settings["debug_file"]) D.DebugFileList.Add(message);
     if (settings["debug_stdout"]) print("[TTS-AS] " + message);
   });
@@ -377,7 +377,7 @@ init {
   }));
   
   D.SplitWatch.Add("w_ending_p359", (Func<int>)(() => {
-    if (current.GameTime == old.GameTime) {
+    if (current.GameTime == D.old.GameTime) {
       if (D.TestIter++ == 12) return 1;
     }
     else D.TestIter = 0;
@@ -387,7 +387,7 @@ init {
 
 update {
   var D = vars.D;
-  D.current = current;
+  D.old = old;
   D.i++;
   
   if ((D.i % 64) == 0) {
