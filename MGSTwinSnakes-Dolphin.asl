@@ -18,6 +18,8 @@ startup {
     settings.Add("o_startonselect", true, " Start as soon as Game Start is selected", "behaviour");
       settings.SetToolTip("o_startonselect", "Experimental, for Real Time timing purposes. If you have problems with this, disable it.");
     settings.Add("o_norepeat", true, " Suppress repeats of the same split", "behaviour");
+    settings.Add("o_halfframerate", false, "Run splitter logic at 30 fps", "behaviour");
+    settings.SetToolTip("o_halfframerate", "Can improve performance on weaker systems, at the cost of some precision.");
   
   settings.Add("splits", true, " Split Points");
   
@@ -389,6 +391,8 @@ update {
   var D = vars.D;
   D.old = old;
   D.i++;
+  
+  refreshRate = settings["o_halfframerate"] ? 30 : 60; 
   
   if ((D.i % 64) == 0) {
     if ( (settings["debug_file"]) && (D.DebugFileList.Count > 0) ) {
