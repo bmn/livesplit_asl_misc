@@ -378,7 +378,7 @@ init {
   
   D.SplitWatch.Add("w_ending_p359", (Func<int>)(() => {
     if (current.GameTime == old.GameTime) {
-      if (D.TestIter++ == 6) return 1;
+      if (D.TestIter++ == 12) return 1;
     }
     else D.TestIter = 0;
     return 0;
