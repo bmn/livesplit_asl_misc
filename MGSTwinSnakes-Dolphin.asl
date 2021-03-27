@@ -150,6 +150,7 @@ startup {
       { "PSG1Ammo", 0x566870 },
       { "PSG1TAmmo", 0x56688e },
       { "PALState", 0x56694c },
+      { "AreaTime", 0x56669c },
       { "GameStartPtr", 0x11b1454 },
       { "CharacterState", 0x5666af },
       { "CharacterDirection", 0x5666ac }
@@ -168,6 +169,7 @@ startup {
       { "PSG1Ammo", 0x5a1bd8 },
       { "PSG1TAmmo", 0x5a1bf6 },
       { "PALState", 0x5a1cb4 },
+      { "AreaTime", 0x5a1a04 },
       { "GameStartPtr", 0x11b1454 },
       { "CharacterState", 0x5a1a17 },
       { "CharacterDirection", 0x5a1a14 }
@@ -186,6 +188,7 @@ startup {
       { "PSG1Ammo", 0x5a1bd4 },
       { "PSG1TAmmo", 0x5a1bf2 },
       { "PALState", 0x5a1cb0 },
+      { "AreaTime", 0x5a1a00 },
       { "GameStartPtr", 0x11b1334 },
       { "CharacterState", 0x5a1a13 },
       { "CharacterDirection", 0x5a1a10 }
