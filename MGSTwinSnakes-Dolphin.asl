@@ -11,7 +11,7 @@ startup {
   settings.Add("features", true, " Debug Logging");
     settings.Add("debug_file", true, " Save debug information to LiveSplit program directory", "features");
       settings.SetToolTip("debug_file", "The log will be saved at mgstts.log.");
-    settings.Add("debug_stdout", true, " Log debug information to Windows debug log", "features");
+    settings.Add("debug_stdout", false, " Log debug information to Windows debug log", "features");
       settings.SetToolTip("debug_stdout", "This can be viewed in a tool such as DebugView.");
   
   settings.Add("behaviour", true, " Autosplitter Behaviour");
