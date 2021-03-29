@@ -65,8 +65,8 @@
 |       | Standard | Nuke Building B1             |
 |       | Standard | Commander Room               |
 |       | Standard | Caves                        |
-| Major | Standard | Sniper Wolf 1                |
-|       | Standard | Underground Passage          |
+|       |          | Sniper Wolf 1                |
+| Major | Standard | Underground Passage          |
 |       |          | Medical Room (without gear)<br>*Also covers the cutscene skip escape method (by double-splitting)* |
 |       | Standard | Medical Room                 |
 |       | Standard | Holding Cells                |
@@ -76,8 +76,8 @@
 |       | Standard | Nuke Building B1             |
 |       | Standard | Commander's Room             |
 |       | Standard | Caves                        |
-|       | Standard | Underground Passage          |
-|       | Standard | Comm Tower A                 |
+| Major | Standard | Underground Passage          |
+| Major | Standard | Comm Tower A                 |
 |       | Standard | Comm Tower A Roof            |
 |       | Standard | Comm Tower A Wall            |
 |       | Standard | Comm Tower Corridor          |
@@ -116,5 +116,5 @@
 | Major | Standard | Liquid Snake                 |
 |       | Standard | Escape Route 1               |
 |       | Standard | Escape Route 2               |
-| Major | Standard | Escape Route (vs Liquid)     |
+|       | Standard | Escape Route (vs Liquid)     |
 | Major | Standard | Final Time                   |
