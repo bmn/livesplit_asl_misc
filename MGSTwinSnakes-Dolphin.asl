@@ -30,13 +30,17 @@ startup {
     settings.Add("p77", true, " M1 Tank");
     settings.Add("p91", true, " Ninja");
     settings.Add("p146", true, " Psycho Mantis");
-    settings.Add("p165", true, " Sniper Wolf 1");
+    settings.Add("p166", true, " Sniper Wolf 1");
+      settings.SetToolTip("p166", "This split occurs when you're captured afterwards");
+    settings.Add("area15a_area17a_capture", true, " End Disc 1");
+      settings.SetToolTip("area15a_area17a_capture", "This split occurs after the disc change sequence");
+    settings.Add("area17a_area17b_p210", true, " Comm Tower A Chase");
     settings.Add("p230", true, " Hind D");
     settings.Add("p243", true, " Sniper Wolf 2");
     settings.Add("p261", true, " Vulcan Raven");
+    settings.Add("p298", true, " Hot PAL Key");
     settings.Add("p311", true, " Metal Gear REX");
     settings.Add("p335", true, " Liquid Snake");
-    settings.Add("p347", true, " Escape");
     settings.Add("w_ending_p359", true, " Final Time");
       settings.SetToolTip("w_ending_p359", "This split occurs shortly after the final pre-credits cutscene.");
   
@@ -74,7 +78,8 @@ startup {
     settings.Add("area10a_area13a_p164", true, " Nuke Building B1 ⮞ Commander Room");
     settings.Add("area13a_area14a_p164", true, " Commander Room ⮞ Caves");
     settings.Add("area14a_area15a_p164", true, " Caves ⮞ Sniper Wolf 1");
-    settings.Add("p166", true, " Captured by Sniper Wolf in Underground Passage");
+    settings.Add("p165", false, " Defeated Sniper Wolf 1");
+      settings.SetToolTip("p165", "This split occurs when Snake says \"I got her\"");
     settings.Add("mediroom_nogear", false, " Medical Room ⮞ Holding Cells (first time)");
       settings.SetToolTip("mediroom_nogear", "If enabled, this will intentionally split twice if you collect your gear before leaving the first time");
     settings.Add("area16a_area05a_capture", true, " Medical Room ⮞ Holding Cells (gear collected)");
@@ -85,8 +90,6 @@ startup {
     settings.Add("area10a_area13a_capture", true, " Nuke Building B1 ⮞ Commander Room");
     settings.Add("area13a_area14a_capture", true, " Commander Room ⮞ Cave");
     settings.Add("area14a_area15a_capture", true, " Cave ⮞ Underground Passage");
-    settings.Add("area15a_area17a_capture", true, " Underground Passage ⮞ Comm Tower A");
-    settings.Add("area17a_area17b_p210", true, " Comm Tower A ⮞ Comm Tower A Roof");
     settings.Add("p216", true, " Comm Tower A Roof ⮞ Comm Tower A Wall");
     settings.Add("p219", true, " Comm Tower A Wall ⮞ Comm Tower Corridor");
     settings.Add("area17e_area18a_p222", true, " Comm Tower Corridor ⮞ Comm Tower B");
@@ -116,11 +119,11 @@ startup {
     settings.Add("p292", true, " Entered the Cold PAL Key");
     settings.Add("area24b_area24a_p293", false, " Command Room ⮞ Underground Base (with hot key)");
     settings.Add("area24a_area24b_p297", false, " Underground Base ⮞ Command Room");
-    settings.Add("p298", true, " Entered the Hot PAL Key");
     settings.Add("p303", true, " Reached Metal Gear REX");
     settings.Add("p307", true, " Defeated Metal Gear REX (Phase 1)");
     settings.Add("w_area27a_p338", true, " Escape Route 1");
     settings.Add("p344", true, " Escape Route 2");
+    settings.Add("p347", true, " Escape Route (vs Liquid)");
  
   
   vars.D = new ExpandoObject();

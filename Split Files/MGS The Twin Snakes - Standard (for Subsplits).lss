@@ -324,15 +324,6 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Underground Passage</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
       <Name>-Medical Room</Name>
       <Icon />
       <SplitTimes>
@@ -414,7 +405,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>-Comm Tower A</Name>
+      <Name>Comm Tower A Chase</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />

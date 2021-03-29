@@ -72,6 +72,24 @@
       <SegmentHistory />
     </Segment>
     <Segment>
+      <Name>End of Disc 1</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>Comms Tower A Chase</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
       <Name>Hind D</Name>
       <Icon />
       <SplitTimes>
@@ -109,15 +127,6 @@
     </Segment>
     <Segment>
       <Name>Liquid Snake</Name>
-      <Icon />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
-    </Segment>
-    <Segment>
-      <Name>Escape</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
