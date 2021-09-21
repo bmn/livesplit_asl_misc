@@ -1,9 +1,19 @@
 # livesplit_asl_misc
-Miscellaneous LiveSplit Scriptable Autosplitters. 
+Miscellaneous LiveSplit Scriptable Autosplitters. See the [master branch](https://github.com/bmn/livesplit_asl_misc) for more details.
 
-Development of each splitter occurs in their individual branches.
-Once I consider a splitter stable, it will appear in the master branch.
+# UnMetal (PC) LiveSplit Autosplitter
 
-## Other Autosplitters
-* [Metal Gear Solid Integral](https://github.com/bmn/livesplit_asl_mgsi/tree/testing)
-* [Metal Gear Solid 2 Substance](https://github.com/bmn/livesplit_asl_mgs2/tree/testing)
+## Getting Started
+* Download the autosplitter using the green `Download` link in the top right of this page.
+* Extract the zip contents to any location.
+* In LiveSplit, add a `Scriptable Auto Splitter` component to your layout, and open its settings.
+* In the SAS settings, browse to `UnMetal.asl`. The autosplitter settings should appear.
+
+## Customising Splits
+There are two approaches to making a split list:
+* Split only at the end of each stage.
+* Split at key moments ("events") during the stage, for more information.
+ 
+By default, the autosplitter provides a sensible set of event splits.
+
+To disable events, and only split at the end of stage, uncheck the `Stage Events` settings category.
