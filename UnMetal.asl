@@ -82,6 +82,14 @@ startup {
     return o;
   });
 
+  F.NewMission = (Func<int, int, string, bool, dynamic>)(
+    (offset, stage, description, defaultEnabled) => {
+    dynamic o = F.NewEvent(offset, stage, description, defaultEnabled);
+    o.Class = "Mission";
+    o.SettingsKey = "Split.Mission." + o.OffsetHex;
+    return o;
+  });
+
   F.NewBoss = (Func<int, int, int, string, bool, dynamic>)(
     (offset, target, stage, description, defaultEnabled) => {
     dynamic o = F.NewObject(stage, description, defaultEnabled);
@@ -152,44 +160,52 @@ startup {
 
 
   var Events = new List<dynamic>() {
-    F.NewCoordinate(5, 1, 1, "Escaped the cell", true, null),
-    F.NewEvent(0, 1, "Found the sewer", true),
-    F.NewEvent(1, 1, "Talked to Col. Harris", false),
-    F.NewEvent(2, 1, "Picked up Harris' radio", false),
-    F.NewEvent(3, 1, "Encrypted Harris' radio", false),
-    F.NewEvent(4, 1, "Gave Harris the radio", true),
-    F.NewEvent(17, 1, "Encrypted Jesse's radio", false),
+    F.NewEvent(0, 1, "Escaped the cell", true),
+    F.NewMission(0, 1, "Found the sewer", true),
+    F.NewMission(1, 1, "Talked to Col. Harris", false),
+    F.NewMission(2, 1, "Picked up Harris' radio", false),
+    F.NewMission(3, 1, "Encrypted Harris' radio", false),
+    F.NewMission(4, 1, "Gave Harris the radio", true),
+    F.NewMission(17, 1, "Encrypted Jesse's radio", false),
     F.NewBoss(0, 1, 1, "Reached Grenade Guy", true),
     F.NewBoss(0, 2, 1, "Grenade Guy", true),
-    F.NewEvent(5, 1, "Entered the sewer", true),
+    F.NewMission(5, 1, "Entered the sewer", true),
 
-    F.NewEvent(9, 2, "Tested the waters", false),
+    F.NewMission(9, 2, "Tested the waters", false),
     F.NewBoss(1, 1, 2, "Reached Sgt. Rosco", true),
     F.NewBoss(1, 2, 2, "Sgt. Rosco", true),
-    F.NewEvent(7, 2, "Gave Robert the radio", true),
-    F.NewEvent(6, 2, "Built the floating bridge", false),
+    F.NewEvent(1, 2, "Found the first intel file", true),
+    F.NewEvent(2, 2, "Examined the truck's engine", true),
+    F.NewMission(7, 2, "Gave Robert the radio", true),
+    F.NewMission(6, 2, "Built the floating platform", false),
+    F.NewEvent(3, 2, "Used the floating platform for the first time", true),
+    F.NewEvent(4, 2, "Ambushed by the small creatures!", true),
+    F.NewEvent(5, 2, "Found the broken flamethrower", true),
     F.NewBoss(2, 1, 2, "Reached Sewerjunk", true),
     F.NewBoss(2, 2, 2, "Sewerjunk", true),
-    F.NewEvent(8, 2, "Escape from the sewer", true),
+    F.NewMission(8, 2, "Escape from the sewer", true),
 
-    F.NewEvent(10, 3, "Reach the F1 elevator? (1)", true),
-    F.NewEvent(11, 3, "Reach the F1 elevator? (2)", true),
+    F.NewEvent(6, 3, "Met Doctor Hoffman", true),
+    F.NewEvent(7, 3, "Found the pistol", true),
+    F.NewEvent(8, 3, "Found the second intel file", true),
+    F.NewMission(10, 3, "Reached the elevator on F1", true),
+    //F.NewMission(11, 3, "Reach the F1 elevator? (2)", true),
     F.NewBoss(3, 1, 3, "Reached Megadron", true),
     F.NewBoss(3, 2, 3, "Megadron", true),
-    F.NewEvent(16, 3, "Create the chloroform", true),
-    F.NewEvent(19, 3, "Give Mike the batteries", true),
-    F.NewEvent(12, 3, "Reach Lt. Markuson's office", true),
-    F.NewEvent(22, 3, "Use the chloroform", false),
-    F.NewEvent(13, 3, "Reach the sickbay", true),
-    F.NewEvent(23, 3, "Hide from Lt. Markuson", true),
-    F.NewEvent(24, 3, "Reenter the sickbay", true),
+    F.NewMission(16, 3, "Create the chloroform", true),
+    F.NewEvent(9, 3, "Found the third intel file", true),
+    F.NewMission(19, 3, "Give Mike the batteries", true),
+    F.NewMission(12, 3, "Reach Lt. Markuson's office", true),
+    F.NewMission(22, 3, "Use the chloroform", false),
+    F.NewMission(13, 3, "Reach the sickbay", true),
+    F.NewMission(23, 3, "Hide from Lt. Markuson", true),
+    F.NewMission(24, 3, "Reenter the sickbay", true),
     F.NewBoss(4, 1, 3, "Reached Lt. Markuson", true),
     F.NewBoss(4, 2, 3, "Lt. Markuson", true),
-    F.NewEvent(14, 3, "??? Immediately after beating Markuson", true),
-    F.NewEvent(15, 3, "??? Doesn't happen consistently?", true),
-    F.NewEvent(18, 3, "Overcome the biometric scanner", true),
+    //F.NewMission(14, 3, "??? Immediately after beating Markuson", true),
+    //F.NewMission(15, 3, "??? Doesn't happen consistently?", true),
+    F.NewMission(18, 3, "Overcome the biometric scanner", true),
   };
-
 
   var StageNames = new List<string>() {
     "The Great Escape",
@@ -236,6 +252,7 @@ startup {
   }
 
   D.Events = new Dictionary<int, dynamic>();
+  D.Missions = new Dictionary<int, dynamic>();
   D.Bosses = new Dictionary<string, dynamic>();
   D.Coordinates = new Dictionary<string, List<dynamic>>();
   foreach (var evt in Events) {
@@ -244,6 +261,8 @@ startup {
       settings.SetToolTip(evt.SettingsKey, evt.ToolTip);
     if (evt.Class == "Event")
       D.Events.Add(evt.Offset, evt);
+    if (evt.Class == "Mission")
+      D.Missions.Add(evt.Offset, evt);
     else if (evt.Class == "Boss")
       D.Bosses.Add( F.BossKey(evt.Offset, evt.Target), evt );
     else if (evt.Class == "Coordinate") {
@@ -319,16 +338,41 @@ init {
       }
     });
 
-    F.NewCompletedEvents = (Func<List<dynamic>>)(() => {
+    F.NewCompletedEvents = (Func<string, List<dynamic>>)((type) => {
       var o = new List<dynamic>();
-      var m = A["Missions"];
+      var m = A[type];
       for (int i = 0; i < m.Length; i ++) {
-        if ( (m.Current[i] == 1) && (m.Old[i] == 0) ) {
-          if (D.Events.ContainsKey(i))
-            o.Add(D.Events[i]);
-          else F.Debug("New event at offset " + i + " (undefined)");
+
+        if (type == "Events") { 
+          if ( (m.Current[i] == 1) && (m.Old[i] == 0) ) {
+            if (D.Events.ContainsKey(i))
+              o.Add(D.Events[i]);
+            else F.Debug("New quest event at offset " + i + " (undefined)");
+          }
         }
+
+        else if (type == "Missions") { 
+          if ( (m.Current[i] == 1) && (m.Old[i] == 0) ) {
+            if (D.Missions.ContainsKey(i))
+              o.Add(D.Missions[i]);
+            else F.Debug("New mission event at offset " + i + " (undefined)");
+          }
+        }
+
+        else if (type == "Bosses") {
+          var cur = m.Current[i];
+          var ol = m.Old[i];
+          if (cur != ol) {
+            string key = F.BossKey(i, cur);
+            if (D.Bosses.ContainsKey(key))
+              o.Add(D.Bosses[key]);
+            else F.Debug( string.Format("New boss event at offset {0}, value {1} (undefined)",
+              i, cur) );
+          }
+        }
+
       }
+
       return o;
     });
 
@@ -392,8 +436,9 @@ init {
     F.UpdateASLDeadTime = (Action)(() => {
       var state = M["GameState"];
       var cutscene = M["InCutscene"];
+      var stage = M["Stage"].Current - 1;
 
-      if ( (state.Current != 0) && (A["StageTimes"].Current[ M["Stage"].Current ] == 0)
+      if ( (state.Current != 0) && (A["StageTimes"].Current[stage] == 0)
         && ((state.Current != 3) || (cutscene.Current)) ) {
         D.DeadTime[state.Current].Active = true;
       }
@@ -409,6 +454,7 @@ init {
 
       var totalLoss = TimeSpan.FromSeconds(0);
       bool reset = false;
+      bool totalLapTime = false;
 
       foreach (var t in D.DeadTime) {
         var tl = t.Value;
@@ -426,6 +472,7 @@ init {
         if ( (tl.Active) || (tl.OldActive) ) {
 
           tl.ShowLapTime = true;
+          totalLapTime = true;
 
           TimeSpan newLoss = TimeSpan.FromSeconds(0);
           if (tl.OldActive) {
@@ -456,10 +503,8 @@ init {
 
             v["DeadTime" + tl.Name] = tl.RunningTotal.ToString(
               (tl.RunningTotal.Minutes > 0) ? formatMins : formatSecs );
-
-            vars.DeadTime = D.TotalDeadTime.ToString(
-              (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
           }
+          else totalLapTime = true;
 
         }
 
@@ -467,6 +512,10 @@ init {
         tl.OldActive = tl.Active;
         tl.Active = false;
       }
+
+      if (!totalLapTime)
+        vars.DeadTime = D.TotalDeadTime.ToString(
+          (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
 
     });
 
@@ -478,7 +527,7 @@ init {
   F.Debug( string.Format("Attached to UnMetal process ({0} bytes)",
     mainModule.ModuleMemorySize) );
 
-  string signature = "53 50 45 45 44 52 55 4E ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 42 4F 53 53 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 51 55 53 54 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 45 4E 44 2E";
+  string signature = "53 50 45 45 44 52 55 4E ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 42 4F 53 53 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 51 55 53 54 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 45 56 4E 54 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 45 4E 44 2E";
   var sigTarget = new SigScanTarget(0, signature);
   var sigScanner = new SignatureScanner(game, mainModule.BaseAddress,
     (int)mainModule.ModuleMemorySize);
@@ -500,17 +549,19 @@ init {
     new MemoryWatcher<bool>(offset + 0x14) { Name = "TimerActive" },
     new MemoryWatcher<int>(offset + 0x18)  { Name = "Attempts" },
     new MemoryWatcher<int>(offset + 0x1C)  { Name = "Stage" },
-    new MemoryWatcher<int>(offset + 0x44)  { Name = "GameTime" },
+
+    new MemoryWatcher<int>(offset + 0x48)  { Name = "GameTime" },
+    new MemoryWatcher<int>(offset + 0x4C)  { Name = "CurrentStageTime"},
     // 0 = main menu, 1 = menu pause/menu death, 2 = inventory/missions, 3 = ingame
-    new MemoryWatcher<int>(offset + 0x4C)  { Name = "GameState" },
-    new MemoryWatcher<bool>(offset + 0x50)  { Name = "InCutscene" },
+    new MemoryWatcher<int>(offset + 0x50)  { Name = "GameState" },
+    new MemoryWatcher<bool>(offset + 0x54)  { Name = "InCutscene" },
   });
 
   A.Clear();
-  //A.Add("StageTime", F.NewArray(offset + 0x20, 10, 4));
-  A.Add("StageTimes", F.NewArray(offset + 0xD0, 10, 4));
-  A.Add("Bosses", F.NewArray(offset + 0x58, 14, 4));
-  A.Add("Missions", F.NewArray(offset + 0x94, 54, 1));
+  A.Add("StageTimes", F.NewArray(offset + 0x20, 10, 4));
+  A.Add("Bosses", F.NewArray(offset + 0x5C, 14, 4));
+  A.Add("Missions", F.NewArray(offset + 0x98, 54, 1));
+  A.Add("Events", F.NewArray(offset + 0xD2, 64, 1));
 
   D.M.UpdateAll(game);
   D.F.UpdateAllArrays(game);
@@ -560,16 +611,16 @@ reset {
 
 
 gameTime {
-  //return TimeSpan.FromSeconds(vars.D.M["GameTime"].Current);
-  return null;
+  return TimeSpan.FromMilliseconds(vars.D.M["GameTime"].Current);
+  //return null;
 }
 
 
 isLoading {
-  //return true;
+  return true;
 
-  var D = vars.D; var M = D.M; var A = D.A;
-  return (A["StageTimes"].Current[ M["Stage"].Current ] != 0);
+  //var D = vars.D; var M = D.M; var A = D.A;
+  //return (A["StageTimes"].Current[ M["Stage"].Current - 1 ] != 0);
 }
 
 shutdown {
@@ -597,38 +648,26 @@ split {
     F.UpdateASL();
 
   if (A["StageTimes"].Changed) {
-    print("yes");
     int stage = M["Stage"].Current;
-    int stageCode = (stage == 0) ? 1 : stage; // only because stage 1 is shown as 0
-    if (F.SettingEnabled("Split.Stage." + stageCode)) {
-      F.Debug( string.Format("SPLIT for completed Stage {0}", stageCode) );
+    if (F.SettingEnabled("Split.Stage." + stage)) {
+      F.Debug( string.Format("SPLIT for completed Stage {0}", stage) );
       return true;
     }
-    else F.Debug( string.Format("Completed Stage {0} (split disabled)", stageCode) );
+    else F.Debug( string.Format("Completed Stage {0} (split disabled)", stage) );
   }
 
-  if (A["Missions"].Changed) {
-    foreach (var evt in F.NewCompletedEvents()) {
-      if (F.SettingEnabled(evt.SettingsKey)) {
-        F.Debug( string.Format("SPLIT for new Stage {0} event \"{1}\"",
-          evt.Stage, evt.Description) );
-        return true;
+  foreach (string type in new string[] { "Missions", "Events", "Bosses" }) {
+    if (A[type].Changed) {
+      foreach (var evt in F.NewCompletedEvents(type)) {
+        if (F.SettingEnabled(evt.SettingsKey)) {
+          F.Debug( string.Format("SPLIT for new Stage {0} {1} event \"{2}\"",
+            evt.Stage, type, evt.Description) );
+          return true;
+        }
+        else F.Debug( string.Format("New Stage {0} {1} event \"{2}\" (split disabled)",
+          evt.Stage, type, evt.Description) );
       }
-      else F.Debug( string.Format("New Stage {0} event \"{1}\" (split disabled)",
-        evt.Stage, evt.Description) );
-    }
-  }
-
-  if (A["Bosses"].Changed) {
-    foreach (var boss in F.NewCompletedBosses()) {
-      if (F.SettingEnabled(boss.SettingsKey)) {
-        F.Debug( string.Format("SPLIT for new Stage {0} boss \"{1}\"",
-          boss.Stage, boss.Description) );
-        return true;
-      }
-      else F.Debug( string.Format("New Stage {0} boss \"{1}\" (split disabled)",
-        boss.Stage, boss.Description) );
-    }
+    }  
   }
 
   if ( (M["RoomX"].Changed) || (M["RoomY"].Changed) || (M["Stage"].Changed) ) {
