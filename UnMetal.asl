@@ -31,7 +31,9 @@ startup {
   D.LiveSplitPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
   D.DebugLogPath = Path.Combine(D.LiveSplitPath, "UnMetal.Autosplitter.log");
   D.Initialised = false;
-  D.LastDateTime = DateTime.Now;
+
+  // Game runs at around 35fps, lowering refreshRate can improve performance & smoothness
+  refreshRate = 40;
 
 
   F.Debug = (Action<string>)((message) =>
@@ -133,7 +135,7 @@ startup {
     o.OldActive = false;
     o.Active = false;
     o.ShowLapTime = false;
-    o.StartTime = DateTime.Now;
+    o.StartTime = TimeSpan.FromSeconds(0);
     o.RunningTotal = TimeSpan.FromSeconds(0);
     return o;
   });
@@ -423,20 +425,19 @@ init {
     });
 
     F.StartedNewAttempt = (Func<bool>)(() =>
-      ( (M["GameState"].Old == 0) && (M["GameState"].Current == 3) ) );
+      //( (M["GameState"].Old == 0) && (M["GameState"].Current == 3) ) );
+      (M["Attempts"].Changed) );
 
 
     F.UpdateASL = (Action)(() => {
       if (settings["ASL.DeadTime"])
         F.UpdateASLDeadTime();
-
-      D.LastDateTime = DateTime.Now;
     });
 
     F.UpdateASLDeadTime = (Action)(() => {
       var state = M["GameState"];
       var cutscene = M["InCutscene"];
-      var stage = M["Stage"].Current - 1;
+      var stage = Math.Min(M["Stage"].Current - 1, 0);
 
       if ( (state.Current != 0) && (A["StageTimes"].Current[stage] == 0)
         && ((state.Current != 3) || (cutscene.Current)) ) {
@@ -469,6 +470,9 @@ init {
           reset = true;
         }
 
+        TimeSpan now = TimeSpan.FromMilliseconds(M["GameTime"].Current);
+        TimeSpan then = TimeSpan.FromMilliseconds(M["GameTime"].Old);
+
         if ( (tl.Active) || (tl.OldActive) ) {
 
           tl.ShowLapTime = true;
@@ -476,14 +480,14 @@ init {
 
           TimeSpan newLoss = TimeSpan.FromSeconds(0);
           if (tl.OldActive) {
-            newLoss = ((DateTime)DateTime.Now - (DateTime)tl.StartTime);
-            var delta = ((DateTime)DateTime.Now - (DateTime)D.LastDateTime);
+            newLoss = ((TimeSpan)now - (TimeSpan)tl.StartTime);
+            var delta = ((TimeSpan)now - (TimeSpan)then);
             tl.RunningTotal += delta;
             D.TotalDeadTime += delta;
           }
 
           if (tl.OldActive != tl.Active) {
-            tl.StartTime = DateTime.Now;
+            tl.StartTime = now;
           }
 
           v["DeadTime" + tl.Name] = string.Format("[+{0}] {1}",
@@ -498,7 +502,7 @@ init {
         }
         else if (tl.ShowLapTime) {
 
-          if ( (DateTime.Now - TimeSpan.FromSeconds(3)) > tl.StartTime ) {
+          if ( (now - TimeSpan.FromSeconds(3)) > tl.StartTime ) {
             tl.ShowLapTime = false;
 
             v["DeadTime" + tl.Name] = tl.RunningTotal.ToString(
@@ -516,7 +520,6 @@ init {
       if (!totalLapTime)
         vars.DeadTime = D.TotalDeadTime.ToString(
           (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
-
     });
 
   }
@@ -612,15 +615,11 @@ reset {
 
 gameTime {
   return TimeSpan.FromMilliseconds(vars.D.M["GameTime"].Current);
-  //return null;
 }
 
 
 isLoading {
   return true;
-
-  //var D = vars.D; var M = D.M; var A = D.A;
-  //return (A["StageTimes"].Current[ M["Stage"].Current - 1 ] != 0);
 }
 
 shutdown {
