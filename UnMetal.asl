@@ -8,7 +8,7 @@
 /*********************************************************/
 
 
-state("UnMetal") {}
+state("unmetal") {}
 
 
 startup {
@@ -30,17 +30,12 @@ startup {
 
   D.LiveSplitPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
   D.DebugLogPath = Path.Combine(D.LiveSplitPath, "UnMetal.Autosplitter.log");
-  D.StartInstantly = false;
-  D.LastErrorTime = DateTime.Now;
-  D.LastErrorCount = 0;
   D.Initialised = false;
-  F.EventLogWritten = null;
-  
+  D.LastDateTime = DateTime.Now;
 
 
-  F.Debug = (Action<string>)((message) => {
-    print("[UnMetal] " + message);
-  });
+  F.Debug = (Action<string>)((message) =>
+    print("[UnMetal] " + message) );
 
 
   F.WriteFile = (Action<string, string, bool>)((file, content, append) => {
@@ -67,11 +62,9 @@ startup {
     (Action<object, System.Timers.ElapsedEventArgs>)((sender, e) => F.FlushDebugBuffer()));
   
   
-  F.NewObject = (Func<int, int, string, bool, dynamic>)(
-    (offset, stage, description, defaultEnabled) => {
+  F.NewObject = (Func<int, string, bool, dynamic>)(
+    (stage, description, defaultEnabled) => {
     dynamic o = new ExpandoObject();
-    o.Offset = offset;
-    o.OffsetHex = offset.ToString("X2");
     o.Stage = stage;
     o.Description = description;
     o.DefaultEnabled = defaultEnabled;
@@ -81,55 +74,108 @@ startup {
 
   F.NewEvent = (Func<int, int, string, bool, dynamic>)(
     (offset, stage, description, defaultEnabled) => {
-    dynamic o = F.NewObject(offset, stage, description, defaultEnabled);
+    dynamic o = F.NewObject(stage, description, defaultEnabled);
+    o.Offset = offset;
+    o.OffsetHex = offset.ToString("X2");
     o.Class = "Event";
     o.SettingsKey = "Split.Event." + o.OffsetHex;
     return o;
   });
 
-  F.NewBoss = (Func<int, int, string, bool, dynamic>)(
-    (offset, stage, description, defaultEnabled) => {
-    dynamic o = F.NewObject(offset, stage, description, defaultEnabled);
+  F.NewBoss = (Func<int, int, int, string, bool, dynamic>)(
+    (offset, target, stage, description, defaultEnabled) => {
+    dynamic o = F.NewObject(stage, description, defaultEnabled);
+    o.Target = target;
+    o.Offset = offset;
+    o.OffsetHex = offset.ToString("X2");
     o.Class = "Boss";
-    o.SettingsKey = "Split.Boss." + o.OffsetHex;
+    o.SettingsKey = string.Format("Split.Boss.{0}.{1}", o.OffsetHex, o.Target);
+    return o;
+  });
+
+  F.NewCoordinate = (Func<int, int, int, string, bool, Func<bool>, dynamic>)(
+    (coordX, coordY, stage, description, defaultEnabled, callback) => {
+    dynamic o = F.NewObject(stage, description, defaultEnabled);
+    o.CoordX = coordX;
+    o.CoordY = coordY;
+    o.Callback = callback;
+    o.Class = "Coordinate";
+    o.SettingsKey = "Split.Coordinate." + F.CoordinateKey(stage, coordX, coordY);
     return o;
   });
 
   F.NewArray = (Func<IntPtr, int, int, dynamic>)((addr, len, bytes) => {
-    len *= bytes;
+    //len *= bytes;
     dynamic ba = new ExpandoObject();
     ba.Address = addr;
     ba.Length = len;
     ba.Bytes = bytes;
     ba.Current = null;
     ba.Old = null;
+    ba.CurrentRaw = null;
+    ba.OldRaw = null;
     ba.Changed = false;
     ba.Update = F.UpdateArray;
     return ba;
   });
 
+  F.NewDeadTime = (Func<string, dynamic>)((name) => {
+    dynamic o = new ExpandoObject();
+    o.Name = name;
+    o.OldActive = false;
+    o.Active = false;
+    o.ShowLapTime = false;
+    o.StartTime = DateTime.Now;
+    o.RunningTotal = TimeSpan.FromSeconds(0);
+    return o;
+  });
+
+  F.CoordinateKey = (Func<int, int, int, string>)((stage, coordX, coordY) =>
+    string.Format("{0}.{1}.{2}", stage, coordX, coordY) );
+
+  F.BossKey = (Func<int, int, string>)((offset, target) =>
+    string.Format("{0}.{1}", offset, target) );
+
+  F.InitVariables = (Action)(() => {
+    D.StartInstantly = false;
+    D.LastErrorTime = DateTime.Now;
+    D.LastErrorCount = 0;
+    F.EventLogWritten = null;
+    D.TotalDeadTime = TimeSpan.FromSeconds(0);
+    D.DeadTime = new Dictionary<int, dynamic>() {
+      { 1, F.NewDeadTime("Menu") },
+      { 2, F.NewDeadTime("Inventory") },
+      { 3, F.NewDeadTime("Ingame") },
+    };
+  });
+  F.InitVariables();
+
 
   var Events = new List<dynamic>() {
-    //F.NewCustom(1, "Escaped the cell", true),
+    F.NewCoordinate(5, 1, 1, "Escaped the cell", true, null),
     F.NewEvent(0, 1, "Found the sewer", true),
     F.NewEvent(1, 1, "Talked to Col. Harris", false),
     F.NewEvent(2, 1, "Picked up Harris' radio", false),
     F.NewEvent(3, 1, "Encrypted Harris' radio", false),
     F.NewEvent(4, 1, "Gave Harris the radio", true),
     F.NewEvent(17, 1, "Encrypted Jesse's radio", false),
-    F.NewBoss(0, 1, "Grenade Guy", true),
+    F.NewBoss(0, 1, 1, "Reached Grenade Guy", true),
+    F.NewBoss(0, 2, 1, "Grenade Guy", true),
     F.NewEvent(5, 1, "Entered the sewer", true),
 
     F.NewEvent(9, 2, "Tested the waters", false),
-    F.NewBoss(1, 2, "Sgt. Rosco", true),
+    F.NewBoss(1, 1, 2, "Reached Sgt. Rosco", true),
+    F.NewBoss(1, 2, 2, "Sgt. Rosco", true),
     F.NewEvent(7, 2, "Gave Robert the radio", true),
     F.NewEvent(6, 2, "Built the floating bridge", false),
-    F.NewBoss(2, 2, "Sewerjunk", true),
+    F.NewBoss(2, 1, 2, "Reached Sewerjunk", true),
+    F.NewBoss(2, 2, 2, "Sewerjunk", true),
     F.NewEvent(8, 2, "Escape from the sewer", true),
 
     F.NewEvent(10, 3, "Reach the F1 elevator? (1)", true),
     F.NewEvent(11, 3, "Reach the F1 elevator? (2)", true),
-    F.NewBoss(3, 3, "Megadron", true),
+    F.NewBoss(3, 1, 3, "Reached Megadron", true),
+    F.NewBoss(3, 2, 3, "Megadron", true),
     F.NewEvent(16, 3, "Create the chloroform", true),
     F.NewEvent(19, 3, "Give Mike the batteries", true),
     F.NewEvent(12, 3, "Reach Lt. Markuson's office", true),
@@ -137,11 +183,13 @@ startup {
     F.NewEvent(13, 3, "Reach the sickbay", true),
     F.NewEvent(23, 3, "Hide from Lt. Markuson", true),
     F.NewEvent(24, 3, "Reenter the sickbay", true),
-    F.NewBoss(4, 3, "Lt. Markuson", true),
+    F.NewBoss(4, 1, 3, "Reached Lt. Markuson", true),
+    F.NewBoss(4, 2, 3, "Lt. Markuson", true),
     F.NewEvent(14, 3, "??? Immediately after beating Markuson", true),
     F.NewEvent(15, 3, "??? Doesn't happen consistently?", true),
     F.NewEvent(18, 3, "Overcome the biometric scanner", true),
   };
+
 
   var StageNames = new List<string>() {
     "The Great Escape",
@@ -167,6 +215,13 @@ startup {
   settings.SetToolTip("Behaviour.ResetMainMenu",
     "If ENABLED: will reset at the main menu\nIf DISABLED: will reset and restart timer on a new attempt");
 
+  settings.Add("ASL", true, "ASL Var Viewer Support");
+  settings.SetToolTip("ASL", "For use with hawkerm's ASL Var Viewer component for LiveSplit.\nhttps://github.com/hawkerm/LiveSplit.ASLVarViewer\n\nIf you don't use ASLVV, disabling these settings may slightly improve performance.");
+  settings.Add("ASL.DeadTime", true, "Dead Time", "ASL");
+  settings.SetToolTip("ASL.DeadTime", "Tracks the amount of dead time spent in menus, skipping cutscenes, etc.\n\nProvided variables:\n * vars.DeadTime (total from all sources)\n * vars.DeadTimeIngame (decision-making, going through doors, etc.)\n * vars.DeadTimeInventory (inventory, missions)\n * vars.DeadTimeMenu (pause menu)");
+  settings.Add("ASL.DeadTime.StageReset", true, "Reset counters at the start of a new Stage", "ASL.DeadTime");
+  settings.Add("ASL.DeadTime.2DP", false, "Extra timer precision (to 2 decimal places)", "ASL.DeadTime");
+
   settings.Add("Split", true, "Split on...");
   settings.Add("Split.Stage", true, "Stage Complete", "Split");
   settings.SetToolTip("Split.Stage", "Split on Stage Complete");
@@ -181,7 +236,8 @@ startup {
   }
 
   D.Events = new Dictionary<int, dynamic>();
-  D.Bosses = new Dictionary<int, dynamic>();
+  D.Bosses = new Dictionary<string, dynamic>();
+  D.Coordinates = new Dictionary<string, List<dynamic>>();
   foreach (var evt in Events) {
     settings.Add(evt.SettingsKey, evt.DefaultEnabled, evt.Description, "Split.Event.Stage" + evt.Stage);
     if (evt.ToolTip != null)
@@ -189,7 +245,13 @@ startup {
     if (evt.Class == "Event")
       D.Events.Add(evt.Offset, evt);
     else if (evt.Class == "Boss")
-      D.Bosses.Add(evt.Offset, evt);
+      D.Bosses.Add( F.BossKey(evt.Offset, evt.Target), evt );
+    else if (evt.Class == "Coordinate") {
+      string key = F.CoordinateKey(evt.Stage, evt.CoordX, evt.CoordY);
+      if (!D.Coordinates.ContainsKey(key))
+        D.Coordinates.Add(key, new List<dynamic>());
+      D.Coordinates[key].Add(evt);
+    }
   }
 
 }
@@ -232,23 +294,39 @@ init {
     });
 
     F.UpdateArray = (Action<dynamic, Process>)((m, g) => {
+      m.OldRaw = m.CurrentRaw;
       m.Old = m.Current;
-      m.Current = g.ReadBytes((IntPtr)m.Address, (int)m.Length);
-      if (m.Old == null) {
-        m.Old = m.Current;
-        m.Changed = false;
+      m.CurrentRaw = g.ReadBytes((IntPtr)m.Address, (int)(m.Length * m.Bytes));
+
+      if (m.OldRaw == null)
+        m.Changed = true;
+      else
+        m.Changed = (!Enumerable.SequenceEqual((byte[])m.CurrentRaw, (byte[])m.OldRaw));
+
+      if (m.Changed) {
+        if (m.Bytes == 1) {
+          m.Current = m.CurrentRaw;
+        }
+        else {
+          m.Current = new int[m.Length];
+          Buffer.BlockCopy(m.CurrentRaw, 0, m.Current, 0, m.CurrentRaw.Length);
+        }
+        if (m.OldRaw == null) {
+          m.OldRaw = m.CurrentRaw;
+          m.Old = m.Current;
+          m.Changed = false;
+        }
       }
-      else m.Changed = (!Enumerable.SequenceEqual((byte[])m.Current, (byte[])m.Old));
     });
 
     F.NewCompletedEvents = (Func<List<dynamic>>)(() => {
       var o = new List<dynamic>();
       var m = A["Missions"];
-      for (int i = 0, j = 0; i < m.Current.Length; i += m.Bytes, j++) {
+      for (int i = 0; i < m.Length; i ++) {
         if ( (m.Current[i] == 1) && (m.Old[i] == 0) ) {
-          if (D.Events.ContainsKey(j))
-            o.Add(D.Events[j]);
-          else F.Debug("New event at offset " + j + " (undefined)");
+          if (D.Events.ContainsKey(i))
+            o.Add(D.Events[i]);
+          else F.Debug("New event at offset " + i + " (undefined)");
         }
       }
       return o;
@@ -257,22 +335,15 @@ init {
     F.NewCompletedBosses = (Func<List<dynamic>>)(() => {
       var o = new List<dynamic>();
       var b = A["Bosses"];
-      for (int i = 0, j = 0; i < b.Current.Length; i += b.Bytes, j++) {
-        if ( (b.Current[i] == 1) && (b.Old[i] == 0) ) {
-          if (D.Bosses.ContainsKey(j))
-            o.Add(D.Bosses[j]);
-          else F.Debug("New boss defeat at offset " + j + " (undefined)");
-        }
-      }
-      return o;
-    });
-
-    F.NewKeyItems = (Func<List<dynamic>>)(() => {
-      var o = new List<dynamic>();
-      for (int i = 0; i < current.ItemsArray.Length; i += 4) {
-        if ( (current.ItemsArray[i] == 1) && (old.ItemsArray[i] == 0)
-          && (D.KeyItems.ContainsKey(i)) ) {
-          o.Add(D.KeyItems[i]);
+      for (int i = 0; i < b.Length; i++) {
+        var cur = b.Current[i];
+        var ol = b.Old[i];
+        if (cur != ol) {
+          string key = F.BossKey(i, cur);
+          if (D.Bosses.ContainsKey(key))
+            o.Add(D.Bosses[key]);
+          else F.Debug( string.Format("New boss event at offset {0}, value {1} (undefined)",
+            i, cur) );
         }
       }
       return o;
@@ -299,13 +370,106 @@ init {
       foreach (var w in vars.D.A) {
         string content = "";
         int j = 0;
-        for (int i = 0; i < w.Value.Length; i += w.Value.Bytes) {
-          content += (w.Value.Current[i] == 1) ? (j % 10).ToString() : "x";
+        for (int i = 0; i < w.Value.Length; i++) {
+          content += (w.Value.Current[i] == 0) ? "x" : (j % 10).ToString();
           j++;
         }
         cur[w.Key] = content;
       }
     });
+
+    F.StartedNewAttempt = (Func<bool>)(() =>
+      ( (M["GameState"].Old == 0) && (M["GameState"].Current == 3) ) );
+
+
+    F.UpdateASL = (Action)(() => {
+      if (settings["ASL.DeadTime"])
+        F.UpdateASLDeadTime();
+
+      D.LastDateTime = DateTime.Now;
+    });
+
+    F.UpdateASLDeadTime = (Action)(() => {
+      var state = M["GameState"];
+      var cutscene = M["InCutscene"];
+
+      if ( (state.Current != 0) && (A["StageTimes"].Current[ M["Stage"].Current ] == 0)
+        && ((state.Current != 3) || (cutscene.Current)) ) {
+        D.DeadTime[state.Current].Active = true;
+      }
+      
+      var v = vars as IDictionary<string, object>;
+
+      string formatSecs = "s\\.f";
+      string formatMins = "m\\:ss\\.f";
+      if (settings["ASL.DeadTime.2DP"]) {
+        formatSecs += "f";
+        formatMins += "f";
+      }
+
+      var totalLoss = TimeSpan.FromSeconds(0);
+      bool reset = false;
+
+      foreach (var t in D.DeadTime) {
+        var tl = t.Value;
+
+        if (M["Stage"].Changed || M["Attempts"].Changed) {
+          tl.RunningTotal = TimeSpan.FromSeconds(0);
+          v["DeadTime" + tl.Name] = "0:00";
+          if (!reset) {
+            D.TotalDeadTime = TimeSpan.FromSeconds(0);
+            vars.DeadTime = "0:00";
+          }
+          reset = true;
+        }
+
+        if ( (tl.Active) || (tl.OldActive) ) {
+
+          tl.ShowLapTime = true;
+
+          TimeSpan newLoss = TimeSpan.FromSeconds(0);
+          if (tl.OldActive) {
+            newLoss = ((DateTime)DateTime.Now - (DateTime)tl.StartTime);
+            var delta = ((DateTime)DateTime.Now - (DateTime)D.LastDateTime);
+            tl.RunningTotal += delta;
+            D.TotalDeadTime += delta;
+          }
+
+          if (tl.OldActive != tl.Active) {
+            tl.StartTime = DateTime.Now;
+          }
+
+          v["DeadTime" + tl.Name] = string.Format("[+{0}] {1}",
+            newLoss.ToString( (newLoss.Minutes > 0) ? formatMins : formatSecs ),
+            tl.RunningTotal.ToString( (tl.RunningTotal.Minutes > 0) ? formatMins : formatSecs )
+          );
+
+          vars.DeadTime = string.Format("[+{0}] {1}",
+            newLoss.ToString( (newLoss.Minutes > 0) ? formatMins : formatSecs ),
+            D.TotalDeadTime.ToString( (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs )
+          );
+        }
+        else if (tl.ShowLapTime) {
+
+          if ( (DateTime.Now - TimeSpan.FromSeconds(3)) > tl.StartTime ) {
+            tl.ShowLapTime = false;
+
+            v["DeadTime" + tl.Name] = tl.RunningTotal.ToString(
+              (tl.RunningTotal.Minutes > 0) ? formatMins : formatSecs );
+
+            vars.DeadTime = D.TotalDeadTime.ToString(
+              (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
+          }
+
+        }
+
+        totalLoss += tl.RunningTotal;
+        tl.OldActive = tl.Active;
+        tl.Active = false;
+      }
+
+    });
+
   }
   
 
@@ -314,7 +478,7 @@ init {
   F.Debug( string.Format("Attached to UnMetal process ({0} bytes)",
     mainModule.ModuleMemorySize) );
 
-  string signature = "53 50 45 45 44 52 55 4E ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 42 4F 53 53 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 51 55 53 54 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 45 4E 44 2E";
+  string signature = "53 50 45 45 44 52 55 4E ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 42 4F 53 53 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 51 55 53 54 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 45 4E 44 2E";
   var sigTarget = new SigScanTarget(0, signature);
   var sigScanner = new SignatureScanner(game, mainModule.BaseAddress,
     (int)mainModule.ModuleMemorySize);
@@ -335,11 +499,18 @@ init {
     new MemoryWatcher<int>(offset + 0x10)  { Name = "RoomY" },
     new MemoryWatcher<bool>(offset + 0x14) { Name = "TimerActive" },
     new MemoryWatcher<int>(offset + 0x18)  { Name = "Attempts" },
+    new MemoryWatcher<int>(offset + 0x1C)  { Name = "Stage" },
+    new MemoryWatcher<int>(offset + 0x44)  { Name = "GameTime" },
+    // 0 = main menu, 1 = menu pause/menu death, 2 = inventory/missions, 3 = ingame
+    new MemoryWatcher<int>(offset + 0x4C)  { Name = "GameState" },
+    new MemoryWatcher<bool>(offset + 0x50)  { Name = "InCutscene" },
   });
 
   A.Clear();
-  A.Add("Bosses", F.NewArray(offset + 0x20, 14, 1));
-  A.Add("Missions", F.NewArray(offset + 0x34, 54, 4));
+  //A.Add("StageTime", F.NewArray(offset + 0x20, 10, 4));
+  A.Add("StageTimes", F.NewArray(offset + 0xD0, 10, 4));
+  A.Add("Bosses", F.NewArray(offset + 0x58, 14, 4));
+  A.Add("Missions", F.NewArray(offset + 0x94, 54, 1));
 
   D.M.UpdateAll(game);
   D.F.UpdateAllArrays(game);
@@ -348,44 +519,57 @@ init {
 }
 
 start {
-  var D = vars.D;
+  var D = vars.D; var F = D.F;
+
+  bool start = false;
   if (D.StartInstantly) {
     D.StartInstantly = false;
-    return true;
+    start = true;
   }
-  if (D.M["Attempts"].Changed) {
-    D.F.Debug("START for new attempt");
-    return true;
+  if (F.StartedNewAttempt()) {
+    F.Debug("START for new attempt");
+    start = true;
   }
-  return false;
+
+  if (start)
+    F.InitVariables();
+  return start;
 }
 
 
 reset {
   var D = vars.D; var M = D.M; var F = D.F;
 
+  bool reset = false;
   if (settings["Behaviour.ResetMainMenu"]) {
-    if ( (M["MainMenu"].Changed) && (M["MainMenu"].Current) ) {
+    if ( (M["GameState"].Changed) && (M["GameState"].Current == 0) ) {
       F.Debug("RESET for main menu");
-      return true;
+      reset = true;
     }
   }
-  else if (M["Attempts"].Changed) {
+  else if (F.StartedNewAttempt()) {
     D.StartInstantly = true;
     F.Debug("RESET + START for new attempt");
-    //return true;
+    reset = true;
   }
-  return false;
+
+  if (reset)
+    F.InitVariables();
+  return reset;
 }
 
 
 gameTime {
-  return null; // TimeSpan.FromSeconds(vars.D.M["GameTime"].Current);
+  //return TimeSpan.FromSeconds(vars.D.M["GameTime"].Current);
+  return null;
 }
 
 
 isLoading {
-  return true;
+  //return true;
+
+  var D = vars.D; var M = D.M; var A = D.A;
+  return (A["StageTimes"].Current[ M["Stage"].Current ] != 0);
 }
 
 shutdown {
@@ -398,18 +582,32 @@ shutdown {
 }
 
 update {
-  var D = vars.D;
+  var D = vars.D; var F = D.F;
   D.M.UpdateAll(game);
-  D.F.UpdateAllArrays(game);
-  D.F.UpdateCurrent();
+  F.UpdateAllArrays(game);
+  F.UpdateCurrent();
 }
 
 
 
 split {
-  var D = vars.D; var F = D.F;
+  var D = vars.D; var F = D.F; var M = D.M; var A = D.A;
 
-  if (D.A["Missions"].Changed) {
+  if (settings["ASL"])
+    F.UpdateASL();
+
+  if (A["StageTimes"].Changed) {
+    print("yes");
+    int stage = M["Stage"].Current;
+    int stageCode = (stage == 0) ? 1 : stage; // only because stage 1 is shown as 0
+    if (F.SettingEnabled("Split.Stage." + stageCode)) {
+      F.Debug( string.Format("SPLIT for completed Stage {0}", stageCode) );
+      return true;
+    }
+    else F.Debug( string.Format("Completed Stage {0} (split disabled)", stageCode) );
+  }
+
+  if (A["Missions"].Changed) {
     foreach (var evt in F.NewCompletedEvents()) {
       if (F.SettingEnabled(evt.SettingsKey)) {
         F.Debug( string.Format("SPLIT for new Stage {0} event \"{1}\"",
@@ -421,7 +619,7 @@ split {
     }
   }
 
-  if (D.A["Bosses"].Changed) {
+  if (A["Bosses"].Changed) {
     foreach (var boss in F.NewCompletedBosses()) {
       if (F.SettingEnabled(boss.SettingsKey)) {
         F.Debug( string.Format("SPLIT for new Stage {0} boss \"{1}\"",
@@ -430,6 +628,26 @@ split {
       }
       else F.Debug( string.Format("New Stage {0} boss \"{1}\" (split disabled)",
         boss.Stage, boss.Description) );
+    }
+  }
+
+  if ( (M["RoomX"].Changed) || (M["RoomY"].Changed) || (M["Stage"].Changed) ) {
+    int stage = M["Stage"].Current;
+    int coordX =  M["RoomX"].Current;
+    int coordY = M["RoomY"].Current;
+    string key = F.CoordinateKey(stage, coordX, coordY);
+    if (D.Coordinates.ContainsKey(key)) {
+      foreach (var coord in D.Coordinates[key]) {
+        if ( (coord.Callback == null) || (coord.Callback()) ) {
+          if (F.SettingEnabled(coord.SettingsKey)) {
+            F.Debug( string.Format("SPLIT for coordinate \"{0}\" at Stage {1} ({2},{3})",
+              coord.Description, stage, coordX, coordY) );
+            return true;
+          }
+          else F.Debug( string.Format("Coordinate \"{0}\" at Stage {1} ({2},{3}) (split disabled)",
+              coord.Description, stage, coordX, coordY) );
+        }
+      }
     }
   }
 
