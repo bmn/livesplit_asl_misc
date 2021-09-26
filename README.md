@@ -20,6 +20,11 @@ You can enable/disable specific event splits under the `Stage Events` category o
 
 To disable events (i.e. to only split at the end of a stage), uncheck the `Stage Events` settings category.
 
+## Pre-made Split Files
+A collection of LSS split files for LiveSplit, designed for this autosplitter, are available.
+
+See [Split Files](.Split%20Files) for more details.
+
 ## Custom Split Points
 The Custom Splits feature lets you choose extra places to split, triggered when you reach particular room coordinates.
 
@@ -36,7 +41,7 @@ To get started:
 * Select either `Current State` (data taken directly from the game) or `Variables` (data created by the autosplitter).
 * Choose your desired variable from the dropdown menu.
 
-The `Dead Time` variables provide a running timer of how much "dead time" (time spent unable to directly control Jesse) you've had. It can be useful for analysing your menuing, for example.
+The `Dead Time` variables provide a running timer of how much "dead time" (time spent unable to directly control Jesse) you've had. It can be useful for analysing different approaches to menuing, for example.
 * `DeadTimeIngame` includes cutscenes, decision points, and time spent walking through doors.
 * `DeadTimeInventory` includes time spent in the inventory/missions menu.
 * `DeadTimeMenu` includes time spent in the pause menu.
