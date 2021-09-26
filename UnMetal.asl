@@ -32,13 +32,14 @@ startup {
   D.DebugLogPath = Path.Combine(D.LiveSplitPath, "UnMetal.Autosplitter.log");
   D.Initialised = false;
 
-  // Game runs at around 35fps, lowering refreshRate can improve performance & smoothness
-  refreshRate = 40;
-
 
   F.Debug = (Action<string>)((message) =>
     print("[UnMetal] " + message) );
 
+  F.RoutePathFull = (Func<string, string>)((type) => {
+    string ext = (type == null) ? "" : "." + type;
+    return Path.Combine(D.LiveSplitPath, "UnMetal.Route" + ext + ".txt");
+  });
 
   F.WriteFile = (Action<string, string, bool>)((file, content, append) => {
     string dir = Path.GetDirectoryName(file);
@@ -157,6 +158,10 @@ startup {
       { 2, F.NewDeadTime("Inventory") },
       { 3, F.NewDeadTime("Ingame") },
     };
+    vars.DeadTime = "0:00";
+    vars.DeadTimeIngame = "0:00";
+    vars.DeadTimeInventory = "0:00";
+    vars.DeadTimeMenu = "0:00";
   });
   F.InitVariables();
 
@@ -210,12 +215,12 @@ startup {
     "The Great Escape",
     "Something Stinks Really Bad",
     "In The Lion's Den",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "Welcome To The Jungle",
+    "The Barracks",
+    "Engineering Problems",
+    "Boom Docks",
+    "A Thousand Eyes Are Watching You",
+    "Jerico's Heart",
     "",
   };
 
@@ -375,33 +380,6 @@ init {
       return o;
     });
 
-    F.NewCompletedBosses = (Func<List<dynamic>>)(() => {
-      var o = new List<dynamic>();
-      var b = A["Bosses"];
-      for (int i = 0; i < b.Length; i++) {
-        var cur = b.Current[i];
-        var ol = b.Old[i];
-        if (cur != ol) {
-          string key = F.BossKey(i, cur);
-          if (D.Bosses.ContainsKey(key))
-            o.Add(D.Bosses[key]);
-          else F.Debug( string.Format("New boss event at offset {0}, value {1} (undefined)",
-            i, cur) );
-        }
-      }
-      return o;
-    });
-
-    F.EventEnabled = (Func<dynamic, bool>)((evt) => {
-      string key = "Split.Event." + evt.OffsetHex;
-      return (settings.ContainsKey(key) && (settings[key]));
-    });
-
-    F.KeyItemEnabled = (Func<dynamic, bool>)((item) => {
-      string key = "Split.KeyItem." + item.OffsetHex;
-      return (settings.ContainsKey(key) && (settings[key]));
-    });
-
     F.SettingEnabled = (Func<string, bool>)((key) => 
       (settings.ContainsKey(key) && (settings[key])) );
 
@@ -410,14 +388,16 @@ init {
       foreach (var w in vars.D.M)
         cur[w.Name] = w.Current;
 
-      foreach (var w in vars.D.A) {
-        string content = "";
-        int j = 0;
-        for (int i = 0; i < w.Value.Length; i++) {
-          content += (w.Value.Current[i] == 0) ? "x" : (j % 10).ToString();
-          j++;
+      if (true) { // todo disable this for final version
+        foreach (var w in vars.D.A) {
+          string content = "";
+          int j = 0;
+          for (int i = 0; i < w.Value.Length; i++) {
+            content += (w.Value.Current[i] == 0) ? "x" : (j % 10).ToString();
+            j++;
+          }
+          cur[w.Key] = content;
         }
-        cur[w.Key] = content;
       }
     });
 
@@ -434,7 +414,7 @@ init {
     F.UpdateASLDeadTime = (Action)(() => {
       var state = M["GameState"];
       var cutscene = M["InCutscene"];
-      var stage = Math.Min(M["Stage"].Current - 1, 0);
+      var stage = Math.Max(M["Stage"].Current - 1, 0);
 
       if ( (state.Current != 0) && (A["StageTimes"].Current[stage] == 0)
         && ((state.Current != 3) || (cutscene.Current)) ) {
@@ -554,7 +534,7 @@ init {
     new MemoryWatcher<int>(offset + 0x4C)  { Name = "CurrentStageTime"},
     // 0 = main menu, 1 = menu pause/menu death, 2 = inventory/missions, 3 = ingame
     new MemoryWatcher<int>(offset + 0x50)  { Name = "GameState" },
-    new MemoryWatcher<bool>(offset + 0x54)  { Name = "InCutscene" },
+    new MemoryWatcher<bool>(offset + 0x54) { Name = "InCutscene" },
   });
 
   A.Clear();
@@ -680,7 +660,7 @@ split {
             return true;
           }
           else F.Debug( string.Format("Coordinate \"{0}\" at Stage {1} ({2},{3}) (split disabled)",
-              coord.Description, stage, coordX, coordY) );
+            coord.Description, stage, coordX, coordY) );
         }
       }
     }
