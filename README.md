@@ -23,7 +23,7 @@ To disable events (i.e. to only split at the end of a stage), uncheck the `Stage
 ## Pre-made Split Files
 A collection of LSS split files for LiveSplit, designed for this autosplitter, are available.
 
-See [Split Files](.Split%20Files) for more details.
+See [Split Files](./Split%20Files) for more details.
 
 ## Custom Split Points
 The Custom Splits feature lets you choose extra places to split, triggered when you reach particular room coordinates.
