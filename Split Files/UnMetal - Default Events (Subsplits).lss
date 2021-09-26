@@ -16,7 +16,7 @@
   <AttemptHistory />
   <Segments>
     <Segment>
-      <Name>Escaped the cell</Name>
+      <Name>-Escaped the cell</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -25,7 +25,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Found the sewer</Name>
+      <Name>-Found the sewer</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -34,7 +34,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Gave Harris the radio</Name>
+      <Name>-Gave Harris the radio</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -43,7 +43,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Jesse vs Grenade Guy</Name>
+      <Name>-Jesse vs Grenade Guy</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -52,7 +52,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Grenade Guy</Name>
+      <Name>-Grenade Guy</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -61,7 +61,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 1: The Great Escape Complete</Name>
+      <Name>{Stage 1: The Great Escape}Stage 1 Complete</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -70,7 +70,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Jesse vs Sgt Rosco</Name>
+      <Name>-Jesse vs Sgt Rosco</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -79,7 +79,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Sgt. Rosco</Name>
+      <Name>-Sgt. Rosco</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -88,7 +88,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Found intel file 1</Name>
+      <Name>-Found intel file 1</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -97,7 +97,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Gave Robert the radio</Name>
+      <Name>-Gave Robert the radio</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -106,7 +106,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Used the floating platform</Name>
+      <Name>-Used the floating platform</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -115,7 +115,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Ambush!</Name>
+      <Name>-Ambush!</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -124,7 +124,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Found the broken flamethrower</Name>
+      <Name>-Found the broken flamethrower</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -133,7 +133,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Jesse vs Sewerjunk</Name>
+      <Name>-Jesse vs Sewerjunk</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -142,7 +142,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Sewerjunk</Name>
+      <Name>-Sewerjunk</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -151,7 +151,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 2: Something Stinks Really Bad Complete</Name>
+      <Name>{Stage 2: Something Stinks Really Bad}Stage 2 Complete</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -160,7 +160,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Met Doctor Hoffman</Name>
+      <Name>-Met Doctor Hoffman</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -169,7 +169,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Found intel file 2</Name>
+      <Name>-Found intel file 2</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -178,7 +178,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Jesse vs Megadron</Name>
+      <Name>-Jesse vs Megadron</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -187,7 +187,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Megadron</Name>
+      <Name>-Megadron</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -196,7 +196,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Create the chloroform</Name>
+      <Name>-Create the chloroform</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -205,7 +205,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Found intel file 3</Name>
+      <Name>-Found intel file 3</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -214,7 +214,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Reach Lt. Markuson's office</Name>
+      <Name>-Reach Lt. Markuson's office</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -223,7 +223,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Reach the sickbay</Name>
+      <Name>-Reach the sickbay</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -232,7 +232,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Jesse vs Lt. Markuson</Name>
+      <Name>-Jesse vs Lt. Markuson</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -241,7 +241,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Lt. Markuson</Name>
+      <Name>-Lt. Markuson</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
@@ -250,7 +250,7 @@
       <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 3: In The Lion's Den Complete</Name>
+      <Name>{Stage 3: In The Lion's Den}Stage 3 Complete</Name>
       <Icon />
       <SplitTimes>
         <SplitTime name="Personal Best" />
