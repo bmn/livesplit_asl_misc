@@ -184,7 +184,7 @@ startup {
     F.NewBoss(1, 1, 2, "Reached Sgt. Rosco", true),
     F.NewBoss(1, 2, 2, "Sgt. Rosco", true),
     F.NewEvent(1, 2, "Found the first intel file", true),
-    F.NewEvent(2, 2, "Examined the truck's engine", true),
+    F.NewEvent(2, 2, "Examined the truck's engine", false),
     F.NewMission(7, 2, "Gave Robert the radio", true),
     F.NewMission(6, 2, "Built the floating platform", false),
     F.NewEvent(3, 2, "Used the floating platform for the first time", true),
