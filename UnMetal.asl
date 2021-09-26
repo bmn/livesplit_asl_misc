@@ -158,6 +158,8 @@ startup {
       { 2, F.NewDeadTime("Inventory") },
       { 3, F.NewDeadTime("Ingame") },
     };
+    D.RouteIndex = 0;
+    D.Route = new List<int[]>();
     vars.DeadTime = "0:00";
     vars.DeadTimeIngame = "0:00";
     vars.DeadTimeInventory = "0:00";
@@ -247,6 +249,14 @@ startup {
   settings.SetToolTip("Split.Stage", "Split on Stage Complete");
   settings.Add("Split.Event", true, "Stage Events", "Split");
   settings.SetToolTip("Split.Event", "Split when an event occurs during a stage");
+  settings.Add("Split.Route", false, "Custom Splits", "Split");
+  settings.SetToolTip("Split.Route", "Split when you reach certain areas.\n\nBy default this uses the route file:\n" + F.RoutePathFull(null) + "\n\nSelect one of ALPHA/BRAVO/CHARLIE below to use a different route file instead.\n\nSee the README for more information on custom splits.");
+  settings.Add("Split.Route.A", false, "Use route ALPHA", "Split.Route");
+  settings.SetToolTip("Split.Route.A", "Route file:\n" + F.RoutePathFull("A"));
+  settings.Add("Split.Route.B", false, "Use route BRAVO", "Split.Route");
+  settings.SetToolTip("Split.Route.B", "Route file:\n" + F.RoutePathFull("B"));
+  settings.Add("Split.Route.C", false, "Use route CHARLIE", "Split.Route");
+  settings.SetToolTip("Split.Route.C", "Route file:\n" + F.RoutePathFull("C"));
   
   
   for (int i = 1; i <= 3; i++) {
@@ -310,6 +320,15 @@ init {
       }
     }));
     D.EventLog.EntryWritten += F.EventLogWritten;
+
+    F.RoutePath = (Func<string>)(() => {
+      string ext = String.Empty;
+      foreach (var l in new char[] { 'A', 'B', 'C' }) {
+        if (settings["Split.Route." + l])
+          ext = "." + l;
+      }
+      return Path.Combine(D.LiveSplitPath, "UnMetal.Route" + ext + ".txt");
+    });
 
     F.UpdateAllArrays = (Action<Process>)((g) => {
       foreach (var m in A)
@@ -499,6 +518,45 @@ init {
           (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
     });
 
+    F.LoadRouteFromFile = (Action)(() => {
+      var route = new List<int[]>();
+      int stage = 0;
+      var coordSplit = new char[] { ',', '?', '!' };
+      var commentSplit = new string[] { "//" };
+
+      string path = F.RoutePath();
+      if (File.Exists(path)) {
+        string[] lines = File.ReadAllLines(path);
+        foreach (string l in lines) {
+          string line = l.Trim().ToLower();
+
+          if (line.StartsWith("stage")) {
+            if (int.TryParse(line.Substring(6), out stage)) {
+              //F.Debug("found stage " + stage);
+              if ( (stage < 1) || (stage > 10) )
+                stage = 0;
+            }
+          }
+          else if (stage == M["Stage"].Current) {
+            if (line.Contains(",")) {
+              var bits = line.Split(coordSplit, StringSplitOptions.RemoveEmptyEntries);
+              int x; int y;
+              if ( (int.TryParse(bits[0], out x)) && (int.TryParse(bits[1], out y)) ) {
+                int optional = line.Contains("?") ? 1 : 0;
+                int enabled = line.Contains("!") ? 1 : 0;
+                int en;
+                if ( (enabled == 1) && (bits.Length > 2) && (int.TryParse(bits[2], out en)) )
+                  enabled = en;
+                //F.Debug("new coord " + x.ToString() + "," + y.ToString());
+                route.Add( new int[] { x, y, enabled, optional } );
+              }
+            }
+          }
+        }
+        D.Route = route;
+      }
+    });
+
   }
   
 
@@ -651,6 +709,32 @@ split {
     int coordX =  M["RoomX"].Current;
     int coordY = M["RoomY"].Current;
     string key = F.CoordinateKey(stage, coordX, coordY);
+
+    if (settings["Split.Route"]) {
+      if (M["Stage"].Changed)
+        F.LoadRouteFromFile();
+
+      if (D.RouteIndex < D.Route.Count) {
+        int roomsAhead = 0;
+        int optionalGroup = 0;
+        int[] coord;
+        do {
+          coord = D.Route[D.RouteIndex + roomsAhead];
+          if ( (roomsAhead != 0) && (coord[3] == optionalGroup) ) {}
+          else if ( (coordX == coord[0]) && (coordY == coord[1]) ) {
+            D.RouteIndex += roomsAhead;
+            if (coord[2] == 1) {
+              F.Debug( string.Format("SPLIT for next room ({0},{1}) in Stage {2} route",
+                coordX, coordY, stage ) );
+              return true;
+            }
+          }
+          optionalGroup = coord[3];
+          roomsAhead++;
+        } while ( (coord[3] != 0) && ((D.RouteIndex + roomsAhead) < D.Route.Count) );
+      }
+    }
+
     if (D.Coordinates.ContainsKey(key)) {
       foreach (var coord in D.Coordinates[key]) {
         if ( (coord.Callback == null) || (coord.Callback()) ) {
