@@ -30,6 +30,11 @@ The Custom Splits feature lets you choose extra places to split, triggered when 
 
 See [Custom Splits](./Custom%20Splits) for more details.
 
+## Game Time Support
+This autosplitter supports LiveSplit's Game Time feature, allowing it to use the game's official speedrun timer (accessible in-game using the `SPEEDRUN` cheat code).
+
+To switch to Game Time, right click on the LiveSplit window and select `Compare Against/Game Time`.
+
 ## ASL Var Viewer Support
 The LiveSplit component [ASL Var Viewer](https://github.com/hawkerm/LiveSplit.ASLVarViewer) by hawkerm, allows you to add certain pieces of information about the run to your LiveSplit layout.
 
