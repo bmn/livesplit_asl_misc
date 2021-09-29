@@ -211,6 +211,51 @@ startup {
     F.NewBoss(4, 1, 3, "Reached Lt. Markuson", true),
     F.NewBoss(4, 2, 3, "Lt. Markuson", true),
     F.NewMission(18, 3, "Overcome the biometric scanner", false),
+
+    F.NewBoss(5, 1, 4, "Reached Turret Storm", true),
+    F.NewBoss(5, 2, 4, "Turret Storm", true),
+    // collected detector
+    // found the corpse
+    // fixed the compass
+    F.NewMission(25, 4, "Sneaked into the truck", false), // and 27?
+
+    F.NewBoss(6, 1, 5, "Reached Drill Instructor", true),
+    F.NewBoss(6, 2, 5, "Drill Instructor", true),
+    F.NewMission(28, 5, "Returned the stamped permission slip", false),
+    F.NewBoss(7, 1, 5, "Reached Machine Gun Mike", true),
+    F.NewBoss(7, 2, 5, "Machine Gun Mike", true),
+    F.NewBoss(8, 1, 5, "Reached Splash Mike", true),
+    F.NewBoss(8, 2, 5, "Splash Mike", true),
+
+    F.NewMission(30, 6, "Escape the truck", false),
+    F.NewBoss(9, 1, 6, "Reached Hugeel", true),
+    F.NewBoss(9, 2, 6, "Hugeel", true),
+
+    F.NewMission(39, 7, "Buy the SS Velles", true),
+    F.NewBoss(10, 1, 7, "Reach Nuclear Sub", true),
+    F.NewBoss(10, 2, 7, "Nuclear Sub", true),
+    F.NewMission(35, 7, "Fix one of the boats", false), // 36/37/38?
+    F.NewBoss(11, 1, 7, "Reach Black Thunder", true),
+    F.NewBoss(11, 2, 7, "Black Thunder", false),
+
+    F.NewMission(44, 8, "Approach the Omega building compound", false),
+    F.NewMission(32, 8, "Collect the bolt cutters", true),
+    F.NewMission(40, 8, "Create the clone of Mike", false),
+    F.NewMission(31, 8, "Approach the Omega building entrance", true),
+
+    F.NewMission(53, 9, "Cut the alarm wire", true),
+    F.NewMission(49, 9, "Find access card 4", true),
+    F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", true),
+    F.NewBoss(12, 2, 9, "Takuma Takagashi", true),
+    F.NewMission(51, 9, "Disable the comms tower", true), // and 52
+    F.NewMission(41, 9, "Reach the helicopter", true),
+    F.NewMission(48, 9, "Collect the catacombs map", true),
+
+    F.NewMission(20, 10, "Rescue Harris and Doctor Hoffman", false),
+    F.NewMission(46, 10, "Leave the X room with Harris", true),
+    F.NewBoss(13, 1, 10, "Reach General X", true),
+    F.NewBoss(13, 2, 10, "General X", true),
+    F.NewMission(45, 10, "\"Convince\" Harris", true),
   };
 
   var StageNames = new List<string>() {
@@ -223,7 +268,7 @@ startup {
     "Boom Docks",
     "A Thousand Eyes Are Watching You",
     "Jerico's Heart",
-    "",
+    "Escape Complete!",
   };
 
   settings.Add("Debug", true, "Debug Logging");
@@ -259,7 +304,7 @@ startup {
   settings.SetToolTip("Split.Route.C", "Route file:\n" + F.RoutePathFull("C"));
   
   
-  for (int i = 1; i <= 3; i++) {
+  for (int i = 1; i <= 10; i++) {
     string name = string.Format("Stage {0}: {1}", i, StageNames[i - 1]);
     settings.Add("Split.Stage." + i, true, name, "Split.Stage");
     settings.Add("Split.Event.Stage" + i, true, name, "Split.Event");
