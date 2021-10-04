@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definition>
+  <Name>UnMetal</Name>
+  <SplitNames>
+    <SplitName Id="Split.Stage.1" Name="Stage 1: The Great Escape" />
+    <SplitName Id="Split.Stage.2" Name="Stage 2: Something Stinks Really Bad" />
+    <SplitName Id="Split.Stage.3" Name="Stage 3: In The Lion's Den" />
+    <SplitName Id="Split.Stage.4" Name="Stage 4: Welcome To The Jungle" />
+    <SplitName Id="Split.Stage.5" Name="Stage 5: The Barracks" />
+    <SplitName Id="Split.Stage.6" Name="Stage 6: Engineering Problems" />
+    <SplitName Id="Split.Stage.7" Name="Stage 7: Boom Docks" />
+    <SplitName Id="Split.Stage.8" Name="Stage 8: A Thousand Eyes Are Watching You" />
+    <SplitName Id="Split.Stage.9" Name="Stage 9: Jerico's Heart" />
+    <SplitName Id="Split.Stage.10" Name="Stage 10: Escape Complete" />
+  </SplitNames>
+  <SplitFiles>
+    <SplitFile>
+      <Name>Stages Only</Name>
+      <Splits>
+        <Split Id="Split.Stage.1"/>
+        <Split Id="Split.Stage.2"/>
+        <Split Id="Split.Stage.3"/>
+        <Split Id="Split.Stage.4"/>
+        <Split Id="Split.Stage.5"/>
+        <Split Id="Split.Stage.6"/>
+        <Split Id="Split.Stage.7"/>
+        <Split Id="Split.Stage.8"/>
+        <Split Id="Split.Stage.9"/>
+        <Split Id="Split.Stage.10"/>
+      </Splits>
+    </SplitFile>
+    <SplitFile>
+      <Name>Stages and Events</Name>
+      <Splits>
+        <Section Id="Split.Stage.1">
+          <Splits>
+            <Split Id="Split.Event.00" Name="Escape the jail" />
+            <Split Id="Split.Mission.00" Name="Talk to Col. Harris" />
+            <Split Id="Split.Mission.02" Name="Pick up Harris' radio" />
+            <Split Id="Split.Mission.03" Name="Encrypt Harris' radio" />
+            <Split Id="Split.Mission.04" Name="Give Harris the radio" />
+            <Split Id="Split.Mission.11" Name="Encrypt Jesse's radio" />
+            <Split Id="Split.Boss.00.1" Name="Reach Grenade Guy" />
+            <Split Id="Split.Boss.00.2" Name="Grenade Guy" />
+            <Split Id="Split.Mission.05" Name="Enter the sewer" />
+            <Split Id="Split.Stage.1"/>
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.2">
+          <Splits>
+            <Split Id="Split.Mission.09" Name="Test the waters" />
+            <Split Id="Split.Boss.01.1" Name="Reach Sg. Rosco" />
+            <Split Id="Split.Boss.02.2" Name="Sg. Rosco" />
+            <Split Id="Split.Event.01" Name="Find intel file 1" />
+            <Split Id="Split.Event.02" Name="Examine the truck's engine" />
+            <Split Id="Split.Mission.07" Name="Give Robert the radio" />
+            <Split Id="Split.Mission.06" Name="Build the floating platform" />
+            <Split Id="Split.Event.03" Name="Use the floating platform" />
+            <Split Id="Split.Event.04" Name="Ambushed by rodents" />
+            <Split Id="Split.Event.05" Name="Find the broken flamethrower" />
+            <Split Id="Split.Boss.02.1" Name="Reach Sewerjunk" />
+            <Split Id="Split.Boss.02.2" Name="Sewerjunk" />
+            <Split Id="Split.Mission.08" Name="Escape from the sewer" />
+            <Split Id="Split.Stage.2"/>
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.3">
+          <Splits>
+            <Split Id="Split.Event.06" Name="Meet Doctor Hoffman" />
+            <Split Id="Split.Event.07" Name="Find the pistol" />
+            <Split Id="Split.Event.08" Name="Find intel file 2" />
+            <Split Id="Split.Mission.0A" Name="Reach the F1 elevator" />
+            <Split Id="Split.Boss.03.1" Name="Reach Megadron" />
+            <Split Id="Split.Boss.03.2" Name="Megadron" />
+            <Split Id="Split.Mission.10" Name="Mix the chloroform" />
+            <Split Id="Split.Event.09" Name="Find intel file 3" />
+            <Split Id="Split.Mission.13" Name="Disable the door lasers" />
+            <Split Id="Split.Mission.0C" Name="Reach Markuson's office" />
+            <Split Id="Split.Mission.16" Name="Use the chloroform" />
+            <Split Id="Split.Mission.0D" Name="Reach the sickbay in time" />
+            <Split Id="Split.Mission.17" Name="Hide from Markuson" />
+            <Split Id="Split.Mission.18" Name="Reenter the sickbay" />
+            <Split Id="Split.Boss.04.1" Name="Reach Lt. Markuson" />
+            <Split Id="Split.Boss.04.2" Name="Lt. Markuson" />
+            <Split Id="Split.Mission.12" Name="Overcome the biometric scanner" />
+            <Split Id="Split.Stage.3" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.4">
+          <Splits>
+            <Split Id="Split.Event.0A" Name="Get through the hounds" />
+            <Split Id="Split.Boss.05.1" Name="Reach Turret Storm" />
+            <Split Id="Split.Boss.05.2" Name="Turret Storm" />
+            <Split Id="Split.Event.0B" Name="Find the metal detector" />
+            <Split Id="Split.Event.0C" Name="Get through minefield 1" />
+            <Split Id="Split.Event.0D" Name="Get through minefield 2" />
+            <Split Id="Split.Event.0E" Name="Get through minefield 3" />
+            <Split Id="Split.Event.0F" Name="Find Henry's corpse" />
+            <Split Id="Split.Event.10" Name="Find a third unidentified(?) corpse" />
+            <Split Id="Split.Event.11" Name="Fix the compass" />
+            <Split Id="Split.Mission.19" Name="Sneak into the truck" />
+            <Split Id="Split.Stage.4" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.5">
+          <Splits>
+            <Split Id="Split.Event.12" Name="Meet Drunken Mike" />
+            <Split Id="Split.Boss.06.1" Name="Reach Drill Instructor" />
+            <Split Id="Split.Boss.06.2" Name="Drill Instructor" />
+            <Split Id="Split.Event.13" Name="Stamp the permission slip" />
+            <Split Id="Split.Mission.1C" Name="Return the permission slip" />
+            <Split Id="Split.Boss.07.1" Name="Reach Machine-Gun Mike" />
+            <Split Id="Split.Boss.07.2" Name="Machine-Gun Mike" />
+            <Split Id="Split.Boss.08.1" Name="Reach Splash Mike" />
+            <Split Id="Split.Boss.08.2" Name="Splash Mike" />
+            <Split Id="Split.Stage.5" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.6">
+          <Splits>
+            <Split Id="Split.Event.15" Name="Reach the engineers" />
+            <Split Id="Split.Event.17" Name="Find the logbook" />
+            <Split Id="Split.Event.16" Name="Recycle your useless junk" />
+            <Split Id="Split.Event.18" Name="Commandeer the submarine" />
+            <Split Id="Split.Boss.09.1" Name="Reach Hugeel" />
+            <Split Id="Split.Boss.09.2" Name="Hugeel" />
+            <Split Id="Split.Stage.6" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.7">
+          <Split Id="Split.Mission.27" Name="Buy the SS Velles" />
+          <Split Id="Split.Boss.0A.1" Name="Reach Nuclear Sub" />
+          <Split Id="Split.Boss.0A.2" Name="Nuclear Sub" />
+          <Split Id="Split.Mission.23" Name="Repair one of the boats" />
+          <Split Id="Split.Boss.0B.1" Name="Reach Black Thunder" />
+          <Split Id="Split.Boss.0B.2" Name="Black Thunder" />
+          <Split Id="Split.Stage.7" />
+        </Section>
+        <Section Id="Split.Stage.8">
+          <Split Id="Split.Mission.2C" Name="Approach the compound" />
+          <Split Id="Split.Mission.20" Name="Collect the bolt cutters" />
+          <Split Id="Split.Event.1C" Name="Find the uniforms" />
+          <Split Id="Split.Event.1D" Name="Find the EM grenades" />
+          <Split Id="Split.Mission.28" Name="Create a clone of Mike" />
+          <Split Id="Split.Mission.1F" Name="Approach the Omega Building" />
+          <Split Id="Split.Stage.8" />
+        </Section>
+        <Section Id="Split.Stage.9">
+          <Splits>
+            <Split Id="Split.Mission.35" Name="Disable the F1 alarm system" />
+            <Split Id="Split.Event.20" Name="Meet Doctor Hoffman" />
+            <Split Id="Split.Event.21" Name="Find the anti-rad suit" />
+            <Split Id="Split.Event.22" Name="Meet Doctor Hoffman again" />
+            <Split Id="Split.Mission.31" Name="Find access card 4" />
+            <Split Id="Split.Event.28" Name="Enter the third floor" />
+            <Split Id="Split.Boss.0C.1" Name="Reach Takuma Takagashi" />
+            <Split Id="Split.Boss.0C.2" Name="Takuma Takagashi" />
+            <Split Id="Split.Event.25" Name="Enter the rooftop" />
+            <Split Id="Split.Mission.33" Name="Disable the communications tower" />
+            <Split Id="Split.Mission.29" Name="Check the helicopter" />
+            <Split Id="Split.Event.29" Name="Get the maze directions from Mike" />
+            <Split Id="Split.Event.2A" Name="Find the night goggles" />
+            <Split Id="Split.Event.2B" Name="Reach the first maze intersection" />
+            <Split Id="Split.Stage.9" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.10">
+          <Splits>
+            <Split Id="Split.Event.2C" Name="Set the C4 on the gas tank" />
+            <Split Id="Split.Mission.14" Name="Rescue Harris and Doctor" />
+            <Split Id="Split.Mission.2E" Name="Leave the X room with Harris" />
+            <Split Id="Split.Boss.0D.1" Name="Reach General X" />
+            <Split Id="Split.Event.2F" Name="Drone phase" />
+            <Split Id="Split.Event.30" Name="Tank phase" />
+            <Split Id="Split.Boss.0D.2" Name="General X" />
+            <Split Id="Split.Mission.2D" Name='"Convince" Harris' />
+            <Split Id="Split.Stage.10" />
+          </Splits>
+        </Section>
+      </Splits>
+    </SplitFile>
+  </SplitFiles>
+</Definition>
