@@ -1,14 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Run version="1.7.0">
   <GameIcon />
-  <GameName>UnMetal</GameName>
-  <CategoryName>Any%</CategoryName>
+  <GameName />
+  <CategoryName>Stages Only</CategoryName>
   <Metadata>
     <Run id="" />
-    <Platform usesEmulator="False">
-    </Platform>
-    <Region>
-    </Region>
+    <Platform usesEmulator="False" />
+    <Region />
     <Variables />
   </Metadata>
   <Offset>00:00:00</Offset>
@@ -16,95 +14,94 @@
   <AttemptHistory />
   <Segments>
     <Segment>
-      <Name>Stage 1</Name>
+      <Name>Stage 1: The Great Escape</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 2</Name>
+      <Name>Stage 2: Something Stinks Really Bad</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 3</Name>
+      <Name>Stage 3: In The Lion's Den</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 4</Name>
+      <Name>Stage 4: Welcome To The Jungle</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 5</Name>
+      <Name>Stage 5: The Barracks</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 6</Name>
+      <Name>Stage 6: Engineering Problems</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 7</Name>
+      <Name>Stage 7: Boom Docks</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 8</Name>
+      <Name>Stage 8: A Thousand Eyes Are Watching You</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 9</Name>
+      <Name>Stage 9: Jerico's Heart</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
     <Segment>
-      <Name>Stage 10</Name>
+      <Name>Stage 10: Escape Complete</Name>
       <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
       <SplitTimes>
         <SplitTime name="Personal Best" />
       </SplitTimes>
-      <BestSegmentTime />
-      <SegmentHistory />
     </Segment>
   </Segments>
-  <AutoSplitterSettings />
 </Run>
