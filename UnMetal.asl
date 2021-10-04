@@ -212,48 +212,70 @@ startup {
     F.NewBoss(4, 2, 3, "Lt. Markuson", true),
     F.NewMission(18, 3, "Overcome the biometric scanner", false),
 
+    F.NewEvent(10, 4, "Got past the hounds", true),
     F.NewBoss(5, 1, 4, "Reached Turret Storm", true),
     F.NewBoss(5, 2, 4, "Turret Storm", true),
-    // collected detector
-    // found the corpse
-    // fixed the compass
+    F.NewEvent(11, 4, "Found the metal detector", true),
+    F.NewEvent(12, 4, "Got through the first minefield", true),
+    F.NewEvent(13, 4, "Got through the second minefield", true),
+    F.NewEvent(14, 4, "Got through the third minefield", true),
+    F.NewEvent(15, 4, "Found Henry's corpse", true),
+    F.NewEvent(16, 4, "Found a third unidentified(?) corpse", true),
+    F.NewEvent(17, 4, "Fixed the compass", false),
     F.NewMission(25, 4, "Sneaked into the truck", false), // and 27?
 
-    F.NewBoss(6, 1, 5, "Reached Drill Instructor", true),
-    F.NewBoss(6, 2, 5, "Drill Instructor", true),
-    F.NewMission(28, 5, "Returned the stamped permission slip", false),
+    F.NewEvent(18, 5, "Met Drunken Mike", false),
+    F.NewBoss(6, 1, 5, "Reached Drill Instructor", false),
+    F.NewBoss(6, 2, 5, "Drill Instructor", false),
+    F.NewEvent(19, 5, "Stamped the permission slip", false),
+    F.NewMission(28, 5, "Returned the stamped permission slip", false), // also Event 19
     F.NewBoss(7, 1, 5, "Reached Machine Gun Mike", true),
     F.NewBoss(7, 2, 5, "Machine Gun Mike", true),
     F.NewBoss(8, 1, 5, "Reached Splash Mike", true),
     F.NewBoss(8, 2, 5, "Splash Mike", true),
 
-    F.NewMission(30, 6, "Escape the truck", false),
+    F.NewEvent(21, 6, "Reach the engineers", true),
+    F.NewEvent(23, 6, "Find the logbook", true),
+    F.NewEvent(22, 6, "Recycle your useless junk", true),
+    F.NewEvent(24, 6, "Commandeer the submarine", true),
     F.NewBoss(9, 1, 6, "Reached Hugeel", true),
     F.NewBoss(9, 2, 6, "Hugeel", true),
 
     F.NewMission(39, 7, "Buy the SS Velles", true),
     F.NewBoss(10, 1, 7, "Reach Nuclear Sub", true),
     F.NewBoss(10, 2, 7, "Nuclear Sub", true),
-    F.NewMission(35, 7, "Fix one of the boats", false), // 36/37/38?
+    F.NewMission(35, 7, "Fix one of the boats", false),
     F.NewBoss(11, 1, 7, "Reach Black Thunder", true),
     F.NewBoss(11, 2, 7, "Black Thunder", false),
 
     F.NewMission(44, 8, "Approach the Omega building compound", false),
     F.NewMission(32, 8, "Collect the bolt cutters", true),
+    F.NewEvent(28, 8, "Collect the uniforms", true),
+    F.NewEvent(29, 8, "Collect EM grenades", true),
     F.NewMission(40, 8, "Create the clone of Mike", false),
     F.NewMission(31, 8, "Approach the Omega building entrance", true),
 
     F.NewMission(53, 9, "Cut the alarm wire", true),
+    F.NewEvent(32, 9, "Meet Doctor Hoffman", true),
+    F.NewEvent(33, 9, "Collect the anti-rad suit", false),
+    F.NewEvent(34, 9, "Meet Doctor Hoffman again", true),
     F.NewMission(49, 9, "Find access card 4", true),
+    F.NewEvent(40, 9, "Enter the 3rd floor", true),
     F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", true),
     F.NewBoss(12, 2, 9, "Takuma Takagashi", true),
+    F.NewEvent(37, 9, "Enter the rooftop", true),
     F.NewMission(51, 9, "Disable the comms tower", true), // and 52
     F.NewMission(41, 9, "Reach the helicopter", true),
-    F.NewMission(48, 9, "Collect the catacombs map", true),
+    F.NewEvent(41, 9, "Get the maze directions from Mike", true),
+    F.NewEvent(42, 9, "Collect the night goggles", true),
+    F.NewEvent(43, 9, "Reach the first intersection in B1", true),
 
+    F.NewEvent(44, 10, "Place the C4 on the gas tank", true),
     F.NewMission(20, 10, "Rescue Harris and Doctor Hoffman", false),
     F.NewMission(46, 10, "Leave the X room with Harris", true),
     F.NewBoss(13, 1, 10, "Reach General X", true),
+    F.NewEvent(47, 10, "Complete Drone phase", true),
+    F.NewEvent(48, 10, "Complete Tank phase", true),
     F.NewBoss(13, 2, 10, "General X", true),
     F.NewMission(45, 10, "\"Convince\" Harris", true),
   };
