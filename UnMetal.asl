@@ -328,19 +328,16 @@ startup {
   
   for (int i = 1; i <= 10; i++) {
     string name = string.Format("Stage {0}: {1}", i, StageNames[i - 1]);
-    if (i != 10)
-      settings.Add("Split.Stage." + i, true, name, "Split.Stage");
+    settings.Add("Split.Stage." + i, true, name, "Split.Stage");
     settings.Add("Split.Event.Stage" + i, true, name, "Split.Event");
   }
-  settings.Add("Split.Mission.2D", true, "Stage 10: " + StageNames[9], "Split.Stage");
 
   D.Events = new Dictionary<int, dynamic>();
   D.Missions = new Dictionary<int, dynamic>();
   D.Bosses = new Dictionary<string, dynamic>();
   D.Coordinates = new Dictionary<string, List<dynamic>>();
   foreach (var evt in Events) {
-    if (evt.SettingsKey != "Split.Mission.2D")
-      settings.Add(evt.SettingsKey, evt.DefaultEnabled, evt.Description, "Split.Event.Stage" + evt.Stage);
+    settings.Add(evt.SettingsKey, evt.DefaultEnabled, evt.Description, "Split.Event.Stage" + evt.Stage);
     if (evt.ToolTip != null)
       settings.SetToolTip(evt.SettingsKey, evt.ToolTip);
     if (evt.Class == "Event")

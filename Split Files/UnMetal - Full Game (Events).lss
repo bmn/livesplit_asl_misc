@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName />
+  <CategoryName>Full Game (Events)</CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
@@ -11,10 +11,9 @@
   </Metadata>
   <Offset>00:00:00</Offset>
   <AttemptCount>0</AttemptCount>
-  <AttemptHistory />
   <Segments>
     <Segment>
-      <Name>-Escape the cell</Name>
+      <Name>Escape the cell</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -23,7 +22,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Discover the sewer</Name>
+      <Name>Discover the sewer</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -32,7 +31,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Give Harris the radio</Name>
+      <Name>Give Harris the radio</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -41,7 +40,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Grenade Guy</Name>
+      <Name>Reach Grenade Guy</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -50,7 +49,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Grenade Guy</Name>
+      <Name>Defeat Grenade Guy</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -68,7 +67,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Sg. Rosco</Name>
+      <Name>Reach Sg. Rosco</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -77,7 +76,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Sg. Rosco</Name>
+      <Name>Defeat Sg. Rosco</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -86,7 +85,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find intel file 1</Name>
+      <Name>Find intel file 1</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -95,7 +94,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Give Robert the radio</Name>
+      <Name>Give Robert the radio</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -104,7 +103,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get past the sewer channel</Name>
+      <Name>Get past the sewer channel</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -113,7 +112,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Ambushed by rodents</Name>
+      <Name>Ambushed by rodents</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -122,7 +121,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the broken flamethrower</Name>
+      <Name>Find the broken flamethrower</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -131,7 +130,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Sewerjunk</Name>
+      <Name>Reach Sewerjunk</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -140,7 +139,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Sewerjunk</Name>
+      <Name>Defeat Sewerjunk</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -158,7 +157,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Meet Doctor Hoffman</Name>
+      <Name>Meet Doctor Hoffman</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -167,7 +166,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find intel file 2</Name>
+      <Name>Find intel file 2</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -176,7 +175,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Megadron</Name>
+      <Name>Reach Megadron</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -185,7 +184,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Megadron</Name>
+      <Name>Defeat Megadron</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -194,7 +193,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Mix the chloroform</Name>
+      <Name>Mix the chloroform</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -203,7 +202,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find intel file 3</Name>
+      <Name>Find intel file 3</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -212,7 +211,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Markuson's office</Name>
+      <Name>Reach Markuson's office</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -221,7 +220,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach the sickbay in time</Name>
+      <Name>Reach the sickbay in time</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -230,7 +229,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Lt. Markuson</Name>
+      <Name>Reach Lt. Markuson</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -239,7 +238,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Lt. Markuson</Name>
+      <Name>Defeat Lt. Markuson</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -257,7 +256,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get past the hounds</Name>
+      <Name>Get past the hounds</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -266,7 +265,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Turret Storm</Name>
+      <Name>Reach Turret Storm</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -275,7 +274,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Turret Storm</Name>
+      <Name>Defeat Turret Storm</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -284,7 +283,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the metal detector</Name>
+      <Name>Find the metal detector</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -293,7 +292,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get through minefield 1</Name>
+      <Name>Get through minefield 1</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -302,7 +301,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get through minefield 2</Name>
+      <Name>Get through minefield 2</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -311,7 +310,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get through minefield 3</Name>
+      <Name>Get through minefield 3</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -320,7 +319,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find Henry's corpse</Name>
+      <Name>Find Henry's corpse</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -329,7 +328,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find a third unidentified(?) corpse</Name>
+      <Name>Find a third unidentified(?) corpse</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -347,7 +346,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Machine-Gun Mike</Name>
+      <Name>Reach Machine-Gun Mike</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -356,7 +355,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Machine-Gun Mike</Name>
+      <Name>Defeat Machine-Gun Mike</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -365,7 +364,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Splash Mike</Name>
+      <Name>Reach Splash Mike</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -383,7 +382,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach the engineers</Name>
+      <Name>Reach the engineers</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -392,7 +391,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the logbook</Name>
+      <Name>Find the logbook</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -401,7 +400,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Recycle your useless junk</Name>
+      <Name>Recycle your useless junk</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -410,7 +409,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Commandeer the submarine</Name>
+      <Name>Commandeer the submarine</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -419,7 +418,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Hugeel</Name>
+      <Name>Reach Hugeel</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -428,7 +427,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Hugeel</Name>
+      <Name>Defeat Hugeel</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -446,7 +445,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Buy the SS Velles</Name>
+      <Name>Buy the SS Velles</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -455,7 +454,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Nuclear Sub</Name>
+      <Name>Reach Nuclear Sub</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -464,7 +463,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Nuclear Sub</Name>
+      <Name>Defeat Nuclear Sub</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -473,7 +472,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Black Thunder</Name>
+      <Name>Reach Black Thunder</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -491,7 +490,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Collect the bolt cutters</Name>
+      <Name>Collect the bolt cutters</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -500,7 +499,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the uniforms</Name>
+      <Name>Find the uniforms</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -509,7 +508,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the EM grenades</Name>
+      <Name>Find the EM grenades</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -518,7 +517,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Approach the Omega Building</Name>
+      <Name>Approach the Omega Building</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -536,7 +535,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Disable the F1 alarm system</Name>
+      <Name>Disable the F1 alarm system</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -545,7 +544,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Meet Doctor Hoffman</Name>
+      <Name>Meet Doctor Hoffman</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -554,7 +553,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Meet Doctor Hoffman again</Name>
+      <Name>Meet Doctor Hoffman again</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -563,7 +562,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find access card 4</Name>
+      <Name>Find access card 4</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -572,7 +571,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Enter the 3rd floor</Name>
+      <Name>Enter the 3rd floor</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -581,7 +580,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach Takuma Takagashi</Name>
+      <Name>Reach Takuma Takagashi</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -590,7 +589,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Takuma Takagashi</Name>
+      <Name>Defeat Takuma Takagashi</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -599,7 +598,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Enter the rooftop</Name>
+      <Name>Enter the rooftop</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -608,7 +607,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Disable the communications tower</Name>
+      <Name>Disable the communications tower</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -617,7 +616,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Check the helicopter</Name>
+      <Name>Check the helicopter</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -626,7 +625,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Get the maze directions from Mike</Name>
+      <Name>Get the maze directions from Mike</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -635,7 +634,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Find the night goggles</Name>
+      <Name>Find the night goggles</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -644,7 +643,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach the first maze intersection</Name>
+      <Name>Reach the first maze intersection</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -662,7 +661,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Set the C4 on the gas tank</Name>
+      <Name>Set the C4 on the gas tank</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -671,7 +670,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Leave the X room with Harris</Name>
+      <Name>Leave the X room with Harris</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -680,7 +679,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Reach General X</Name>
+      <Name>Reach General X</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -689,7 +688,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Drone phase</Name>
+      <Name>Defeat Drone phase</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -698,7 +697,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat Tank phase</Name>
+      <Name>Defeat Tank phase</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -707,7 +706,16 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Defeat General X</Name>
+      <Name>Defeat General X</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>"Convince" Harris</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />

@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName />
+  <CategoryName>Full Game (Stage Complete)</CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
@@ -11,7 +11,6 @@
   </Metadata>
   <Offset>00:00:00</Offset>
   <AttemptCount>0</AttemptCount>
-  <AttemptHistory />
   <Segments>
     <Segment>
       <Name>Stage 1: The Great Escape</Name>
