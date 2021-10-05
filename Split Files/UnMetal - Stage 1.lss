@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>UnMetal</GameName>
+  <CategoryName>Stage 1</CategoryName>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False" />
+    <Region />
+    <Variables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>0</AttemptCount>
+  <Segments>
+    <Segment>
+      <Name>Escape the cell</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Discover the sewer</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Give Harris the radio</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Reach Grenade Guy</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Defeat Grenade Guy</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 1: The Great Escape</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+  </Segments>
+</Run>

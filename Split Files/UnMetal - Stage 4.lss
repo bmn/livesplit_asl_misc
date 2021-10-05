@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>UnMetal</GameName>
+  <CategoryName>Stage 4</CategoryName>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False" />
+    <Region />
+    <Variables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>0</AttemptCount>
+  <Segments>
+    <Segment>
+      <Name>Get past the hounds</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Reach Turret Storm</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Defeat Turret Storm</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find the metal detector</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Get through minefield 1</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Get through minefield 2</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Get through minefield 3</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find Henry's corpse</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find a third unidentified(?) corpse</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 4: Welcome To The Jungle</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+  </Segments>
+</Run>

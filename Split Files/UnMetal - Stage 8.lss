@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>UnMetal</GameName>
+  <CategoryName>Stage 8</CategoryName>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False" />
+    <Region />
+    <Variables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>0</AttemptCount>
+  <Segments>
+    <Segment>
+      <Name>Collect the bolt cutters</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find the uniforms</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find the EM grenades</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Approach the Omega Building</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 8: A Thousand Eyes Are Watching You</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+  </Segments>
+</Run>

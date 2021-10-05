@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>UnMetal</GameName>
+  <CategoryName>Stage 2</CategoryName>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False" />
+    <Region />
+    <Variables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>0</AttemptCount>
+  <Segments>
+    <Segment>
+      <Name>Reach Sg. Rosco</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Defeat Sg. Rosco</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find intel file 1</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Give Robert the radio</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Get past the sewer channel</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Ambushed by rodents</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Find the broken flamethrower</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Reach Sewerjunk</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Defeat Sewerjunk</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 2: Something Stinks Really Bad</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+  </Segments>
+</Run>
