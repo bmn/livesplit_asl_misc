@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Run version="1.7.0">
   <GameIcon />
-  <GameName />
-  <CategoryName>Stages and Events</CategoryName>
+  <GameName>UnMetal</GameName>
+  <CategoryName />
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
@@ -14,7 +14,7 @@
   <AttemptHistory />
   <Segments>
     <Segment>
-      <Name>Escape the jail</Name>
+      <Name>Escape the cell</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -50,7 +50,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Grenade Guy</Name>
+      <Name>Defeat Grenade Guy</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -77,7 +77,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Sg. Rosco</Name>
+      <Name>Defeat Sg. Rosco</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -104,7 +104,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Use the floating platform</Name>
+      <Name>Get past the sewer channel</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -140,7 +140,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Sewerjunk</Name>
+      <Name>Defeat Sewerjunk</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -185,7 +185,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Megadron</Name>
+      <Name>Defeat Megadron</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -239,7 +239,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Lt. Markuson</Name>
+      <Name>Defeat Lt. Markuson</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -257,7 +257,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Get through the hounds</Name>
+      <Name>Get past the hounds</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -275,7 +275,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Turret Storm</Name>
+      <Name>Defeat Turret Storm</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -356,7 +356,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Machine-Gun Mike</Name>
+      <Name>Defeat Machine-Gun Mike</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -428,7 +428,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Hugeel</Name>
+      <Name>Defeat Hugeel</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -464,7 +464,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Nuclear Sub</Name>
+      <Name>Defeat Nuclear Sub</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -572,7 +572,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Enter the third floor</Name>
+      <Name>Enter the 3rd floor</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -590,7 +590,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Takuma Takagashi</Name>
+      <Name>Defeat Takuma Takagashi</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -689,7 +689,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Drone phase</Name>
+      <Name>Defeat Drone phase</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -698,7 +698,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Tank phase</Name>
+      <Name>Defeat Tank phase</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -707,7 +707,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>General X</Name>
+      <Name>Defeat General X</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />

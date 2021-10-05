@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Run version="1.7.0">
   <GameIcon />
-  <GameName />
-  <CategoryName>Stages Only</CategoryName>
+  <GameName>UnMetal</GameName>
+  <CategoryName />
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
