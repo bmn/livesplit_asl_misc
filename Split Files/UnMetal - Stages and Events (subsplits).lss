@@ -23,7 +23,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Talk to Col. Harris</Name>
+      <Name>-Discover the sewer</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -374,15 +374,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Splash Mike</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Stage 5: The Barracks</Name>
       <Icon />
       <BestSegmentTime />
@@ -455,6 +446,96 @@
       </SplitTimes>
     </Segment>
     <Segment>
+      <Name>-Buy the SS Velles</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Reach Nuclear Sub</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Nuclear Sub</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Reach Black Thunder</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 7: Boom Docks</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Collect the bolt cutters</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Find the uniforms</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Find the EM grenades</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Approach the Omega Building</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>Stage 8: A Thousand Eyes Are Watching You</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
       <Name>-Disable the F1 alarm system</Name>
       <Icon />
       <BestSegmentTime />
@@ -483,6 +564,15 @@
     </Segment>
     <Segment>
       <Name>-Find access card 4</Name>
+      <Icon />
+      <BestSegmentTime />
+      <SegmentHistory />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+    </Segment>
+    <Segment>
+      <Name>-Enter the third floor</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -618,15 +708,6 @@
     </Segment>
     <Segment>
       <Name>-General X</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
-      <Name>-"Convince" Harris</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
