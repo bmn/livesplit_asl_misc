@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName>Stage 10</CategoryName>
+  <CategoryName>Stage 4 (with skips)</CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
@@ -13,7 +13,7 @@
   <AttemptCount>0</AttemptCount>
   <Segments>
     <Segment>
-      <Name>Set the C4 on the gas tank</Name>
+      <Name>Get past the hounds</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -22,7 +22,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Leave the X room with Harris</Name>
+      <Name>Get through minefield 2</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -31,7 +31,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Reach General X</Name>
+      <Name>Find Henry's corpse</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -40,7 +40,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Defeat General X</Name>
+      <Name>Find a third unidentified(?) corpse</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />
@@ -49,7 +49,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Stage 10: Escape Complete</Name>
+      <Name>Stage 4: Welcome To The Jungle</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />

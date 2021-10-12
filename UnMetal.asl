@@ -230,7 +230,7 @@ startup {
     F.NewEvent(19, 5, "Stamp the permission slip", false),
     F.NewMission(28, 5, "Return the permission slip", false), // also Event 19
     F.NewBoss(7, 1, 5, "Reach Machine-Gun Mike", true),
-    F.NewBoss(7, 2, 5, "Defeat Machine-Gun Mike", true),
+    F.NewBoss(7, 2, 5, "Defeat Machine-Gun Mike", false),
     F.NewBoss(8, 1, 5, "Reach Splash Mike", true),
     F.NewBoss(8, 2, 5, "Defeat Splash Mike", false),
 
@@ -255,7 +255,7 @@ startup {
     F.NewMission(40, 8, "Create a clone of Mike", false),
     F.NewMission(31, 8, "Approach the Omega building", true),
 
-    F.NewMission(53, 9, "Disable the F1 alarm system", true),
+    F.NewMission(53, 9, "Disable the F1 alarm system", false),
     F.NewEvent(32, 9, "Meet Doctor Hoffman", true),
     F.NewEvent(33, 9, "Find the anti-rad suit", false),
     F.NewEvent(34, 9, "Meet Doctor Hoffman again", true),
@@ -274,10 +274,10 @@ startup {
     F.NewMission(20, 10, "Rescue Harris and Doctor", false),
     F.NewMission(46, 10, "Leave the X room with Harris", true),
     F.NewBoss(13, 1, 10, "Reach General X", true),
-    F.NewEvent(47, 10, "Defeat the drones", true),
-    F.NewEvent(48, 10, "Defeat the tank", true),
+    F.NewEvent(47, 10, "Defeat the drones", false),
+    F.NewEvent(48, 10, "Defeat the tank", false),
     F.NewBoss(13, 2, 10, "Defeat General X", true),
-    F.NewMission(45, 10, "\"Convince\" Harris", true),
+    F.NewMission(45, 10, "\"Convince\" Harris", false),
   };
 
   var StageNames = new List<string>() {

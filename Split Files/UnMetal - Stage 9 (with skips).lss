@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName>Stage 9</CategoryName>
+  <CategoryName>Stage 9 (with skips)</CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
@@ -14,15 +14,6 @@
   <Segments>
     <Segment>
       <Name>Meet Doctor Hoffman</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
-      <Name>Meet Doctor Hoffman again</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />

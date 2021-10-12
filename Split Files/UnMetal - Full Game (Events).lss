@@ -355,15 +355,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Defeat Machine-Gun Mike</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Reach Splash Mike</Name>
       <Icon />
       <BestSegmentTime />
@@ -535,15 +526,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Disable the F1 alarm system</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Meet Doctor Hoffman</Name>
       <Icon />
       <BestSegmentTime />
@@ -688,34 +670,7 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Defeat Drone phase</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
-      <Name>Defeat Tank phase</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Defeat General X</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
-      <Name>"Convince" Harris</Name>
       <Icon />
       <BestSegmentTime />
       <SegmentHistory />

@@ -12,6 +12,8 @@
     <SplitName Id="Split.Stage.8">Stage 8: A Thousand Eyes Are Watching You</SplitName>
     <SplitName Id="Split.Stage.9">Stage 9: Jerico's Heart</SplitName>
     <SplitName Id="Split.Stage.10">Stage 10: Escape Complete</SplitName>
+    <SplitName Id="Split.Event.0A">Get past the hounds</SplitName>
+    <SplitName Id="Split.Event.0D">Get through minefield 2</SplitName>
   </SplitNames>
   <Groups>
     <Group Id="Stage.1">
@@ -29,13 +31,16 @@
         <Split Id="Split.Stage.1">Stage 1: The Great Escape</Split>
       </Splits>
     </Group>
-    <Group Id="Stage.2">
+    <Group Id="Stage.2.1">
       <Splits>
         <Split Id="Split.Mission.09">Test the waters</Split>
         <Split Id="Split.Boss.01.1">Reach Sg. Rosco</Split>
         <Split Id="Split.Boss.02.2">Defeat Sg. Rosco</Split>
         <Split Id="Split.Event.01">Find intel file 1</Split>
-        <Split Id="Split.Event.02">Examine the truck's engine</Split>
+      </Splits>
+    </Group>
+    <Group Id="Stage.2.2">
+      <Splits>
         <Split Id="Split.Mission.07">Give Robert the radio</Split>
         <Split Id="Split.Mission.06">Build the floating platform</Split>
         <Split Id="Split.Event.03">Get past the sewer channel</Split>
@@ -45,6 +50,19 @@
         <Split Id="Split.Boss.02.2">Defeat Sewerjunk</Split>
         <Split Id="Split.Mission.08">Escape the sewer</Split>
         <Split Id="Split.Stage.2"/>
+      </Splits>
+    </Group>
+    <Group Id="Stage.2">
+      <Splits>
+        <Group Id="Stage.2.1" />
+        <Split Id="Split.Event.02">Examine the truck's engine</Split>
+        <Group Id="Stage.2.2" />
+      </Splits>
+    </Group>
+    <Group Id="Stage.2.Skips">
+      <Splits>
+        <Group Id="Stage.2.1" />
+        <Group Id="Stage.2.2" />
       </Splits>
     </Group>
     <Group Id="Stage.3">
@@ -69,20 +87,43 @@
         <Split Id="Split.Stage.3" />
       </Splits>
     </Group>
-    <Group Id="Stage.4">
+    <Group Id="Stage.4.1">
       <Splits>
-        <Split Id="Split.Event.0A">Get past the hounds</Split>
         <Split Id="Split.Boss.05.1">Reach Turret Storm</Split>
         <Split Id="Split.Boss.05.2">Defeat Turret Storm</Split>
         <Split Id="Split.Event.0B">Find the metal detector</Split>
         <Split Id="Split.Event.0C">Get through minefield 1</Split>
-        <Split Id="Split.Event.0D">Get through minefield 2</Split>
-        <Split Id="Split.Event.0E">Get through minefield 3</Split>
+      </Splits>
+    </Group>
+    <Group Id="Stage.4.2">
+      <Splits>
         <Split Id="Split.Event.0F">Find Henry's corpse</Split>
         <Split Id="Split.Event.10">Find a third unidentified(?) corpse</Split>
-        <Split Id="Split.Event.11">Fix the compass</Split>
+      </Splits>
+    </Group>
+    <Group Id="Stage.4.3">
+      <Splits>
         <Split Id="Split.Mission.19">Sneak into the truck</Split>
         <Split Id="Split.Stage.4" />
+      </Splits>
+    </Group>
+    <Group Id="Stage.4">
+      <Splits>
+        <Split Id="Split.Event.0A" />
+        <Group Id="Stage.4.1" />
+        <Split Id="Split.Event.0D" />
+        <Split Id="Split.Event.0E">Get through minefield 3</Split>
+        <Group Id="Stage.4.2" />
+        <Split Id="Split.Event.11">Fix the compass</Split>
+        <Group Id="Stage.4.3" />
+      </Splits>
+    </Group>
+    <Group Id="Stage.4.Skips">
+      <Splits>
+        <Split Id="Split.Event.0A" />
+        <Split Id="Split.Event.0D" />
+        <Group Id="Stage.4.2" />
+        <Group Id="Stage.4.3" />
       </Splits>
     </Group>
     <Group Id="Stage.5">
@@ -132,12 +173,20 @@
         <Split Id="Split.Stage.8" />
       </Splits>
     </Group>
-    <Group Id="Stage.9">
+    <Group Id="Stage.9.1">
       <Splits>
         <Split Id="Split.Mission.35">Disable the F1 alarm system</Split>
         <Split Id="Split.Event.20">Meet Doctor Hoffman</Split>
+      </Splits>
+    </Group>
+    <Group Id="Stage.9.2">
+      <Splits>
         <Split Id="Split.Event.21">Find the anti-rad suit</Split>
         <Split Id="Split.Event.22">Meet Doctor Hoffman again</Split>
+      </Splits>
+    </Group>
+    <Group Id="Stage.9.3">
+      <Splits>
         <Split Id="Split.Mission.31">Find access card 4</Split>
         <Split Id="Split.Event.28">Enter the 3rd floor</Split>
         <Split Id="Split.Boss.0C.1">Reach Takuma Takagashi</Split>
@@ -149,6 +198,19 @@
         <Split Id="Split.Event.2A">Find the night goggles</Split>
         <Split Id="Split.Event.2B">Reach the first maze intersection</Split>
         <Split Id="Split.Stage.9" />
+      </Splits>
+    </Group>
+    <Group Id="Stage.9">
+      <Splits>
+        <Group Id="Stage.9.1" />
+        <Group Id="Stage.9.2" />
+        <Group Id="Stage.9.3" />
+      </Splits>
+    </Group>
+    <Group Id="Stage.9.Skips">
+      <Splits>
+        <Group Id="Stage.9.1" />
+        <Group Id="Stage.9.3" />
       </Splits>
     </Group>
     <Group Id="Stage.10">
@@ -237,6 +299,61 @@
       </Splits>
     </SplitFile>
     <SplitFile>
+      <Name>Full Game (Events, with skips)</Name>
+      <Splits>
+        <Section Id="Split.Stage.1">
+          <Splits>
+            <Group Id="Stage.1" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.2">
+          <Splits>
+            <Group Id="Stage.2.Skips" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.3">
+          <Splits>
+            <Group Id="Stage.3" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.4">
+          <Splits>
+            <Group Id="Stage.4.Skips" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.5">
+          <Splits>
+            <Group Id="Stage.5" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.6">
+          <Splits>
+            <Group Id="Stage.6" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.7">
+          <Splits>
+            <Group Id="Stage.7" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.8">
+          <Splits>
+            <Group Id="Stage.8" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.9">
+          <Splits>
+            <Group Id="Stage.9.Skips" />
+          </Splits>
+        </Section>
+        <Section Id="Split.Stage.10">
+          <Splits>
+            <Group Id="Stage.10" />
+          </Splits>
+        </Section>
+      </Splits>
+    </SplitFile>
+    <SplitFile>
       <Name>Stage 1</Name>
       <Splits>
         <Group Id="Stage.1" />
@@ -249,6 +366,12 @@
       </Splits>
     </SplitFile>
     <SplitFile>
+      <Name>Stage 2 (with skips)</Name>
+      <Splits>
+        <Group Id="Stage.2.Skips" />
+      </Splits>
+    </SplitFile>
+    <SplitFile>
       <Name>Stage 3</Name>
       <Splits>
         <Group Id="Stage.3" />
@@ -258,6 +381,12 @@
       <Name>Stage 4</Name>
       <Splits>
         <Group Id="Stage.4" />
+      </Splits>
+    </SplitFile>
+    <SplitFile>
+      <Name>Stage 4 (with skips)</Name>
+      <Splits>
+        <Group Id="Stage.4.Skips" />
       </Splits>
     </SplitFile>
     <SplitFile>
@@ -288,6 +417,12 @@
       <Name>Stage 9</Name>
       <Splits>
         <Group Id="Stage.9" />
+      </Splits>
+    </SplitFile>
+    <SplitFile>
+      <Name>Stage 9 (with skips)</Name>
+      <Splits>
+        <Group Id="Stage.9.Skips" />
       </Splits>
     </SplitFile>
     <SplitFile>

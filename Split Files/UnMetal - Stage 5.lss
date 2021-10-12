@@ -22,15 +22,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Defeat Machine-Gun Mike</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Reach Splash Mike</Name>
       <Icon />
       <BestSegmentTime />
