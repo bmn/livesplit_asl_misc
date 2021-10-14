@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Definition>
   <Name>UnMetal</Name>
-  <SplitNames>
-    <SplitName Id="Split.Stage.1">Stage 1: The Great Escape</SplitName>
-    <SplitName Id="Split.Stage.2">Stage 2: Something Stinks Really Bad</SplitName>
-    <SplitName Id="Split.Stage.3">Stage 3: In The Lion's Den</SplitName>
-    <SplitName Id="Split.Stage.4">Stage 4: Welcome To The Jungle</SplitName>
-    <SplitName Id="Split.Stage.5">Stage 5: The Barracks</SplitName>
-    <SplitName Id="Split.Stage.6">Stage 6: Engineering Problems</SplitName>
-    <SplitName Id="Split.Stage.7">Stage 7: Boom Docks</SplitName>
-    <SplitName Id="Split.Stage.8">Stage 8: A Thousand Eyes Are Watching You</SplitName>
-    <SplitName Id="Split.Stage.9">Stage 9: Jerico's Heart</SplitName>
-    <SplitName Id="Split.Stage.10">Stage 10: Escape Complete</SplitName>
-    <SplitName Id="Split.Event.0A">Get past the hounds</SplitName>
-    <SplitName Id="Split.Event.0D">Get through minefield 2</SplitName>
-  </SplitNames>
+  <Splits>
+    <Split Id="Split.Stage.1">Stage 1: The Great Escape</Split>
+    <Split Id="Split.Stage.2">Stage 2: Something Stinks Really Bad</Split>
+    <Split Id="Split.Stage.3">Stage 3: In The Lion's Den</Split>
+    <Split Id="Split.Stage.4">Stage 4: Welcome To The Jungle</Split>
+    <Split Id="Split.Stage.5">Stage 5: The Barracks</Split>
+    <Split Id="Split.Stage.6">Stage 6: Engineering Problems</Split>
+    <Split Id="Split.Stage.7">Stage 7: Boom Docks</Split>
+    <Split Id="Split.Stage.8">Stage 8: A Thousand Eyes Are Watching You</Split>
+    <Split Id="Split.Stage.9">Stage 9: Jerico's Heart</Split>
+    <Split Id="Split.Stage.10">Stage 10: Escape Complete</Split>
+    <Split Id="Split.Event.0A">Get past the hounds</Split>
+    <Split Id="Split.Event.0D">Get through minefield 2</Split>
+  </Splits>
   <Groups>
     <Group Id="Stage.1">
       <Splits>
@@ -230,6 +230,7 @@
   <SplitFiles>
     <SplitFile>
       <Name>Full Game (Stage Complete)</Name>
+      <CategoryName />
       <Splits>
         <Split Id="Split.Stage.1" />
         <Split Id="Split.Stage.2" />
@@ -245,6 +246,7 @@
     </SplitFile>
     <SplitFile>
       <Name>Full Game (Events)</Name>
+      <CategoryName />
       <Splits>
         <Section Id="Split.Stage.1">
           <Splits>
@@ -300,6 +302,7 @@
     </SplitFile>
     <SplitFile>
       <Name>Full Game (Events, with skips)</Name>
+      <CategoryName />
       <Splits>
         <Section Id="Split.Stage.1">
           <Splits>
@@ -365,8 +368,9 @@
         <Group Id="Stage.2" />
       </Splits>
     </SplitFile>
-    <SplitFile>
+    <SplitFile Selected="false">
       <Name>Stage 2 (with skips)</Name>
+      <CategoryName>Stage 2</CategoryName>
       <Splits>
         <Group Id="Stage.2.Skips" />
       </Splits>
@@ -385,6 +389,7 @@
     </SplitFile>
     <SplitFile>
       <Name>Stage 4 (with skips)</Name>
+      <CategoryName>Stage 4</CategoryName>
       <Splits>
         <Group Id="Stage.4.Skips" />
       </Splits>
@@ -421,6 +426,7 @@
     </SplitFile>
     <SplitFile>
       <Name>Stage 9 (with skips)</Name>
+      <CategoryName>Stage 9</CategoryName>
       <Splits>
         <Group Id="Stage.9.Skips" />
       </Splits>

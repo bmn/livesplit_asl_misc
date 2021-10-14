@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName>Stage 9 (with skips)</CategoryName>
+  <CategoryName>Stage 9</CategoryName>
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />

@@ -65,19 +65,20 @@ startup {
     (Action<object, System.Timers.ElapsedEventArgs>)((sender, e) => F.FlushDebugBuffer()));
   
   
-  F.NewObject = (Func<int, string, bool, dynamic>)(
-    (stage, description, defaultEnabled) => {
+  F.NewObject = (Func<int, string, bool, bool, dynamic>)(
+    (stage, description, skippable, defaultEnabled) => {
     dynamic o = new ExpandoObject();
     o.Stage = stage;
     o.Description = description;
     o.DefaultEnabled = defaultEnabled;
+    o.Skippable = skippable;
     o.ToolTip = null;
     return o;
   });
 
-  F.NewEvent = (Func<int, int, string, bool, dynamic>)(
-    (offset, stage, description, defaultEnabled) => {
-    dynamic o = F.NewObject(stage, description, defaultEnabled);
+  F.NewEvent = (Func<int, int, string, bool, bool, dynamic>)(
+    (offset, stage, description, skippable, defaultEnabled) => {
+    dynamic o = F.NewObject(stage, description, skippable, defaultEnabled);
     o.Offset = offset;
     o.OffsetHex = offset.ToString("X2");
     o.Class = "Event";
@@ -85,17 +86,17 @@ startup {
     return o;
   });
 
-  F.NewMission = (Func<int, int, string, bool, dynamic>)(
-    (offset, stage, description, defaultEnabled) => {
-    dynamic o = F.NewEvent(offset, stage, description, defaultEnabled);
+  F.NewMission = (Func<int, int, string, bool, bool, dynamic>)(
+    (offset, stage, description, skippable, defaultEnabled) => {
+    dynamic o = F.NewEvent(offset, stage, description, skippable, defaultEnabled);
     o.Class = "Mission";
     o.SettingsKey = "Split.Mission." + o.OffsetHex;
     return o;
   });
 
-  F.NewBoss = (Func<int, int, int, string, bool, dynamic>)(
-    (offset, target, stage, description, defaultEnabled) => {
-    dynamic o = F.NewObject(stage, description, defaultEnabled);
+  F.NewBoss = (Func<int, int, int, string, bool, bool, dynamic>)(
+    (offset, target, stage, description, skippable, defaultEnabled) => {
+    dynamic o = F.NewObject(stage, description, skippable, defaultEnabled);
     o.Target = target;
     o.Offset = offset;
     o.OffsetHex = offset.ToString("X2");
@@ -104,9 +105,9 @@ startup {
     return o;
   });
 
-  F.NewCoordinate = (Func<int, int, int, string, bool, Func<bool>, dynamic>)(
-    (coordX, coordY, stage, description, defaultEnabled, callback) => {
-    dynamic o = F.NewObject(stage, description, defaultEnabled);
+  F.NewCoordinate = (Func<int, int, int, string, bool, bool, Func<bool>, dynamic>)(
+    (coordX, coordY, stage, description, skippable, defaultEnabled, callback) => {
+    dynamic o = F.NewObject(stage, description, skippable, defaultEnabled);
     o.CoordX = coordX;
     o.CoordY = coordY;
     o.Callback = callback;
@@ -169,115 +170,115 @@ startup {
 
 
   var Events = new List<dynamic>() {
-    F.NewEvent(0, 1, "Escape the cell", true),
-    F.NewMission(0, 1, "Discover the sewer", true),
-    F.NewMission(1, 1, "Talk to Col. Harris", false),
-    F.NewMission(2, 1, "Pick up Harris' radio", false),
-    F.NewMission(3, 1, "Encrypt Harris' radio", false),
-    F.NewMission(4, 1, "Give Harris the radio", true),
-    F.NewMission(17, 1, "Encrypt Jesse's radio", false),
-    F.NewBoss(0, 1, 1, "Reach Grenade Guy", true),
-    F.NewBoss(0, 2, 1, "Defeat Grenade Guy", true),
-    F.NewMission(5, 1, "Enter the sewer", false),
+    F.NewEvent(0, 1, "Escape the cell", false, true),
+    F.NewMission(0, 1, "Discover the sewer", false, true),
+    F.NewMission(1, 1, "Talk to Col. Harris", false, false),
+    F.NewMission(2, 1, "Pick up Harris' radio", false, false),
+    F.NewMission(3, 1, "Encrypt Harris' radio", false, false),
+    F.NewMission(4, 1, "Give Harris the radio", false, true),
+    F.NewMission(17, 1, "Encrypt Jesse's radio", false, false),
+    F.NewBoss(0, 1, 1, "Reach Grenade Guy", false, true),
+    F.NewBoss(0, 2, 1, "Defeat Grenade Guy", false, true),
+    F.NewMission(5, 1, "Enter the sewer", false, false),
 
-    F.NewMission(9, 2, "Test the waters", false),
-    F.NewBoss(1, 1, 2, "Reach Sg. Rosco", true),
-    F.NewBoss(1, 2, 2, "Sg. Rosco", true),
-    F.NewEvent(1, 2, "Find intel file 1", true),
-    F.NewEvent(2, 2, "Examine the truck's engine", false),
-    F.NewMission(7, 2, "Give Robert the radio", true),
-    F.NewMission(6, 2, "Build the floating platform", false),
-    F.NewEvent(3, 2, "Get past the sewer channel", true),
-    F.NewEvent(4, 2, "Ambushed by rodents", true),
-    F.NewEvent(5, 2, "Find the broken flamethrower", true),
-    F.NewBoss(2, 1, 2, "Reach Sewerjunk", true),
-    F.NewBoss(2, 2, 2, "Defeat Sewerjunk", true),
-    F.NewMission(8, 2, "Escape the sewer", false),
+    F.NewMission(9, 2, "Test the waters", false, false),
+    F.NewBoss(1, 1, 2, "Reach Sg. Rosco", false, true),
+    F.NewBoss(1, 2, 2, "Sg. Rosco", false, true),
+    F.NewEvent(1, 2, "Find intel file 1", false, true),
+    F.NewEvent(2, 2, "Examine the truck's engine", true, false),
+    F.NewMission(7, 2, "Give Robert the radio", false, true),
+    F.NewMission(6, 2, "Build the floating platform", false, false),
+    F.NewEvent(3, 2, "Get past the sewer channel", false, true),
+    F.NewEvent(4, 2, "Ambushed by rodents", false, true),
+    F.NewEvent(5, 2, "Find the broken flamethrower", false, true),
+    F.NewBoss(2, 1, 2, "Reach Sewerjunk", false, true),
+    F.NewBoss(2, 2, 2, "Defeat Sewerjunk", false, true),
+    F.NewMission(8, 2, "Escape the sewer", false, false),
 
-    F.NewEvent(6, 3, "Meet Doctor Hoffman", true),
-    F.NewEvent(7, 3, "Find the pistol", false),
-    F.NewEvent(8, 3, "Found intel file 2", true),
-    F.NewMission(10, 3, "Reach the F1 elevator", false),
-    F.NewBoss(3, 1, 3, "Reach Megadron", true),
-    F.NewBoss(3, 2, 3, "Defeat Megadron", true),
-    F.NewMission(16, 3, "Mix the chloroform", true),
-    F.NewEvent(9, 3, "Find intel file 3", true),
-    F.NewMission(19, 3, "Disable the door lasers", false),
-    F.NewMission(12, 3, "Reach Markuson's office", true),
-    F.NewMission(22, 3, "Use the chloroform", false),
-    F.NewMission(13, 3, "Reach the sickbay in time", true),
-    F.NewMission(23, 3, "Hide from Markuson", false),
-    F.NewMission(24, 3, "Reenter the sickbay", false),
-    F.NewBoss(4, 1, 3, "Reach Lt. Markuson", true),
-    F.NewBoss(4, 2, 3, "Defeat Lt. Markuson", true),
-    F.NewMission(18, 3, "Overcome the biometric scanner", false),
+    F.NewEvent(6, 3, "Meet Doctor Hoffman", false, true),
+    F.NewEvent(7, 3, "Find the pistol", false, false),
+    F.NewEvent(8, 3, "Found intel file 2", false, true),
+    F.NewMission(10, 3, "Reach the F1 elevator", false, false),
+    F.NewBoss(3, 1, 3, "Reach Megadron", false, true),
+    F.NewBoss(3, 2, 3, "Defeat Megadron", false, true),
+    F.NewMission(16, 3, "Mix the chloroform", false, true),
+    F.NewEvent(9, 3, "Find intel file 3", false, true),
+    F.NewMission(19, 3, "Disable the door lasers", false, false),
+    F.NewMission(12, 3, "Reach Markuson's office", false, true),
+    F.NewMission(22, 3, "Use the chloroform", true, false),
+    F.NewMission(13, 3, "Reach the sickbay in time", false, true),
+    F.NewMission(23, 3, "Hide from Markuson", false, false),
+    F.NewMission(24, 3, "Reenter the sickbay", false, false),
+    F.NewBoss(4, 1, 3, "Reach Lt. Markuson", false, true),
+    F.NewBoss(4, 2, 3, "Defeat Lt. Markuson", false, true),
+    F.NewMission(18, 3, "Overcome the biometric scanner", false, false),
 
-    F.NewEvent(10, 4, "Get past the hounds", true),
-    F.NewBoss(5, 1, 4, "Reach Turret Storm", true),
-    F.NewBoss(5, 2, 4, "Defeat Turret Storm", true),
-    F.NewEvent(11, 4, "Find the metal detector", true),
-    F.NewEvent(12, 4, "Get through minefield 1", true),
-    F.NewEvent(13, 4, "Get through minefield 2", true),
-    F.NewEvent(14, 4, "Get through minefield 3", true),
-    F.NewEvent(15, 4, "Find Henry's corpse", true),
-    F.NewEvent(16, 4, "Find a third unidentified(?) corpse", true),
-    F.NewEvent(17, 4, "Fix the compass", false),
-    F.NewMission(25, 4, "Sneak into the truck", false), // and 27?
+    F.NewEvent(10, 4, "Get past the hounds", false, true),
+    F.NewBoss(5, 1, 4, "Reach Turret Storm", true, true),
+    F.NewBoss(5, 2, 4, "Defeat Turret Storm", true, true),
+    F.NewEvent(11, 4, "Find the metal detector", true, true),
+    F.NewEvent(12, 4, "Get through minefield 1", true, true),
+    F.NewEvent(13, 4, "Get through minefield 2", false, true),
+    F.NewEvent(14, 4, "Get through minefield 3", true, true),
+    F.NewEvent(15, 4, "Find Henry's corpse", false, true),
+    F.NewEvent(16, 4, "Find a third unidentified(?) corpse", false, true),
+    F.NewEvent(17, 4, "Fix the compass", true, false),
+    F.NewMission(25, 4, "Sneak into the truck", false, false), // and 27?
 
-    F.NewEvent(18, 5, "Meet Drunken Mike", false),
-    F.NewBoss(6, 1, 5, "Reach Drill Instructor", false),
-    F.NewBoss(6, 2, 5, "Defeat Drill Instructor", false),
-    F.NewEvent(19, 5, "Stamp the permission slip", false),
-    F.NewMission(28, 5, "Return the permission slip", false), // also Event 19
-    F.NewBoss(7, 1, 5, "Reach Machine-Gun Mike", true),
-    F.NewBoss(7, 2, 5, "Defeat Machine-Gun Mike", false),
-    F.NewBoss(8, 1, 5, "Reach Splash Mike", true),
-    F.NewBoss(8, 2, 5, "Defeat Splash Mike", false),
+    F.NewEvent(18, 5, "Meet Drunken Mike", true, false),
+    F.NewBoss(6, 1, 5, "Reach Drill Instructor", true, false),
+    F.NewBoss(6, 2, 5, "Defeat Drill Instructor", true, false),
+    F.NewEvent(19, 5, "Stamp the permission slip", true, false),
+    F.NewMission(28, 5, "Return the permission slip", true, false), // also Event 19
+    F.NewBoss(7, 1, 5, "Reach Machine-Gun Mike", false, true),
+    F.NewBoss(7, 2, 5, "Defeat Machine-Gun Mike", true, false),
+    F.NewBoss(8, 1, 5, "Reach Splash Mike", false, true),
+    F.NewBoss(8, 2, 5, "Defeat Splash Mike", false, false),
 
-    F.NewEvent(21, 6, "Reach the engineers", true),
-    F.NewEvent(23, 6, "Find the logbook", true),
-    F.NewEvent(22, 6, "Recycle your useless junk", true),
-    F.NewEvent(24, 6, "Commandeer the submarine", true),
-    F.NewBoss(9, 1, 6, "Reach Hugeel", true),
-    F.NewBoss(9, 2, 6, "Defeat Hugeel", true),
+    F.NewEvent(21, 6, "Reach the engineers", false, true),
+    F.NewEvent(23, 6, "Find the logbook", false, true),
+    F.NewEvent(22, 6, "Recycle your useless junk", false, true),
+    F.NewEvent(24, 6, "Commandeer the submarine", false, true),
+    F.NewBoss(9, 1, 6, "Reach Hugeel", false, true),
+    F.NewBoss(9, 2, 6, "Defeat Hugeel", false, true),
 
-    F.NewMission(39, 7, "Buy the SS Velles", true),
-    F.NewBoss(10, 1, 7, "Reach Nuclear Sub", true),
-    F.NewBoss(10, 2, 7, "Defeat Nuclear Sub", true),
-    F.NewMission(35, 7, "Repair one of the boats", false),
-    F.NewBoss(11, 1, 7, "Reach Black Thunder", true),
-    F.NewBoss(11, 2, 7, "Defeat Black Thunder", false),
+    F.NewMission(39, 7, "Buy the SS Velles", false, true),
+    F.NewBoss(10, 1, 7, "Reach Nuclear Sub", false, true),
+    F.NewBoss(10, 2, 7, "Defeat Nuclear Sub", false, true),
+    F.NewMission(35, 7, "Repair one of the boats", false, false),
+    F.NewBoss(11, 1, 7, "Reach Black Thunder", false, true),
+    F.NewBoss(11, 2, 7, "Defeat Black Thunder", false, false),
 
-    F.NewMission(44, 8, "Approach the compound", false),
-    F.NewMission(32, 8, "Collect the bolt cutters", true),
-    F.NewEvent(28, 8, "Find the uniforms", true),
-    F.NewEvent(29, 8, "Find the EM grenades", true),
-    F.NewMission(40, 8, "Create a clone of Mike", false),
-    F.NewMission(31, 8, "Approach the Omega building", true),
+    F.NewMission(44, 8, "Approach the compound", false, false),
+    F.NewMission(32, 8, "Collect the bolt cutters", false, true),
+    F.NewEvent(28, 8, "Find the uniforms", false, true),
+    F.NewEvent(29, 8, "Find the EM grenades", false, true),
+    F.NewMission(40, 8, "Create a clone of Mike", false, false),
+    F.NewMission(31, 8, "Approach the Omega building", false, true),
 
-    F.NewMission(53, 9, "Disable the F1 alarm system", false),
-    F.NewEvent(32, 9, "Meet Doctor Hoffman", true),
-    F.NewEvent(33, 9, "Find the anti-rad suit", false),
-    F.NewEvent(34, 9, "Meet Doctor Hoffman again", true),
-    F.NewMission(49, 9, "Find access card 4", true),
-    F.NewEvent(40, 9, "Enter the 3rd floor", true),
-    F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", true),
-    F.NewBoss(12, 2, 9, "Defeat Takuma Takagashi", true),
-    F.NewEvent(37, 9, "Enter the rooftop", true),
-    F.NewMission(51, 9, "Disable the communications tower", true), // and 52
-    F.NewMission(41, 9, "Check the helicopter", true),
-    F.NewEvent(41, 9, "Get the maze directions from Mike", true),
-    F.NewEvent(42, 9, "Find the night goggles", true),
-    F.NewEvent(43, 9, "Reach the first maze intersection", true),
+    F.NewMission(53, 9, "Disable the F1 alarm system", true, false),
+    F.NewEvent(32, 9, "Meet Doctor Hoffman", false, true),
+    F.NewEvent(33, 9, "Find the anti-rad suit", true, false),
+    F.NewEvent(34, 9, "Meet Doctor Hoffman again", true, true),
+    F.NewMission(49, 9, "Find access card 4", false, true),
+    F.NewEvent(40, 9, "Enter the 3rd floor", false, true),
+    F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", false, true),
+    F.NewBoss(12, 2, 9, "Defeat Takuma Takagashi", false, true),
+    F.NewEvent(37, 9, "Enter the rooftop", false, true),
+    F.NewMission(51, 9, "Disable the communications tower", false, true), // and 52
+    F.NewMission(41, 9, "Check the helicopter", false, true),
+    F.NewEvent(41, 9, "Get the maze directions from Mike", false, true),
+    F.NewEvent(42, 9, "Find the night goggles", false, true),
+    F.NewEvent(43, 9, "Reach the first maze intersection", false, true),
 
-    F.NewEvent(44, 10, "Set the C4 on the gas tank", true),
-    F.NewMission(20, 10, "Rescue Harris and Doctor", false),
-    F.NewMission(46, 10, "Leave the X room with Harris", true),
-    F.NewBoss(13, 1, 10, "Reach General X", true),
-    F.NewEvent(47, 10, "Defeat the drones", false),
-    F.NewEvent(48, 10, "Defeat the tank", false),
-    F.NewBoss(13, 2, 10, "Defeat General X", true),
-    F.NewMission(45, 10, "\"Convince\" Harris", false),
+    F.NewEvent(44, 10, "Set the C4 on the gas tank", false, true),
+    F.NewMission(20, 10, "Rescue Harris and Doctor", false, false),
+    F.NewMission(46, 10, "Leave the X room with Harris", false, true),
+    F.NewBoss(13, 1, 10, "Reach General X", false, true),
+    F.NewEvent(47, 10, "Defeat the drones", false, false),
+    F.NewEvent(48, 10, "Defeat the tank", false, false),
+    F.NewBoss(13, 2, 10, "Defeat General X", false, true),
+    F.NewMission(45, 10, "\"Convince\" Harris", false, false),
   };
 
   var StageNames = new List<string>() {
@@ -293,43 +294,44 @@ startup {
     "Escape Complete!",
   };
 
-  settings.Add("Debug", true, "Debug Logging");
-  settings.Add("Debug.File", true, "Save debug information to LiveSplit directory", "Debug");
+  string pre = " ";
+  settings.Add("Debug", true, pre+"Debug Logging");
+  settings.Add("Debug.File", true, pre+"Save debug information to LiveSplit directory", "Debug");
   settings.SetToolTip("Debug.File", "Log location: " + D.DebugLogPath);
-  settings.Add("Debug.StdOut", true, "Log debug information to Windows debug log", "Debug");
+  settings.Add("Debug.StdOut", true, pre+"Log debug information to Windows debug log", "Debug");
   settings.SetToolTip("Debug.StdOut", "This can be viewed in a tool such as DebugView.");
 
-  settings.Add("Behaviour", true, "Behaviour");
-  settings.Add("Behaviour.ResetMainMenu", true, "Reset when returning to Main Menu", "Behaviour");
+  settings.Add("Behaviour", true, pre+"Behaviour");
+  settings.Add("Behaviour.ResetMainMenu", true, pre+"Reset when returning to Main Menu", "Behaviour");
   settings.SetToolTip("Behaviour.ResetMainMenu",
     "If ENABLED: will reset at the main menu\nIf DISABLED: will reset and restart timer on a new attempt");
 
-  settings.Add("ASL", true, "ASL Var Viewer Support");
+  settings.Add("ASL", true, pre+"ASL Var Viewer Support");
   settings.SetToolTip("ASL", "For use with hawkerm's ASL Var Viewer component for LiveSplit.\nhttps://github.com/hawkerm/LiveSplit.ASLVarViewer\n\nIf you don't use ASLVV, disabling these settings may slightly improve performance.");
-  settings.Add("ASL.DeadTime", true, "Dead Time", "ASL");
+  settings.Add("ASL.DeadTime", true, pre+"Dead Time", "ASL");
   settings.SetToolTip("ASL.DeadTime", "Tracks the amount of dead time spent in menus, skipping cutscenes, etc.\n\nProvided variables:\n * vars.DeadTime (total from all sources)\n * vars.DeadTimeIngame (decision-making, going through doors, etc.)\n * vars.DeadTimeInventory (inventory, missions)\n * vars.DeadTimeMenu (pause menu)");
-  settings.Add("ASL.DeadTime.StageReset", true, "Reset counters at the start of a new Stage", "ASL.DeadTime");
-  settings.Add("ASL.DeadTime.2DP", false, "Extra timer precision (to 2 decimal places)", "ASL.DeadTime");
+  settings.Add("ASL.DeadTime.StageReset", true, pre+"Reset counters at the start of a new Stage", "ASL.DeadTime");
+  settings.Add("ASL.DeadTime.2DP", false, pre+"Extra timer precision (to 2 decimal places)", "ASL.DeadTime");
 
-  settings.Add("Split", true, "Split on...");
-  settings.Add("Split.Stage", true, "Stage Complete", "Split");
+  settings.Add("Split", true, pre+"Split on...");
+  settings.Add("Split.Stage", true, pre+"Stage Complete", "Split");
   settings.SetToolTip("Split.Stage", "Split on Stage Complete");
-  settings.Add("Split.Event", true, "Stage Events", "Split");
+  settings.Add("Split.Event", true, pre+"Stage Events", "Split");
   settings.SetToolTip("Split.Event", "Split when an event occurs during a stage");
-  settings.Add("Split.Route", false, "Custom Splits", "Split");
+  settings.Add("Split.Route", false, pre+"Custom Splits", "Split");
   settings.SetToolTip("Split.Route", "Split when you reach certain areas.\n\nBy default this uses the route file:\n" + F.RoutePathFull(null) + "\n\nSelect one of ALPHA/BRAVO/CHARLIE below to use a different route file instead.\n\nSee the README for more information on custom splits.");
-  settings.Add("Split.Route.A", false, "Use route ALPHA", "Split.Route");
+  settings.Add("Split.Route.A", false, pre+"Use route ALPHA", "Split.Route");
   settings.SetToolTip("Split.Route.A", "Route file:\n" + F.RoutePathFull("A"));
-  settings.Add("Split.Route.B", false, "Use route BRAVO", "Split.Route");
+  settings.Add("Split.Route.B", false, pre+"Use route BRAVO", "Split.Route");
   settings.SetToolTip("Split.Route.B", "Route file:\n" + F.RoutePathFull("B"));
-  settings.Add("Split.Route.C", false, "Use route CHARLIE", "Split.Route");
+  settings.Add("Split.Route.C", false, pre+"Use route CHARLIE", "Split.Route");
   settings.SetToolTip("Split.Route.C", "Route file:\n" + F.RoutePathFull("C"));
   
   
   for (int i = 1; i <= 10; i++) {
     string name = string.Format("Stage {0}: {1}", i, StageNames[i - 1]);
-    settings.Add("Split.Stage." + i, true, name, "Split.Stage");
-    settings.Add("Split.Event.Stage" + i, true, name, "Split.Event");
+    settings.Add("Split.Stage." + i, true, pre+name, "Split.Stage");
+    settings.Add("Split.Event.Stage" + i, true, pre+name, "Split.Event");
   }
 
   D.Events = new Dictionary<int, dynamic>();
@@ -337,7 +339,8 @@ startup {
   D.Bosses = new Dictionary<string, dynamic>();
   D.Coordinates = new Dictionary<string, List<dynamic>>();
   foreach (var evt in Events) {
-    settings.Add(evt.SettingsKey, evt.DefaultEnabled, evt.Description, "Split.Event.Stage" + evt.Stage);
+    string skip = evt.Skippable ? "[S] " : "";
+    settings.Add(evt.SettingsKey, evt.DefaultEnabled, pre+skip+evt.Description, "Split.Event.Stage" + evt.Stage);
     if (evt.ToolTip != null)
       settings.SetToolTip(evt.SettingsKey, evt.ToolTip);
     if (evt.Class == "Event")

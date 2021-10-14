@@ -2,7 +2,7 @@
 <Run version="1.7.0">
   <GameIcon />
   <GameName>UnMetal</GameName>
-  <CategoryName>Full Game (Events, with skips)</CategoryName>
+  <CategoryName />
   <Metadata>
     <Run id="" />
     <Platform usesEmulator="False" />
