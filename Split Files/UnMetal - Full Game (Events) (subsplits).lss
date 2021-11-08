@@ -580,15 +580,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>-Enter the 3rd floor</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>-Reach Takuma Takagashi</Name>
       <Icon />
       <BestSegmentTime />

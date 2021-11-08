@@ -264,7 +264,7 @@ startup {
     F.NewEvent(37, 9, "Enter the rooftop", false, true),
     F.NewMission(51, 9, "Disable the communications tower", false, true), // and 52
     F.NewMission(41, 9, "Check the helicopter", false, true),
-    F.NewEvent(40, 9, "Enter the 3rd floor", false, true),
+    F.NewEvent(40, 9, "Enter the 3rd floor", false, false),
     F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", false, true),
     F.NewBoss(12, 2, 9, "Defeat Takuma Takagashi", false, true),
     F.NewEvent(41, 9, "Get the maze directions from Mike", false, true),
