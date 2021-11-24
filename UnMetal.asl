@@ -31,6 +31,7 @@ startup {
   D.LiveSplitPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
   D.DebugLogPath = Path.Combine(D.LiveSplitPath, "UnMetal.Autosplitter.log");
   D.Initialised = false;
+  D.Debug = false;
 
 
   F.Debug = (Action<string>)((message) =>
@@ -477,7 +478,7 @@ init {
       foreach (var w in vars.D.M)
         cur[w.Name] = w.Current;
 
-      if (true) { // todo disable this for final version
+      if (D.Debug) {
         foreach (var w in vars.D.A) {
           string content = "";
           int j = 0;
