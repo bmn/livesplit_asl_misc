@@ -158,7 +158,8 @@ startup {
       { "AreaTime", 0x56669c },
       { "GameStartPtr", 0x11b1454 },
       { "CharacterState", 0x5666af },
-      { "CharacterDirection", 0x5666ac }
+      { "CharacterDirection", 0x5666ac },
+      { "DogTags", 0x56693a },
     } },
     { "GGSJA4", new Dictionary<string, int>() { // Japan
       { "GameTime", 0x5a1a5c },
@@ -177,7 +178,8 @@ startup {
       { "AreaTime", 0x5a1a04 },
       { "GameStartPtr", 0x11b1454 },
       { "CharacterState", 0x5a1a17 },
-      { "CharacterDirection", 0x5a1a14 }
+      { "CharacterDirection", 0x5a1a14 },
+      { "DogTags", 0x5a1ca2 },
     } },
     { "GGSEA4", new Dictionary<string, int>() { // USA
       { "GameTime", 0x5a1a58 },
@@ -196,7 +198,8 @@ startup {
       { "AreaTime", 0x5a1a00 },
       { "GameStartPtr", 0x11b1334 },
       { "CharacterState", 0x5a1a13 },
-      { "CharacterDirection", 0x5a1a10 }
+      { "CharacterDirection", 0x5a1a10 },
+      { "DogTags", 0x5a1c9e },
     } }
   };
   
@@ -416,6 +419,7 @@ update {
     
     current.Alerts = 0;
     current.Continues = 0;
+    current.DogTags = 0;
     current.Kills = 0;
     current.Rations = 0;
     current.Saves = 0;
@@ -434,6 +438,7 @@ update {
   current.Rations = D.Read.Short( D.VarAddr("Rations") );
   current.Saves = D.Read.Short( D.VarAddr("Saves") );
   current.ShotsFired = D.Read.Short( D.VarAddr("ShotsFired") );
+  current.DogTags = D.Read.Short( D.VarAddr("DogTags") );
   
   return true;
 }
