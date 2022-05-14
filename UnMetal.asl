@@ -1,5 +1,5 @@
 /*********************************************************/
-/* UnMetal (PC) Autosplitter dev                         */
+/* UnMetal (PC) Autosplitter REV0                        */
 /*                                                       */
 /* Created by bmn for Metal Gear Solid Speedrunners      */
 /*                                                       */
