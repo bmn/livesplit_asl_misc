@@ -6,7 +6,7 @@ Development of each splitter occurs in their individual branches. When a stable 
 ## In This Repo...
 * [Metal Gear Solid The Twin Snakes (Emulator)](https://github.com/bmn/livesplit_asl_misc/tree/mgstts) (stable)
 * [Splinter Cell Pandora Tomorrow (PC)](https://github.com/bmn/livesplit_asl_misc/tree/scpt) (unstable)
-* [UnMetal (PC)](https://github.com/bmn/livesplit_asl_misc/tree/unmetal-dev) (unstable)
+* [UnMetal (PC)](https://github.com/bmn/livesplit_asl_misc/tree/unmetal) (stable)
 
 ## Other Autosplitters
 * [Metal Gear Solid (PC/Emulator)](https://github.com/bmn/livesplit_asl_mgs1/)
