@@ -3,7 +3,8 @@
 /*                                                       */
 /* Created by bmn for Metal Gear Solid Speedrunners      */
 /*                                                       */
-/* Thanks to unepic_fran, Jacklifear, SRGTSilent         */
+/* Thanks to Jacklifear, NickRPGreen, SRGTSilent         */
+/* and unepic_fran                                       */
 /* for their help and input                              */
 /*********************************************************/
 
