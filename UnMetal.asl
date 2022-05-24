@@ -35,6 +35,8 @@ startup {
   D.Debug = false;
 
 
+  F.Now = (Func<TimeSpan>)(() => TimeSpan.FromTicks(DateTime.Now.Ticks));
+
   F.Debug = (Action<string>)((message) =>
     print("[UnMetal] " + message) );
 
@@ -42,6 +44,9 @@ startup {
     string ext = (type == null) ? "" : "." + type;
     return Path.Combine(D.LiveSplitPath, "UnMetal.Route" + ext + ".txt");
   });
+
+  F.IntInRange = (Func<int, int, int, bool>)((input, min, max) =>
+    ((input >= min) && (input <= max)) );
 
   F.WriteFile = (Action<string, string, bool>)((file, content, append) => {
     string dir = Path.GetDirectoryName(file);
@@ -167,6 +172,18 @@ startup {
     vars.DeadTimeIngame = "0:00";
     vars.DeadTimeInventory = "0:00";
     vars.DeadTimeMenu = "0:00";
+    vars.DifficultyLevel = String.Empty;
+    vars.CurrentStageExp = "0 ✔";
+    vars.CurrentStageSecrets = "0 ✔";
+    vars.PlayerLevelExp = "0 ✔";
+    vars.Summary_CurrentStatus = String.Empty;
+    vars.Summary_UnPerfect = String.Empty;
+    vars.UnPerfect1 = String.Empty;
+    vars.UnPerfect2 = String.Empty;
+    vars.UnPerfect3 = String.Empty;
+    vars.UnPerfect4 = String.Empty;
+    vars.UnPerfect5 = String.Empty;
+    vars.UnPerfect6 = String.Empty;
   });
   F.InitVariables();
 
@@ -296,6 +313,118 @@ startup {
     "Escape Complete!",
   };
 
+  D.Difficulties = new string[] {
+    "Easy", "Medium", "Hard"
+  };
+
+  D.UnperfectObjectives = new List<string>[] {
+    new List<string>() {
+      "Choose 2 guards",
+      "Don't take any damage"
+    },
+    new List<string>() {
+      "Feed the dog 6 times",
+      "Choose 2 tentacles"
+    },
+    new List<string>() {
+      "Punch any medical equipment",
+      "Destroy all the drones",
+      "Collect the Alpha Bldg Map",
+      "Don't punch the medkit store",
+      "Choose GRD"
+    },
+    new List<string>() {
+      "Don't wake any dogs",
+      "Collect the Metal Detector",
+      "Fix the Compass",
+      "Don't get lost in the jungle",
+      "Don't miss in Turret Storm"
+    },
+    new List<string>() {
+      "Help Drunken Mike",
+      "Don't raise any red alarms",
+      "Don't take any damage"
+    },
+    new List<string>() {
+      "Don't take any damage"
+    },
+    new List<string>() {
+      "Don't miss in Black Thunder",
+      "Don't get hit by bullets",
+      "End with 10 million dollars"
+    },
+    new List<string>() {
+      "Use required 7 EM Grenades only"
+    },
+    new List<string>() {
+      "Collect Robert's Photos",
+      "Collect the 5th File",
+      "Collect the KGS Protocol",
+      "Collect the Anti-Rad Suit",
+      "Tie up all Scandinavians",
+      "Don't get hit by Jp or Ghosts"
+    },
+    new List<string>() {
+      "Take no damage from guards",
+      "Don't miss any drones",
+      "Hit Gen X with all used EMG"
+    }
+  };
+
+  D.UnperfectObjectivesShort = new List<string>[] {
+    new List<string>() {
+      "2 Guards",
+      "No damage"
+    },
+    new List<string>() {
+      "Fat Dog (6 meat)",
+      "2 tentacles"
+    },
+    new List<string>() {
+      "Med equipment",
+      "All drones",
+      "Alpha Bldg Map",
+      "No medkit store",
+      "Choose GRD"
+    },
+    new List<string>() {
+      "No Dogs awake",
+      "Metal Detector",
+      "Fix Compass",
+      "Don't get lost",
+      "T.Storm no miss"
+    },
+    new List<string>() {
+      "Drunken Mike",
+      "No red alarms",
+      "No damage"
+    },
+    new List<string>() {
+      "No damage"
+    },
+    new List<string>() {
+      "B.Thunder no miss",
+      "No bullet dmg",
+      "10M dollars"
+    },
+    new List<string>() {
+      "7 EMGs used",
+    },
+    new List<string>() {
+      "Robert's Photos",
+      "5th File",
+      "KGS Protocol",
+      "Anti-Rad Suit",
+      "Tie all Scandis",
+      "No Jp/Ghosts dmg"
+    },
+    new List<string>() {
+      "No Guard dmg",
+      "Drones no miss",
+      "EMG only Gen X"
+    }
+  };
+
   string pre = " ";
   settings.Add("Debug", true, pre+"Debug Logging");
   settings.Add("Debug.File", true, pre+"Save debug information to LiveSplit directory", "Debug");
@@ -310,6 +439,10 @@ startup {
 
   settings.Add("ASL", true, pre+"ASL Var Viewer Support");
   settings.SetToolTip("ASL", "For use with hawkerm's ASL Var Viewer component for LiveSplit.\nhttps://github.com/hawkerm/LiveSplit.ASLVarViewer\n\nIf you don't use ASLVV, disabling these settings may slightly improve performance.");
+  settings.Add("ASL.Unperfect", true, pre+"UnPerfect Objectives", "ASL");
+  settings.SetToolTip("ASL.Unperfect", "REQUIRES UNMETAL >= 1.0.13\n\nShows the status of the current stage's objectives for UnPerfect.\n\nProvided variables:\n * vars.Summary_UnPerfect (overall status)\n * vars.UnPerfect1 (status of objective 1)\n   ...\n * vars.UnPerfect6 (status of objective 6)");
+  settings.Add("ASL.Unperfect.ShortMain", true, pre+"Use shorter names for vars.Summary_UnPerfect", "ASL.Unperfect");
+  settings.Add("ASL.Unperfect.ShortIndividual", false, pre+"Use shorter names for vars.UnPerfect1 etc.", "ASL.Unperfect");
   settings.Add("ASL.DeadTime", true, pre+"Dead Time", "ASL");
   settings.SetToolTip("ASL.DeadTime", "Tracks the amount of dead time spent in menus, skipping cutscenes, etc.\n\nProvided variables:\n * vars.DeadTime (total from all sources)\n * vars.DeadTimeIngame (decision-making, going through doors, etc.)\n * vars.DeadTimeInventory (inventory, missions)\n * vars.DeadTimeMenu (pause menu)");
   settings.Add("ASL.DeadTime.StageReset", true, pre+"Reset counters at the start of a new Stage", "ASL.DeadTime");
@@ -479,6 +612,36 @@ init {
       foreach (var w in vars.D.M)
         cur[w.Name] = w.Current;
 
+      if (D.DataRevision >= 1) {
+        bool updated = false;
+
+        var curV = M["CurrentStageExp"];
+        var maxV = M["CurrentStageMaxExp"];
+        if ( (curV.Changed || maxV.Changed) && (updated = true) )
+          vars.CurrentStageExp = curV.Current + ((curV.Current == maxV.Current) ? " ✔" : "/" + maxV.Current);
+        curV = M["CurrentStageSecrets"];
+        maxV = M["CurrentStageMaxSecrets"];
+        if ( (curV.Changed || maxV.Changed) && (updated = true) )
+          vars.CurrentStageSecrets = curV.Current + ((curV.Current == maxV.Current) ? " ✔" : "/" + maxV.Current);
+        curV = M["PlayerLevelExp"];
+        maxV = M["PlayerLevelMaxExp"];
+        if ( (curV.Changed || maxV.Changed) && (updated = true) )
+          vars.PlayerLevelExp = (M["PlayerLevel"].Current == 9) ? String.Empty : curV.Current + "/" + maxV.Current;
+
+        if (updated) {
+          vars.Summary_CurrentStatus = string.Format("Lv {0}{1}  |  Exp {2}  |  Secrets {3}",
+            M["PlayerLevel"].Current + 1, 
+            (vars.PlayerLevelExp == String.Empty) ? String.Empty : " " + vars.PlayerLevelExp,
+            vars.CurrentStageExp, vars.CurrentStageSecrets);
+
+          if (F.IntInRange(M["DifficultyLevel"].Current, 0, 2)) {
+            vars.DifficultyLevel = D.Difficulties[M["DifficultyLevel"].Current];
+            if (M["IronmanEnabled"].Current)
+              vars.DifficultyLevel += " (Ironman)";
+          }
+        }
+      }
+
       if (D.Debug) {
         foreach (var w in vars.D.A) {
           string content = "";
@@ -496,10 +659,15 @@ init {
       //( (M["GameState"].Old == 0) && (M["GameState"].Current == 3) ) );
       (M["Attempts"].Changed) );
 
-
     F.UpdateASL = (Action)(() => {
-      if (settings["ASL.DeadTime"])
-        F.UpdateASLDeadTime();
+      if (settings["ASL"]) {
+        F.UpdateCurrent();
+
+        if (settings["ASL.DeadTime"])
+          F.UpdateASLDeadTime();
+        if (settings["ASL.Unperfect"]) 
+          F.UpdateASLUnperfect();
+      }
     });
 
     F.UpdateASLDeadTime = (Action)(() => {
@@ -590,6 +758,75 @@ init {
           (D.TotalDeadTime.Minutes > 0) ? formatMins : formatSecs );
     });
 
+
+    List<string> objectiveNamesMain = D.UnperfectObjectives[0];
+    List<string> objectiveNamesIndividual = D.UnperfectObjectives[0];
+    string[] objectiveDisplay = new string[6];
+    TimeSpan objectiveNextChange = F.Now();
+    int objectiveDisplayed = -1;
+    F.UpdateASLUnperfect = (Action)(() => {
+      if (D.DataRevision >= 1) {
+
+        var V = vars as IDictionary<string, object>;
+
+        TimeSpan now = F.Now();
+        bool refresh = false;
+
+        var stage = M["Stage"];
+        if (stage.Changed) {
+          print("stage changed");
+          int stageNum = stage.Current;
+          if (F.IntInRange(stageNum, 1, 10)) {
+            refresh = true;
+            int index = stageNum - 1;
+            objectiveNamesMain = (settings["ASL.Unperfect.ShortMain"]) ? D.UnperfectObjectivesShort[index] : D.UnperfectObjectives[index];
+            objectiveNamesIndividual = (settings["ASL.Unperfect.ShortIndividual"]) ? D.UnperfectObjectivesShort[index] : D.UnperfectObjectives[index];
+            objectiveDisplayed = -1;
+            objectiveNextChange = now;
+
+            for (int i = 1; i <= 6; i++)
+              V["UnPerfect" + i] = String.Empty;
+          }
+        }
+
+        var objCount = M["UnperfectObjectiveCount"].Current;
+        var objectives = A["UnperfectObjectives"];
+        if (now >= objectiveNextChange) {
+          objectiveNextChange = now + TimeSpan.FromMilliseconds(5000);
+          if (++objectiveDisplayed >= objCount)
+            objectiveDisplayed = 0;
+          if (objectiveDisplayed < objCount) {
+            string objectiveTicks = "";
+            for (int i = 0; i < objCount; i++) {
+              objectiveTicks += string.Format("{0}{1}{2}",
+                (objectiveDisplayed == i) ? "|" : " ",
+                (objectives.Current[i] != 0) ? "✔" : "❌",
+                (objectiveDisplayed == i) ? "|" : " ");
+            }
+            vars.Summary_UnPerfect = string.Format("{0}  {1}", objectiveNamesMain[objectiveDisplayed], objectiveTicks);
+          }
+        }
+
+        if ( (objectives.Changed) || (refresh) ) {
+          for (int i = 0; i < M["UnperfectObjectiveCount"].Current; i++) {
+            bool good = (objectives.Current[i] != 0);
+            bool changed = (good != (objectives.Old[i] != 0));
+
+            objectiveDisplay[i] = string.Format("{0} {1}",
+              objectiveNamesIndividual[i], good ? "✔" : "❌");
+            V["UnPerfect" + (i + 1)] = objectiveDisplay[i];
+
+            if ((changed) && (!refresh)) {
+              objectiveNextChange = now;
+              objectiveDisplayed = i - 1;
+            }
+          }
+
+        }
+      
+      }
+    });
+
     F.LoadRouteFromFile = (Action)(() => {
       var route = new List<int[]>();
       int stage = 0;
@@ -650,6 +887,7 @@ init {
 
   F.Debug("Found SPEEDRUN struct at " + offset.ToString("X2"));
   D.DataOffset = offset;
+  D.DataRevision = 0;
 
   M.Clear();
   M.AddRange(new MemoryWatcherList(){
@@ -673,10 +911,30 @@ init {
   A.Add("Missions", F.NewArray(offset + 0x98, 54, 1));
   A.Add("Events", F.NewArray(offset + 0xD2, 64, 1));
 
+  string revision;
+  IntPtr revisionOffset = offset + 0x116;
+  if ( (game.ReadString(revisionOffset, 4, out revision)) && (revision == "REV1") ) {
+    F.Debug("Found REV1 (1.0.13) revision at " + revisionOffset.ToString("X2"));
+    D.DataRevision = 1;
+
+    M.AddRange(new MemoryWatcherList() {
+      new MemoryWatcher<bool>(revisionOffset + 0x4)  { Name = "IronmanEnabled" },
+      new MemoryWatcher<int>(revisionOffset + 0x6)   { Name = "DifficultyLevel" },
+      new MemoryWatcher<int>(revisionOffset + 0xA)   { Name = "PlayerLevelExp" },
+      new MemoryWatcher<int>(revisionOffset + 0xE)   { Name = "PlayerLevelMaxExp" },
+      new MemoryWatcher<int>(revisionOffset + 0x12)  { Name = "CurrentStageExp" },
+      new MemoryWatcher<int>(revisionOffset + 0x16)  { Name = "CurrentStageMaxExp" },
+      new MemoryWatcher<int>(revisionOffset + 0x1A)  { Name = "CurrentStageSecrets" },
+      new MemoryWatcher<int>(revisionOffset + 0x1E)  { Name = "CurrentStageMaxSecrets" },
+      new MemoryWatcher<int>(revisionOffset + 0x22)  { Name = "UnperfectObjectiveCount" },
+    });
+
+    A.Add("UnperfectObjectives", F.NewArray(revisionOffset + 0x26, 6, 1));
+  }
+  else F.Debug("No revision found (<= 1.0.12)");
+
   D.M.UpdateAll(game);
   D.F.UpdateAllArrays(game);
-  D.F.UpdateCurrent();
-
 }
 
 start {
@@ -742,16 +1000,15 @@ update {
   var D = vars.D; var F = D.F;
   D.M.UpdateAll(game);
   F.UpdateAllArrays(game);
-  F.UpdateCurrent();
+
+  if (settings["ASL"])
+    F.UpdateASL();
 }
 
 
 
 split {
   var D = vars.D; var F = D.F; var M = D.M; var A = D.A;
-
-  if (settings["ASL"])
-    F.UpdateASL();
 
   if (A["StageTimes"].Changed) {
     int stage = M["Stage"].Current;
