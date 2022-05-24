@@ -281,7 +281,7 @@ startup {
     F.NewEvent(34, 9, "Meet Doctor Hoffman again", true, true),
     F.NewMission(49, 9, "Find access card 4", false, true),
     F.NewEvent(37, 9, "Enter the rooftop", false, true),
-    F.NewMission(51, 9, "Disable the communications tower", false, true), // and 52
+    F.NewMission(52, 9, "Disable the communications tower", false, true),
     F.NewMission(41, 9, "Check the helicopter", false, true),
     F.NewEvent(40, 9, "Enter the 3rd floor", false, false),
     F.NewBoss(12, 1, 9, "Reach Takuma Takagashi", false, true),
