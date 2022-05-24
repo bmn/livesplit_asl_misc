@@ -278,7 +278,7 @@ startup {
     F.NewBoss(13, 1, 10, "Reach General X", false, true),
     F.NewEvent(47, 10, "Defeat the drones", false, false),
     F.NewEvent(48, 10, "Defeat the tank", false, false),
-    F.NewBoss(13, 2, 10, "Defeat General X", false, true),
+    F.NewBoss(13, 2, 10, "Defeat General X", false, false),
     F.NewMission(45, 10, "\"Convince\" Harris", false, false),
   };
 

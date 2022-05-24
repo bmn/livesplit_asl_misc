@@ -661,15 +661,6 @@
       </SplitTimes>
     </Segment>
     <Segment>
-      <Name>Defeat General X</Name>
-      <Icon />
-      <BestSegmentTime />
-      <SegmentHistory />
-      <SplitTimes>
-        <SplitTime name="Personal Best" />
-      </SplitTimes>
-    </Segment>
-    <Segment>
       <Name>Stage 10: Escape Complete</Name>
       <Icon />
       <BestSegmentTime />
