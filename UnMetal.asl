@@ -9,20 +9,26 @@
 /*********************************************************/
 
 
+// Attach to process name "unmetal"
+// No state descriptor, MemoryWatchers will be defined in init block
 state("unmetal") {}
 
 
 startup {
   
-  dynamic D = new ExpandoObject();
-  dynamic F = new ExpandoObject();
-  dynamic M = new MemoryWatcherList();
-  dynamic A = new Dictionary<string, dynamic>();
-  dynamic New = new ExpandoObject();
+  dynamic D = new ExpandoObject();                // Main data object (vars.D)
+  dynamic F = new ExpandoObject();                // Functions (vars.D.F)
+  dynamic M = new MemoryWatcherList();            // MemoryWatchers (vars.D.M)
+  dynamic A = new Dictionary<string, dynamic>();  // Byte array watchers (vars.D.A)
+  dynamic New = new ExpandoObject();              // Data structure initialisers (vars.D.New)
   D.F = F;
   D.M = M;
   D.A = A;
   vars.D = D;
+
+  // Set this to true to enable extra processing
+  // Currently this only enables ASLVV summaries for byte arrays
+  D.Debug = false; 
 
   D.DebugLogBuffer = new List<string>();
   D.EventLog = new EventLog("Application") {
@@ -34,9 +40,10 @@ startup {
   D.Initialised = false;
   D.Debug = false;
 
+  F.Now = (Func<TimeSpan>)(() =>
+    TimeSpan.FromTicks(DateTime.Now.Ticks));
 
-  F.Now = (Func<TimeSpan>)(() => TimeSpan.FromTicks(DateTime.Now.Ticks));
-
+  // Temporary, will be overridden in init
   F.Debug = (Action<string>)((message) =>
     print("[UnMetal] " + message) );
 
@@ -50,7 +57,8 @@ startup {
 
   F.WriteFile = (Action<string, string, bool>)((file, content, append) => {
     string dir = Path.GetDirectoryName(file);
-    if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+    if (!Directory.Exists(dir))
+      Directory.CreateDirectory(dir);
     using( System.IO.StreamWriter stream = 
       new System.IO.StreamWriter(file, append) ) {
       stream.WriteLine(content);
@@ -58,6 +66,7 @@ startup {
     }
   });
 
+  // Debug log will be written once a second
   F.FlushDebugBuffer = (Action)(() => {
     if (D.DebugLogBuffer.Count > 0) {
       F.WriteFile(D.DebugLogPath, string.Join("\n", D.DebugLogBuffer), true);
@@ -72,6 +81,7 @@ startup {
     (Action<object, System.Timers.ElapsedEventArgs>)((sender, e) => F.FlushDebugBuffer()));
   
   
+  // Base class for Event/Mission/Boss
   F.NewObject = (Func<int, string, bool, bool, dynamic>)(
     (stage, description, skippable, defaultEnabled) => {
     dynamic o = new ExpandoObject();
@@ -124,7 +134,6 @@ startup {
   });
 
   F.NewArray = (Func<IntPtr, int, int, dynamic>)((addr, len, bytes) => {
-    //len *= bytes;
     dynamic ba = new ExpandoObject();
     ba.Address = addr;
     ba.Length = len;
@@ -188,6 +197,10 @@ startup {
   F.InitVariables();
 
 
+  // List of event splits, in order
+  // Not used directly - this is used to populate settings, and dictionaries used in split decisionmaking
+  // Event/Mission: (int 0-index)offset, (int 1-index)stage, (string)description, (bool)skippable, (bool)defaultEnabled
+  // Boss: (int 0-index)offset, (int 0/1/2)target, (int 1-index)stage, (string)description, (bool)skippable, (bool)defaultEnabled
   var Events = new List<dynamic>() {
     F.NewEvent(0, 1, "Escape the cell", false, true),
     F.NewMission(0, 1, "Discover the sewer", false, true),
@@ -301,16 +314,16 @@ startup {
   };
 
   var StageNames = new List<string>() {
-    "The Great Escape",
-    "Something Stinks Really Bad",
-    "In The Lion's Den",
-    "Welcome To The Jungle",
-    "The Barracks",
-    "Engineering Problems",
-    "Boom Docks",
-    "A Thousand Eyes Are Watching You",
-    "Jerico's Heart",
-    "Escape Complete!",
+    "The Great Escape",                   // Chapter 1
+    "Something Stinks Really Bad",        // Chapter 2
+    "In The Lion's Den",                  // Chapter 3
+    "Welcome To The Jungle",              // Chapter 4
+    "The Barracks",                       // Chapter 5
+    "Engineering Problems",               // Chapter 6
+    "Boom Docks",                         // Chapter 7
+    "A Thousand Eyes Are Watching You",   // Chapter 8
+    "Jerico's Heart",                     // Chapter 9
+    "Escape Complete!",                   // Chapter 10
   };
 
   D.Difficulties = new string[] {
@@ -319,14 +332,17 @@ startup {
 
   D.UnperfectObjectives = new List<string>[] {
     new List<string>() {
+      // Chapter 1
       "Choose 2 guards",
       "Don't take any damage"
     },
     new List<string>() {
+      // Chapter 2
       "Feed the dog 6 times",
       "Choose 2 tentacles"
     },
     new List<string>() {
+      // Chapter 3
       "Punch any medical equipment",
       "Destroy all the drones",
       "Collect the Alpha Bldg Map",
@@ -334,6 +350,7 @@ startup {
       "Choose GRD"
     },
     new List<string>() {
+      // Chapter 4
       "Don't wake any dogs",
       "Collect the Metal Detector",
       "Fix the Compass",
@@ -341,22 +358,27 @@ startup {
       "Don't miss in Turret Storm"
     },
     new List<string>() {
+      // Chapter 5
       "Help Drunken Mike",
       "Don't raise any red alarms",
       "Don't take any damage"
     },
     new List<string>() {
+      // Chapter 6
       "Don't take any damage"
     },
     new List<string>() {
+      // Chapter 7
       "Don't miss in Black Thunder",
       "Don't get hit by bullets",
       "End with 10 million dollars"
     },
     new List<string>() {
+      // Chapter 8
       "Use required 7 EM Grenades only"
     },
     new List<string>() {
+      // Chapter 9
       "Collect Robert's Photos",
       "Collect the 5th File",
       "Collect the KGS Protocol",
@@ -365,6 +387,7 @@ startup {
       "Don't get hit by Jp or Ghosts"
     },
     new List<string>() {
+      // Chapter 10
       "Take no damage from guards",
       "Don't miss any drones",
       "Hit Gen X with all used EMG"
@@ -373,14 +396,17 @@ startup {
 
   D.UnperfectObjectivesShort = new List<string>[] {
     new List<string>() {
+      // Chapter 1
       "2 Guards",
       "No damage"
     },
     new List<string>() {
+      // Chapter 2
       "Fat Dog (6 meat)",
       "2 tentacles"
     },
     new List<string>() {
+      // Chapter 3
       "Med equipment",
       "All drones",
       "Alpha Bldg Map",
@@ -388,6 +414,7 @@ startup {
       "Choose GRD"
     },
     new List<string>() {
+      // Chapter 4
       "No Dogs awake",
       "Metal Detector",
       "Fix Compass",
@@ -395,22 +422,27 @@ startup {
       "T.Storm no miss"
     },
     new List<string>() {
+      // Chapter 5
       "Drunken Mike",
       "No red alarms",
       "No damage"
     },
     new List<string>() {
+      // Chapter 6
       "No damage"
     },
     new List<string>() {
+      // Chapter 7
       "B.Thunder no miss",
       "No bullet dmg",
       "10M dollars"
     },
     new List<string>() {
+      // Chapter 8
       "7 EMGs used",
     },
     new List<string>() {
+      // Chapter 9
       "Robert's Photos",
       "5th File",
       "KGS Protocol",
@@ -419,12 +451,15 @@ startup {
       "No Jp/Ghosts dmg"
     },
     new List<string>() {
+      // Chapter 10
       "No Guard dmg",
       "Drones no miss",
       "EMG only Gen X"
     }
   };
 
+
+  // Main settings list
   string pre = " ";
   settings.Add("Debug", true, pre+"Debug Logging");
   settings.Add("Debug.File", true, pre+"Save debug information to LiveSplit directory", "Debug");
@@ -467,13 +502,14 @@ startup {
   settings.Add("Split.Route.C", false, pre+"Use route CHARLIE", "Split.Route");
   settings.SetToolTip("Split.Route.C", "Route file:\n" + F.RoutePathFull("C"));
   
-  
+  // Stage categories
   for (int i = 1; i <= 10; i++) {
     string name = string.Format("Stage {0}: {1}", i, StageNames[i - 1]);
     settings.Add("Split.Stage." + i, true, pre+name, "Split.Stage");
     settings.Add("Split.Event.Stage" + i, true, pre+name, "Split.Event");
   }
 
+  // Settings/Dictionaries for individual splits
   D.Events = new Dictionary<int, dynamic>();
   D.Missions = new Dictionary<int, dynamic>();
   D.Bosses = new Dictionary<string, dynamic>();
@@ -498,11 +534,13 @@ startup {
   }
 
 }
+// startup END
 
 
 init {
   var D = vars.D; var F = D.F; var M = D.M; var A = D.A;
 
+  // One-time definition of functions that require game data
   if (!D.Initialised) {
     D.Initialised = true;
 
@@ -550,10 +588,7 @@ init {
       m.Old = m.Current;
       m.CurrentRaw = g.ReadBytes((IntPtr)m.Address, (int)(m.Length * m.Bytes));
 
-      if (m.OldRaw == null)
-        m.Changed = true;
-      else
-        m.Changed = (!Enumerable.SequenceEqual((byte[])m.CurrentRaw, (byte[])m.OldRaw));
+      m.Changed = (m.OldRaw == null) ? true : (!Enumerable.SequenceEqual((byte[])m.CurrentRaw, (byte[])m.OldRaw));
 
       if (m.Changed) {
         if (m.Bytes == 1) {
@@ -649,19 +684,15 @@ init {
 
       if (D.Debug) {
         foreach (var w in vars.D.A) {
-          string content = "";
-          int j = 0;
-          for (int i = 0; i < w.Value.Length; i++) {
-            content += (w.Value.Current[i] == 0) ? "x" : (j % 10).ToString();
-            j++;
-          }
-          cur[w.Key] = content;
+          char[] values = new char[w.Value.Length];
+          for (int i = 0; i < w.Value.Length; i++)
+            values[i] = (w.Value.Current[i] == 0) ? 'x' : (char)('0' + (i % 10));
+          cur[w.Key] = string.Concat(values);
         }
       }
     });
 
     F.StartedNewAttempt = (Func<bool>)(() =>
-      //( (M["GameState"].Old == 0) && (M["GameState"].Current == 3) ) );
       (M["Attempts"].Changed) );
 
     F.UpdateASL = (Action)(() => {
@@ -832,6 +863,7 @@ init {
       }
     });
 
+    // Load the new stage's custom coordinate split file, if present
     F.LoadRouteFromFile = (Action)(() => {
       var route = new List<int[]>();
       int stage = 0;
@@ -872,8 +904,10 @@ init {
     });
 
   }
-  
+  // one-time initialisation END
 
+
+  // Find game memory and define MemoryWatchers
   var mainModule = modules.First();
 
   F.Debug( string.Format("Attached to UnMetal process ({0} bytes)",
@@ -905,7 +939,7 @@ init {
 
     new MemoryWatcher<int>(offset + 0x48)  { Name = "GameTime" },
     new MemoryWatcher<int>(offset + 0x4C)  { Name = "CurrentStageTime"},
-    // 0 = main menu, 1 = menu pause/menu death, 2 = inventory/missions, 3 = ingame
+    // GameState: 0 = main menu, 1 = menu pause/menu death, 2 = inventory/missions, 3 = ingame
     new MemoryWatcher<int>(offset + 0x50)  { Name = "GameState" },
     new MemoryWatcher<bool>(offset + 0x54) { Name = "InCutscene" },
   });
@@ -941,15 +975,22 @@ init {
   D.M.UpdateAll(game);
   D.F.UpdateAllArrays(game);
 }
+// init END
+
 
 start {
   var D = vars.D; var F = D.F;
 
   bool start = false;
+
+  // StartInstantly is used when main menu reset is disabled
+  // to reset and immediately start a new attempt
   if (D.StartInstantly) {
     D.StartInstantly = false;
     start = true;
   }
+
+  // Regular start behaviour
   if (F.StartedNewAttempt()) {
     F.Debug("START for new attempt");
     start = true;
@@ -959,6 +1000,7 @@ start {
     F.InitVariables();
   return start;
 }
+// start END
 
 
 reset {
@@ -981,25 +1023,32 @@ reset {
     F.InitVariables();
   return reset;
 }
+// reset END
 
 
 gameTime {
   return TimeSpan.FromMilliseconds(vars.D.M["GameTime"].Current);
 }
+// gameTime END
 
 
 isLoading {
   return true;
 }
+// isLoading END
+
 
 shutdown {
   var D = vars.D; var F = D.F;
   
+  // Detach from the event log
   if (F.EventLogWritten != null)
     D.EventLog.EntryWritten -= F.EventLogWritten;
 
   F.FlushDebugBuffer();
 }
+// shutdown END
+
 
 update {
   var D = vars.D; var F = D.F;
@@ -1009,12 +1058,13 @@ update {
   if (settings["ASL"])
     F.UpdateASL();
 }
-
+// update END
 
 
 split {
   var D = vars.D; var F = D.F; var M = D.M; var A = D.A;
 
+  // Stage Complete
   if (A["StageTimes"].Changed) {
     int stage = M["Stage"].Current;
     if (F.SettingEnabled("Split.Stage." + stage)) {
@@ -1024,6 +1074,7 @@ split {
     else F.Debug( string.Format("Completed Stage {0} (split disabled)", stage) );
   }
 
+  // Missions/Events/Bosses
   foreach (string type in new string[] { "Missions", "Events", "Bosses" }) {
     if (A[type].Changed) {
       foreach (var evt in F.NewCompletedEvents(type)) {
@@ -1038,6 +1089,7 @@ split {
     }  
   }
 
+  // Secrets/Exp (REV1)
   if (D.DataRevision >= 1) {
     var secrets = M["CurrentStageSecrets"];
     var maxSecrets = M["CurrentStageMaxSecrets"];
@@ -1064,6 +1116,7 @@ split {
     }
   }
 
+  // Custom coordinate splits
   if ( (M["RoomX"].Changed) || (M["RoomY"].Changed) || (M["Stage"].Changed) ) {
     int stage = M["Stage"].Current;
     int coordX =  M["RoomX"].Current;
@@ -1113,3 +1166,4 @@ split {
   return false;
 
 }
+// split END
