@@ -453,6 +453,11 @@ startup {
   settings.SetToolTip("Split.Stage", "Split on Stage Complete");
   settings.Add("Split.Event", true, pre+"Stage Events", "Split");
   settings.SetToolTip("Split.Event", "Split when an event occurs during a stage");
+  settings.Add("Split.Perfect", true, pre+"Perfect Objectives", "Split");
+  settings.SetToolTip("Split.Perfect", "Split when receiving EXP or revealing Secrets");
+  settings.Add("Split.Perfect.Exp", false, "Receive EXP", "Split.Perfect");
+  settings.SetToolTip("Split.Perfect.Exp", "Defeating a boss or miniboss will not trigger this split type");
+  settings.Add("Split.Perfect.Secret", false, "Reveal a Secret", "Split.Perfect");
   settings.Add("Split.Route", false, pre+"Custom Splits", "Split");
   settings.SetToolTip("Split.Route", "Split when you reach certain areas.\n\nBy default this uses the route file:\n" + F.RoutePathFull(null) + "\n\nSelect one of ALPHA/BRAVO/CHARLIE below to use a different route file instead.\n\nSee the README for more information on custom splits.");
   settings.Add("Split.Route.A", false, pre+"Use route ALPHA", "Split.Route");
@@ -1031,6 +1036,32 @@ split {
           evt.Stage, type, evt.Description) );
       }
     }  
+  }
+
+  if (D.DataRevision >= 1) {
+    var secrets = M["CurrentStageSecrets"];
+    var maxSecrets = M["CurrentStageMaxSecrets"];
+    if ( (secrets.Changed) && (!maxSecrets.Changed) && (secrets.Current == (secrets.Old + 1)) ) {
+      if (settings["Split.Perfect.Secret"]) {
+        F.Debug( string.Format("SPLIT for Secrets {0} => {1} of {2}",
+          secrets.Old, secrets.Current, maxSecrets.Current) );
+        return true;
+      }
+      else F.Debug( string.Format("Secrets {0} => {1} of {2} (split disabled)",
+        secrets.Old, secrets.Current, maxSecrets.Current) );
+    }
+
+    var exp = M["CurrentStageExp"];
+    var maxExp = M["CurrentStageMaxExp"];
+    if ( (exp.Changed) && (!maxExp.Changed) && (exp.Current == (exp.Old + 1)) ) {
+      if (settings["Split.Perfect.Exp"]) {
+        F.Debug( string.Format("SPLIT for Exp {0} => {1} of {2}",
+          exp.Old, exp.Current, maxExp.Current) );
+        return true;
+      }
+      else F.Debug( string.Format("Exp {0} => {1} of {2} (split disabled)",
+        exp.Old, exp.Current, maxExp.Current) );
+    }
   }
 
   if ( (M["RoomX"].Changed) || (M["RoomY"].Changed) || (M["Stage"].Changed) ) {
